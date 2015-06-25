@@ -5,12 +5,12 @@ namespace app\models\esm;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\esm\Distributor;
+use app\models\esm\Unitbarang;
 
 /**
- * DistributorSearch represents the model behind the search form about `app\models\esm\Distributor`.
+ * UnitbarangSearch represents the model behind the search form about `app\models\esm\Unitbarang`.
  */
-class DistributorSearch extends Distributor
+class UnitbarangSearch extends Unitbarang
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class DistributorSearch extends Distributor
     public function rules()
     {
         return [
-            [['ID_DISTRIBUTOR', 'TLP1', 'TLP2', 'FAX', 'STATUS'], 'integer'],
-            [['KD_DISTRIBUTOR', 'NM_DISTRIBUTOR', 'ALAMAT', 'PIC', 'EMAIL', 'WEBSITE', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_AT', 'DATA_ALL'], 'safe'],
+            [['ID', 'QTY', 'SIZE', 'WEIGHT', 'STATUS'], 'integer'],
+            [['KD_UNIT', 'NM_UNIT', 'COLOR', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_AT'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class DistributorSearch extends Distributor
      */
     public function search($params)
     {
-        $query = Distributor::find();
+        $query = Unitbarang::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,24 +56,20 @@ class DistributorSearch extends Distributor
         }
 
         $query->andFilterWhere([
-            'ID_DISTRIBUTOR' => $this->ID_DISTRIBUTOR,
-            'TLP1' => $this->TLP1,
-            'TLP2' => $this->TLP2,
-            'FAX' => $this->FAX,
+            'ID' => $this->ID,
+            'QTY' => $this->QTY,
+            'SIZE' => $this->SIZE,
+            'WEIGHT' => $this->WEIGHT,
             'STATUS' => $this->STATUS,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_DISTRIBUTOR', $this->KD_DISTRIBUTOR])
-            ->andFilterWhere(['like', 'NM_DISTRIBUTOR', $this->NM_DISTRIBUTOR])
-            ->andFilterWhere(['like', 'ALAMAT', $this->ALAMAT])
-            ->andFilterWhere(['like', 'PIC', $this->PIC])
-            ->andFilterWhere(['like', 'EMAIL', $this->EMAIL])
-            ->andFilterWhere(['like', 'WEBSITE', $this->WEBSITE])
+        $query->andFilterWhere(['like', 'KD_UNIT', $this->KD_UNIT])
+            ->andFilterWhere(['like', 'NM_UNIT', $this->NM_UNIT])
+            ->andFilterWhere(['like', 'COLOR', $this->COLOR])
             ->andFilterWhere(['like', 'NOTE', $this->NOTE])
             ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
             ->andFilterWhere(['like', 'CREATED_AT', $this->CREATED_AT])
-            ->andFilterWhere(['like', 'UPDATED_AT', $this->UPDATED_AT])
-            ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
+            ->andFilterWhere(['like', 'UPDATED_AT', $this->UPDATED_AT]);
 
         return $dataProvider;
     }
