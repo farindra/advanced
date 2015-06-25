@@ -18,7 +18,7 @@ class Maxiprodak extends \yii\db\ActiveRecord
 	 
 	 public static function getDb()
 	{
-		return \Yii::$app->db2;  // use the "db3" application component
+		return \Yii::$app->db_esm;  // use the "db3" application component
 	}
     public static function tableName()
     {
