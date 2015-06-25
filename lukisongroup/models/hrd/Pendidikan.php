@@ -58,12 +58,12 @@ class Pendidikan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp.EMP_ID' => Yii::t('app', 'EMP ID'),
-            'PEN_ID' => Yii::t('app', 'PENDIDIKAN'),
-			'PEN_NM' => Yii::t('app', 'PEN_NM'),
-			'TGL_MASUK' => Yii::t('app', 'TGL_MASUK'),
-			'TGL_KELUAR' => Yii::t('app', 'TGL_KELUAR'),
-			'NILAI' => Yii::t('app', 'NILAI'),
+            'emp.EMP_ID' => Yii::t('app', 'EmployeeID'),
+            'PEN_ID' => Yii::t('app', 'PendidikanID'),
+			'PEN_NM' => Yii::t('app', 'Pendidikan Name'),
+			'TGL_MASUK' => Yii::t('app', 'Tgl Masuk'),
+			'TGL_KELUAR' => Yii::t('app', 'Tgl Keluar'),
+			'NILAI' => Yii::t('app', 'Nilai'),
         ];
     } 
 	 
