@@ -1,5 +1,5 @@
 #CommonConf -ptr.nov-
-/common/config/*
+common/config/*.php
 
 # yii console command
 /yii
