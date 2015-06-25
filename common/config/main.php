@@ -26,7 +26,7 @@ return [
         /* Author -ptr.nov- : Test Project  */
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=44.222.2222;dbname=2222',
+            'dsn' => 'mysql:host=55.222.2222;dbname=2222',
             'username' => '2222',
             'password' =>'2222',
             'charset' => 'utf8',
