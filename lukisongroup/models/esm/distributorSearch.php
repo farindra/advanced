@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\esm;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\distributor;
+use app\models\esm\Distributor;
 
 /**
- * distributorSearch represents the model behind the search form about `app\models\distributor`.
+ * DistributorSearch represents the model behind the search form about `app\models\esm\Distributor`.
  */
-class distributorSearch extends distributor
+class DistributorSearch extends Distributor
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class distributorSearch extends distributor
     public function rules()
     {
         return [
-            [['DBTR_ID', 'DBTR_STT'], 'integer'],
-            [['DBTR_NM', 'DBTR_JOIN', 'DBTR_PIC', 'DBTR_ALMT', 'DBTR_ID_TLP'], 'safe'],
+            [['ID_DISTRIBUTOR', 'TLP1', 'TLP2', 'FAX', 'STATUS'], 'integer'],
+            [['KD_DISTRIBUTOR', 'NM_DISTRIBUTOR', 'ALAMAT', 'PIC', 'EMAIL', 'WEBSITE', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_AT', 'DATA_ALL'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class distributorSearch extends distributor
      */
     public function search($params)
     {
-        $query = distributor::find();
+        $query = Distributor::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,15 +56,24 @@ class distributorSearch extends distributor
         }
 
         $query->andFilterWhere([
-            'DBTR_ID' => $this->DBTR_ID,
-            'DBTR_STT' => $this->DBTR_STT,
-            'DBTR_JOIN' => $this->DBTR_JOIN,
+            'ID_DISTRIBUTOR' => $this->ID_DISTRIBUTOR,
+            'TLP1' => $this->TLP1,
+            'TLP2' => $this->TLP2,
+            'FAX' => $this->FAX,
+            'STATUS' => $this->STATUS,
         ]);
 
-        $query->andFilterWhere(['like', 'DBTR_NM', $this->DBTR_NM])
-            ->andFilterWhere(['like', 'DBTR_PIC', $this->DBTR_PIC])
-            ->andFilterWhere(['like', 'DBTR_ALMT', $this->DBTR_ALMT])
-            ->andFilterWhere(['like', 'DBTR_ID_TLP', $this->DBTR_ID_TLP]);
+        $query->andFilterWhere(['like', 'KD_DISTRIBUTOR', $this->KD_DISTRIBUTOR])
+            ->andFilterWhere(['like', 'NM_DISTRIBUTOR', $this->NM_DISTRIBUTOR])
+            ->andFilterWhere(['like', 'ALAMAT', $this->ALAMAT])
+            ->andFilterWhere(['like', 'PIC', $this->PIC])
+            ->andFilterWhere(['like', 'EMAIL', $this->EMAIL])
+            ->andFilterWhere(['like', 'WEBSITE', $this->WEBSITE])
+            ->andFilterWhere(['like', 'NOTE', $this->NOTE])
+            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
+            ->andFilterWhere(['like', 'CREATED_AT', $this->CREATED_AT])
+            ->andFilterWhere(['like', 'UPDATED_AT', $this->UPDATED_AT])
+            ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
 
         return $dataProvider;
     }

@@ -18,9 +18,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url'
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="maxiprodak-view">
-
-      <?php
-	
+<?php
 	use kartik\widgets\FileInput;
 	$form = ActiveForm::begin();
     echo FileInput::widget([
@@ -34,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'allowedFileExtensions'=>['jpg', 'gif', 'png', 'bmp'],
 			 'showUpload' => true,	
 			'initialPreview'=>[
-				Html::img("http://192.168.56.101/advanced/lukisongroup/web/css/image/" .$model->EMP_IMAGE, ['class'=>'file-preview-image', 'alt'=>'The Moon', 'title'=>'The Moon']),
+				Html::img("http://192.168.56.101/advanced/lukisongroup/web/css/image/" .$model->EMP_IMG, ['class'=>'file-preview-image', 'alt'=>'The Moon', 'title'=>'The Moon']),
 				//Html::img("http://placeimg.com/200/150/people/2.jpg",  ['class'=>'file-preview-image', 'alt'=>'The Earth', 'title'=>'The Earth']),
 				//Html::img("http://placeimg.com/200/150/people/2.jpg",  ['class'=>'file-preview-image', 'alt'=>'The Earth', 'title'=>'The Earth']),
 			],
