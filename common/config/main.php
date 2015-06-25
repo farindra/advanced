@@ -26,9 +26,9 @@ return [
         /* Author -ptr.nov- : Test Project  */
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=xxx.xxxx.xxxx.xxxx;dbname=xxxx',
-            'username' => 'xxxxx',
-            'password' =>'xxxx',
+            'dsn' => 'mysql:host=1111.1111.1111.1111;dbname=1111',
+            'username' => '1111',
+            'password' =>'1111',
             'charset' => 'utf8',
         ], 
 		
