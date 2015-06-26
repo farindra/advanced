@@ -1,50 +1,43 @@
 <?php
+/**
+ * NOTE: Nama Class harus diawali Hurup Besar
+ * Server Linux 	: hurup besar/kecil bermasalah -case sensitif-
+ * Server Windows 	: hurup besar/kecil tidak bermasalah
+ * Author: -ptr.nov-
+*/
 
 namespace app\models\hrd;
-//use yii\data\ActiveDataProvider;
 use kartik\builder\Form;
 use Yii;
 
 /**
- * This is the model class for table "{{%maxi_b0001}}".
- *
- * @property string $BRG_ID
- * @property string $BRG_NM
+ * CORPORATION CLASS Author: -ptr.nov-
  */
 class Corp extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-
+	/* [1] SOURCE DB */
     public static function getDb()
     {
-        /* Author -ptr.nov- : HRD | Dashboard I */
+        /* Author -ptr.nov- : UMUM */
         return \Yii::$app->db4;
     }
 
+	/* [2] TABLE SELECT */
     public static function tableName()
     {
         return '{{dbm000.a0001}}';
     }
 
-
-    /**
-     * @inheritdoc
-     */
+	/* [3] RULE SCENARIO -> DetailView */
     public function rules()
     {
         return [
             [['CORP_ID'], 'required'],
             [['CORP_ID'], 'string', 'max' => 5],
             [['CORP_NM'], 'string', 'max' => 30],
-            // [['PEN_ID','PEN_NM','TGL_MASUK','TGL_KELUAR','NILAI'], 'string', 'max' => 5],
-        ];
+         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

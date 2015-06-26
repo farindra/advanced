@@ -24,7 +24,7 @@ use Yii;
  * @property string $updateAt
  * @property string $data_all
  */
-class distributor extends \yii\db\ActiveRecord
+class Distributor extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

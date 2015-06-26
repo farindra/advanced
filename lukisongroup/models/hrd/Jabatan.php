@@ -1,36 +1,34 @@
 <?php
+/**
+ * NOTE: Nama Class harus diawali Hurup Besar
+ * Server Linux 	: hurup besar/kecil bermasalah -case sensitif-
+ * Server Windows 	: hurup besar/kecil tidak bermasalah
+ * Author: -ptr.nov-
+*/
 
 namespace app\models\hrd;
-//use yii\data\ActiveDataProvider;
 use kartik\builder\Form;
 use Yii;
 
 /**
- * This is the model class for table "{{%maxi_b0001}}".
- *
- * @property string $BRG_ID
- * @property string $BRG_NM
+ *  JABATAN CLASS Author: -ptr.nov-	
  */
 class Jabatan extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
+	/* [1] SOURCE DB */
     public static function getDb()
     {
-        /* Author -ptr.nov- : HRD | Dashboard I */
-        return \Yii::$app->db2;
+        /* Author -ptr.nov- : UMUM */
+        return \Yii::$app->db4;
     }
-
+	
+	/* [2] TABLE SELECT */
     public static function tableName()
     {
-        return '{{%b0003}}';
-    }
+        return '{{dbm000.a0003}}';   
+	}
 
-
-    /**
-     * @inheritdoc
-     */
+	/* [3] RULE SCENARIO -> DetailView */
     public function rules()
     {
         return [
@@ -38,13 +36,10 @@ class Jabatan extends \yii\db\ActiveRecord
             [['JAB_ID'], 'string', 'max' => 5],
             [['JAB_NM'], 'string', 'max' => 30],
 			[['SORT'], 'integer'],
-            // [['PEN_ID','PEN_NM','TGL_MASUK','TGL_KELUAR','NILAI'], 'string', 'max' => 5],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
+	/* [4] ATRIBUTE LABEL -> DetailView/GridView */
     public function attributeLabels()
     {
         return [
