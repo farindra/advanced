@@ -1,21 +1,29 @@
 <?php
+/**
+ * NOTE: Nama Class harus diawali Hurup Besar
+ * Server Linux 	: hurup besar/kecil bermasalah -case sensitif-
+ * Server Windows 	: hurup besar/kecil tidak bermasalah
+ * Author: -ptr.nov-
+*/
 
 namespace lukisongroup\controllers\hrd;
 
-use Yii;
-use app\models\hrd\Employe;
-//use app\models\hrd\Corp;
-use lukisongroup\models\system\side_menu\M1000;
-use lukisongroup\models\system\side_menu\M1000Search;
-use app\models\hrd\Pendidikan;
-use app\models\hrd\EmployeSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\data\SqlDataProvider;
+/* VARIABLE BASE YII2 Author: -YII2- */
+	use Yii;
+	use yii\web\Controller;
+	use yii\web\NotFoundHttpException;
+	use yii\filters\VerbFilter;
 
+/* VARIABLE PRIMARY JOIN/SEARCH/FILTER/SORT Author: -ptr.nov- */
+	use app\models\hrd\Employe;			/* TABLE CLASS JOIN */
+	use app\models\hrd\EmployeSearch;	/* TABLE CLASS SEARCH */
+	
+/* VARIABLE SIDE MENU Author: -Eka- */
+	use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
+	use lukisongroup\models\system\side_menu\M1000Search;	/* TABLE CLASS SEARCH */
+	
 /**
- * MaxiprodakController implements the CRUD actions for Maxiprodak model.
+ * HRD | CONTROLLER EMPLOYE .
  */
 class EmployeController extends Controller
 {
@@ -32,57 +40,39 @@ class EmployeController extends Controller
     }
 
     /**
-     * Lists all Maxiprodak models.
-     * @return mixed
+     * ACTION INDEX
      */
     public function actionIndex()
     {
-
-        //set menu side menu index
+		/*	variable content View Side Menu Author: -Eka- */
+		//set menu side menu index - Array Jeson Decode
         $side_menu=M1000::find()->findMenu('sss_berita_acara')->one()->jval;
         $side_menu=json_decode($side_menu,true);
 
-        //return $this->render('index',['side_menu'=>$side_menu]);
-        //$searchModel = new M1000Search();
-        //$dataProvider=EmployeSearch::searchALL(Yii::$app->request->queryParams);
-
+		/*	variable content View Employe Author: -ptr.nov- */
         $searchModel = new EmployeSearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		 
+		/*	variable content View Additional Author: -ptr.nov- */ 
 		//$searchFilter = $searchModel->searchALL(Yii::$app->request->queryParams);
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider1 = $searchModel->searchAll(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-			'side_menu'=>$side_menu,
-            'searchModel' => $searchModel,
-			//'searchFilter'=>$searchFilter,
-            'dataProvider' => $dataProvider,
-            'dataProvider1' => $dataProvider1,            
-        ]);
-
-		//print_r($command->queryRow());
 		
-
-		
-		//$sql4="select * from employe";
-		//$dataProvider=new SqlDataProvider($sql4,array(
-		//'KeyField'=>'EMP_ID',
-		//)
-		//);
-		//echo  \yii\helpers\Json::encode($dataProvider->getModels());
-		//echo  \yii\helpers\Json::encode($dataProvider->getModels('search'));
-		
+		/*SHOW ARRAY YII Author: -Devandro-*/
 		//print_r($dataProvider->getModels());
-        //return $this->render('index', [
-	//		//'searchModel' => $searchModel,
-     //       'dataProvider' => $dataProvider,
-    //    ]);
 		
+		/*SHOW ARRAY JESON Author: -ptr.nov-*/
+		//echo  \yii\helpers\Json::encode($dataProvider->getModels());
+        
+		return $this->render('index', [
+			'side_menu'=>$side_menu,			/* Content variable Array -SideMenu- */
+            'searchModel' => $searchModel, 		/* Content variable Array -Filter Search- */
+            'dataProvider' => $dataProvider,	/* Content variable Array -Class Table Join- */
+            'dataProvider1' => $dataProvider1,  /* Content variable Array Aditional -Class Table Join- */          
+        ]);
     }
 
     /**
-     * Displays a single Maxiprodak model.
-     * @param string $id
-     * @return mixed
+	 * ACTION VIEW -> $id=PrimaryKey
      */
     public function actionView($id)
     {
@@ -92,30 +82,23 @@ class EmployeController extends Controller
     }
 
     /**
-     * Creates a new Maxiprodak model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * ACTION CREATE note | $id=PrimaryKey -> TRIGER FROM VIEW  -ptr.nov-
      */
     public function actionCreate()
     {
         $model = new Employe();
-		//$modelCorp=Corp::find();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->EMP_ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-			//	'modelCorp' => $modelCorp,
             ]);
         }
     }
 
     /**
-     * Updates an existing Maxiprodak model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
-     * @return mixed
+     * ACTION UPDATE -> $id=PrimaryKey
      */
     public function actionUpdate($id)
     {
@@ -131,10 +114,7 @@ class EmployeController extends Controller
     }
 
     /**
-     * Deletes an existing Maxiprodak model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
+     * ACTION DELETE -> $id=PrimaryKey | CHANGE STATUS -> lihat Standart table status | Jangan dihapus dari record
      */
     public function actionDelete($id)
     {
@@ -144,11 +124,8 @@ class EmployeController extends Controller
     }
 
     /**
-     * Finds the Maxiprodak model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return Maxiprodak the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * CLASS TABLE FIND PrimaryKey
+     * Example:  Employe::find()
      */
     protected function findModel($id)
     {
