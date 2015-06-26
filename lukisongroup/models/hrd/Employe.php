@@ -1,64 +1,33 @@
 <?php
+/**
+ * NOTE: Nama Class harus diawali Hurup Besar
+ * Server Linux 	: hurup besar/kecil bermasalah -case sensitif-
+ * Server Windows 	: hurup besar/kecil tidak bermasalah
+ * Author: -ptr.nov-
+*/
 
 namespace app\models\hrd;
-use kartik\builder\Form;
 use Yii;
 
 /**
- * This is the model class for table "{{%maxi_b0001}}".
- *
- * @property string $BRG_ID
- * @property string $BRG_NM
+ * EMPLOYE CLASS  Author: -ptr.nov-
  */
 class Employe extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-	 public static function getDb()
+	/* [1] SOURCE DB */
+    public static function getDb()
 	{
-		/* Author -ptr.nov- : HRD | Dashboard I */
+		/* Author -ptr.nov- : HRD */
 		return \Yii::$app->db2;  
 	}
 	
+	/* [2] TABLE SELECT */
 	public static function tableName()
     {
         return '{{%a0001}}';
-    }
-
-    /* Join Class Pendidikan */
-	public function getPen()
-	{
-		return $this->hasOne(Pendidikan::className(), ['EMP_ID' => 'EMP_ID']);
-		//return $this->hasMany(Pendidikan::className(), ['EMP_ID' => 'EMP_ID']);
-	}
-
-    /* Join Class Coorporation */    
-	public function getCorpOne()
-    {
-        return $this->hasOne(Corp::className(), ['CORP_ID' => 'EMP_CORP_ID']);
-    }
-		
-    /* Join Class Department */
-    public function getDeptOne()
-    {
-        return $this->hasOne(Dept::className(), ['DEP_ID' => 'DEP_ID']);
-    }
-
-	/* Join Class Jabatan Employe */
-    public function getJabOne()
-    {
-        return $this->hasOne(Jabatan::className(), ['JAB_ID' => 'JAB_ID']);
-    }
-	
-    /* Join Class Status Employe */
-    public function getSttOne()
-    {
-        return $this->hasOne(Status::className(), ['STS_ID' => 'EMP_STS']);
-    }
-    /**
-     * @inheritdoc
-     */
+    }   
+    
+	/* [3] RULE SCENARIO -> DetailView */
     public function rules()
     {
         return [
@@ -74,25 +43,11 @@ class Employe extends \yii\db\ActiveRecord
 			[['EMP_GENDER'], 'string', 'max' => 6], 
 			[['EMP_EMAIL'], 'string', 'max' => 30],  			
 		    [['EMP_ZIP'], 'string', 'max' => 50],
-            [['EMP_IMG'], 'string', 'max' => 50],
-			
-			//[['pendidikan.PEN_NM'],'safe'],
-				//[['employedata.EMP_ALAMAT'], 'string', 'max' => 100],
-        
+            [['EMP_IMG'], 'string', 'max' => 50],        
         ];
     }
 
-	//public function proc_dashboard($username)
-	//{
-	
-		//return $command = Yii::app()->db2->createCommand('call DashboardLogin($username)')->queryAll();
-
-		//$command->execute();
-	//}
-	
-    /**
-     * @inheritdoc
-     */
+	/* [4] ATRIBUTE LABEL  -> DetailView/GridView */
     public function attributeLabels()
     {
         return [
@@ -118,20 +73,18 @@ class Employe extends \yii\db\ActiveRecord
             'EMP_EMAIL' => Yii::t('app', 'Email'),
             'GRP_NM' => Yii::t('app', 'Modul'),
 			'EMP_JOIN_DATE' => Yii::t('app', 'Join Date'),
-			//JOIN DROP DOWN - Author: -ptr.nov-
-				//join Corp b0001
+			//UMUM
             'corpOne.CORP_NM' => Yii::t('app', 'Company'),
-				//join Dept a0002
+			//UMUM
             'deptOne.DEP_NM' => Yii::t('app', 'Department'),
-				//join Dept a000
+			//UMUM
 			'jabOne.JAB_NM' => Yii::t('app', 'Position'),
-				//join Dept a0009
-            'sttOne.STS_NM' => Yii::t('app', 'Status'),
-            
-            
+			//UMUM
+            'sttOne.STS_NM' => Yii::t('app', 'Status'),      
         ];
     }
 	 
+	 /* [5] ATRIBUTE LABEL DIRECT -> DetailView/GridView */
 	 public function getFormAttribs() 
 	 {
         return [
@@ -141,6 +94,34 @@ class Employe extends \yii\db\ActiveRecord
            // 'actions'=>['type'=>Form::INPUT_RAW, 'value'=>Html::submitButton('Submit', ['class'=>'btn btn-primary'])];
         ];
     }   
+	
+	/* [6] JOIN CLASS TABLE */
+		 /* Join Class Table Pendidikan */
+		public function getPen()
+		{
+			return $this->hasOne(Pendidikan::className(), ['EMP_ID' => 'EMP_ID']);
+			//return $this->hasMany(Pendidikan::className(), ['EMP_ID' => 'EMP_ID']);
+		}
+		/* Join Class Table Coorporation */    
+		public function getCorpOne()
+		{
+			return $this->hasOne(Corp::className(), ['CORP_ID' => 'EMP_CORP_ID']);
+		}		
+		/* Join Class Table Department */
+		public function getDeptOne()
+		{
+			return $this->hasOne(Dept::className(), ['DEP_ID' => 'DEP_ID']);
+		}
+		/* Join Class Table Jabatan Employe */
+		public function getJabOne()
+		{
+			return $this->hasOne(Jabatan::className(), ['JAB_ID' => 'JAB_ID']);
+		}	
+		/* Join Class Table tatus Employe */
+		public function getSttOne()
+		{
+			return $this->hasOne(Status::className(), ['STS_ID' => 'EMP_STS']);
+		}
 
 }
 

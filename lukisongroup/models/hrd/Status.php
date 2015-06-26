@@ -1,35 +1,34 @@
 <?php
+/**
+ * NOTE: Nama Class harus diawali Hurup Besar
+ * Server Linux 	: hurup besar/kecil bermasalah -case sensitif-
+ * Server Windows 	: hurup besar/kecil tidak bermasalah
+ * Author: -ptr.nov-
+*/
+
 namespace app\models\hrd;
-//use yii\data\ActiveDataProvider;
 use kartik\builder\Form;
 use Yii;
 
 /**
- * This is the model class for table "{{%maxi_b0001}}".
- *
- * @property string $BRG_ID
- * @property string $BRG_NM
+ *  STATUS CLASS Author: -ptr.nov-	
  */
 class Status extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
+	/* [1] SOURCE DB */
     public static function getDb()
     {
         /* Author -ptr.nov- */
         return \Yii::$app->db2;
     }
-
+	
+	/* [2] TABLE SELECT */
     public static function tableName()
     {
         return '{{%b0009}}';
     }
 
-
-    /**
-     * @inheritdoc
-     */
+	/* [3] RULE SCENARIO -> DetailView */
     public function rules()
     {
         return [
@@ -39,10 +38,8 @@ class Status extends \yii\db\ActiveRecord
 			[['SORT'], 'integer'],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
+	
+	/* [4] ATRIBUTE LABEL -> DetailView/GridView */
     public function attributeLabels()
     {
         return [

@@ -9,7 +9,7 @@ use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\icons\Icon;
 use kartik\widgets\Growl;
-
+use kartik\widgets\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\maxi\Maxiprodak */
 
@@ -19,9 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="maxiprodak-view">
 <?php
-	use kartik\widgets\FileInput;
+	
 	$form = ActiveForm::begin();
-    echo FileInput::widget([
+    $form2;
+	//$form2;
+    ActiveForm::end();
+	
+	$form1= FileInput::widget([
 		//'name' => 'attachment_49[]',
 		//'options'=>[
 		//	'multiple'=>true
@@ -44,8 +48,25 @@ $this->params['breadcrumbs'][] = $this->title;
 			'overwriteInitial'=>false
 		]
 	]);
-    ActiveForm::end();
-	
+	//$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_INLINE]);
+	$form2= Growl::widget([
+	'type' => Growl::TYPE_MINIMALIST,
+	'title' => 'Kartik Visweswaran',
+	'icon' => 'http://placeimg.com/200/150/people/2',
+	'iconOptions' => ['class'=>'img-circle pull-left'],
+	'body' => 'Momentum reduce child mortality effectiveness incubation empowerment connect.',
+	'showSeparator' => false,
+	'delay' => 700,
+	'pluginOptions' => [
+		'icon_type'=>'image',
+		'showProgressbar' => false,
+		'placement' => [
+			'from' => 'top',
+			'align' => 'right',
+		],
+	]
+	]);
+	//ActiveForm::end();
 	
 	?>
 </div>
