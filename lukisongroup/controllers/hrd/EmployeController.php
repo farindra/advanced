@@ -21,6 +21,8 @@ namespace lukisongroup\controllers\hrd;
 /* VARIABLE SIDE MENU Author: -Eka- */
 	use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
 	use lukisongroup\models\system\side_menu\M1000Search;	/* TABLE CLASS SEARCH */
+/* CLASS SIDE MENU Author: -ptr.nov- */
+	use yii\web\UploadedFile;
 	
 /**
  * HRD | CONTROLLER EMPLOYE .
@@ -31,9 +33,10 @@ class EmployeController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(['Employe','Pendidikan']),
+                'class' => VerbFilter::className(['Employe1','Pendidikan']),
                 'actions' => [
-                    'delete' => ['post'],
+                    //'delete' => ['post'],
+					'save' => ['post'],
                 ],
             ],
         ];
@@ -86,11 +89,22 @@ class EmployeController extends Controller
      */
     public function actionCreate()
     {
+		
         $model = new Employe();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->EMP_ID]);
-        } else {
+        if ($model->load(Yii::$app->request->post())){
+			$upload_file=$model->uploadFile();
+			var_dump($model->validate());
+			if($model->validate()){
+				if($model->save()) {
+					if ($upload_file !== false) {
+						$path=$model->getUploadedFile();
+						$upload_file->saveAs($path);
+					}
+					return $this->redirect(['view', 'id' => $model->EMP_ID]);	
+				} 
+			}
+		}else {
             return $this->render('create', [
                 'model' => $model,
             ]);

@@ -9,11 +9,17 @@
 namespace app\models\hrd;
 use Yii;
 use yii\web\UploadedFile;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2de149a230d5feb9862d42ee46f82dbac79c526b
 /**
  * EMPLOYE CLASS  Author: -ptr.nov-
  */
 class Employe extends \yii\db\ActiveRecord
 {
+	public $upload_file;
+	
 	/* [1] SOURCE DB */
     public static function getDb()
 	{
@@ -43,7 +49,8 @@ class Employe extends \yii\db\ActiveRecord
 			[['EMP_GENDER'], 'string', 'max' => 6], 
 			[['EMP_EMAIL'], 'string', 'max' => 30],  			
 		    [['EMP_ZIP'], 'string', 'max' => 50],
-            [['EMP_IMG'], 'string', 'max' => 50],        
+            [['EMP_IMG'], 'string', 'max' => 50],    
+			[['upload_file'], 'file', 'skipOnEmpty' => true,'extensions'=>'jpg,png', 'mimeTypes'=>'image/jpeg, image/png',],
         ];
     }
 
@@ -63,6 +70,8 @@ class Employe extends \yii\db\ActiveRecord
 			'EMP_GENDER' => Yii::t('app', 'Jenis Kelamin'),
 			'EMP_STS' => Yii::t('app', 'Status'),
 			'JAB_ID' => Yii::t('app', 'Jabatan'),
+			'EMP_IMG' => Yii::t('app', 'Picture'),
+			'upload_file' => Yii::t('app', 'Upload File'),
 						
 			//Employe Profile - Author: -ptr.nov-
             'EMP_KTP' => Yii::t('app', 'No.KTP'),
@@ -121,6 +130,22 @@ class Employe extends \yii\db\ActiveRecord
 		public function getSttOne()
 		{
 			return $this->hasOne(Status::className(), ['STS_ID' => 'EMP_STS']);
+		}
+		
+		/*Function RANDOM FILE IMAGE Author: -ptr.nov-*/
+		public function uploadFile(){
+			$image=UploadedFile::getInstance($this,'upload_file');
+			if(empty($image)){
+				return false;
+			}
+			$this->EMP_IMG = time().'.'.$image->extension;
+			return $image;
+		}
+		
+		/*Function path/default image Author: -ptr.nov-*/
+		public function getUploadedFile(){
+			$pic = isset($this->EMP_IMG) ? $this->EMP_IMG : 'default.jpg';
+			return Yii::$app->params['HRD_EMP_UploadUrl'].$pic;
 		}
 
 }
