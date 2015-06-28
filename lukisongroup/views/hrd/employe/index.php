@@ -9,6 +9,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
 
 /* TABLE CLASS DEVELOPE -> |DROPDOWN,PRIMARYKEY-> ATTRIBUTE */
+use app\models\hrd\Employe;
 use app\models\hrd\Corp;
 use app\models\hrd\Dept;
 use app\models\hrd\Jabatan;
@@ -47,7 +48,7 @@ $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all
                'attribute' => 'PIC',
                'format' => 'html', //'format' => 'image',
                'value'=>function($data){
-                            return Html::img(Yii::getAlias('@path_emp') . '/'. $data->EMP_IMG, ['width'=>'40']);
+                            return Html::img(Yii::getAlias('@HRD_EMP_UploadUrl') . '/'. $data->EMP_IMG, ['width'=>'40']);
                         },
             ],  
 				'EMP_ID',
@@ -177,22 +178,28 @@ $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all
 </aside>
 
 <?php
+use kartik\rating\StarRating;
+
 use kartik\sortable\Sortable;
-/*
-	$sortImg= Sortable::widget(['type'=>'grid',
-		'items'=>[['content'=>'<div class="grid-item text-danger">Item 1</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 2</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 3</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 4</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 5</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 6</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 7</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 8</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 9</div>'],
-			['content'=>'<div class="grid-item text-danger">Item 10</div>'],
-		]
+// With model & without ActiveForm
+	$strRat= StarRating::widget([
+		'name' => 'rating_1',
+		'pluginOptions' => ['disabled'=>true, 'showClear'=>false]
 	]);
+/*
+	use kartik\sortinput\SortableInput;
+	
+	//$model = Employe::find();
+$sortImg= SortableInput::widget([
+    //'model' => $model,
+    //'attribute' => 'EMP_IMG',
+    'hideInput' => false,
+    'delimiter' => '~',
+    'items' => [['content' =>$Combo_Corp]]
+     
+]);
 */
+
 use kartik\affix\Affix;
 	$content = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.';
 	$items = [[
@@ -246,7 +253,7 @@ use kartik\alert\Alert;
 		'useSessionFlash' => true
 	]);
 
-use kartik\rating\StarRating;
+
 
 	// Usage with ActiveForm and model
 	/*echo $form->field($model, 'rating')->widget(StarRating::classname(), [
@@ -254,11 +261,7 @@ use kartik\rating\StarRating;
 	]);
 	*/
 
-	// With model & without ActiveForm
-	$strRat= StarRating::widget([
-		'name' => 'rating_1',
-		'pluginOptions' => ['disabled'=>true, 'showClear'=>false]
-	]);
+	
 	
 ?>
 
@@ -286,7 +289,7 @@ use kartik\rating\StarRating;
                     'label'=>'<i class="glyphicon glyphicon-home"></i> Test Affix','content'=>$KiriMenu.$affk,//$sortImg,// ,
                 ],
 				[
-                    'label'=>'<i class="glyphicon glyphicon-home"></i> Alrt','content'=>$ingatan,//$sortImg,// ,
+                    'label'=>'<i class="glyphicon glyphicon-home"></i> Alrt','content'=>$strRat,//$sortImg,// ,
                 ],
 				[
                     'label'=>'<i class="glyphicon glyphicon-home"></i> RATING','content'=>$strRat,//$sortImg,// ,
