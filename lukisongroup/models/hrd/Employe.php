@@ -8,7 +8,7 @@
 
 namespace app\models\hrd;
 use Yii;
-
+use yii\web\UploadedFile;
 /**
  * EMPLOYE CLASS  Author: -ptr.nov-
  */
