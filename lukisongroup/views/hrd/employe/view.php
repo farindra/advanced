@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	$form1= FileInput::widget([
 		//'name' => 'attachment_49[]',
 		//'options'=>[
-		//	'multiple'=>true
+		//	'multiple'=>true,
 		//],
 		'model' => $model,
         'attribute' => 'EMP_ID',
