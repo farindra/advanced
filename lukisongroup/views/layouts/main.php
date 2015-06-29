@@ -193,7 +193,7 @@ dmstr\web\AdminLteAsset::register($this);
 
 								<form class="sidebar-form" method="get" action="#"></form>
 								<li class="header">
-									testsss
+									
 								</li>
 							</aside>
 							<section class="content">
