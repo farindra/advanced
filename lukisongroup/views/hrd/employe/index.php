@@ -94,7 +94,8 @@ $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all
 			],
             [
 				'class' => 'yii\grid\ActionColumn',
-				'template' => '{view} {update}',
+				//'template' => '{view} {update}',
+				'template' => '{view}',
 				//Yii::t('app', 'Emplo'),
 			],
             //['class' => 'yii\grid\CheckboxColumn'],

@@ -79,9 +79,40 @@ class EmployeController extends Controller
      */
     public function actionView($id)
     {
+		/*
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+		*/
+		
+		/*
+		 $model = $this->findModel($id);
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->EMP_ID]);
+        } else {
+            return $this->render('view', ['model' => $model]);
+        }
+		*/
+		$model = $this->findModel($id);;
+		if ($model->load(Yii::$app->request->post())){
+			$upload_file=$model->uploadFile();
+			var_dump($model->validate());
+			if($model->validate()){
+				if($model->save()) {
+					if ($upload_file !== false) {
+						$path=$model->getUploadedFile();
+						$upload_file->saveAs($path);
+					}
+					return $this->redirect(['view', 'id' => $model->EMP_ID]);	
+				} 
+			}
+		}else {
+            return $this->render('view', [
+                'model' => $model,
+            ]);
+        }
+		
+		
     }
 
     /**
