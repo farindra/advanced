@@ -40,26 +40,7 @@ use kartik\widgets\FileInput;
 			
 			$attribute = [
 				[
-					'attribute' =>	'upload_file' ,
-					//'value'=>('<img src =' . Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $model->EMP_IMG. ' height="100" width="100"' . '>' )
-					'value'=>Yii::getAlias('@HRD_EMP_UploadUrl') .'/'.$model->EMP_IMG,
-					'format'=>['image',['width'=>'100','height'=>'100']],
-					'type' => DetailView::INPUT_FILE,
-					
-					'widgetOptions'=>[
-							//'type' => DetailView::INPUT_WIDGET,
-							'class'=>DetailView::INPUT_FILEINPUT,
-							//'widgetClass'=>'\kartik\widgets\FileInput',					
-							'options'=>[
-								'pluginOptions' => [
-									'showPreview' => true,
-									'showCaption' => false,
-									'showRemove' => false,
-									'showUpload' => false
-								],
-							],
-					],
-					
+					'attribute' =>	'EMP_IMG' ,
 					//'format' => 'html', //'format' => 'image',
 					//'value'=>function($data){
 					//			return Html::img(Yii::getAlias('HRD_EMP_UploadUrl') . '/'. $data->EMP_IMG, ['width'=>'40']);
@@ -202,16 +183,6 @@ use kartik\widgets\FileInput;
 					'type'=>DetailView::TYPE_INFO,
 				],	
 				'attributes'=>$attribute,
-				
-				'deleteOptions'=>[
-					'url'=>['delete', 'id' => $model->EMP_ID],
-					'data'=>[
-						'confirm'=>Yii::t('app', 'Are you sure you want to delete this record?'),
-						'method'=>'post',
-					],
-				],
-				
-				
 				/*
 				
 				'attributes' => [

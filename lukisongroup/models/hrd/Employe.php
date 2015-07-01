@@ -54,15 +54,17 @@ class Employe extends \yii\db\ActiveRecord
         ];
     }
 
+
 	/* [4] ATRIBUTE LABEL  -> DetailView/GridView */
     public function attributeLabels()
     {
         return [
 			// Employe Identity - Author: -ptr.nov-
+			'EMP_IMG' => Yii::t('app', 'Pic'),
             'EMP_ID' => Yii::t('app', 'Employee.ID'),
             'EMP_NM' => Yii::t('app', 'First Name'),
             'EMP_NM_BLK' => Yii::t('app', 'Last Name'),
-            'EMP_IMG' => Yii::t('app', 'Pic'),
+            
 			
 			// Employe Coorporation - Author: -ptr.nov-
 			'EMP_CORP_ID' => Yii::t('app', 'Corp.ID'),
@@ -70,8 +72,8 @@ class Employe extends \yii\db\ActiveRecord
 			'EMP_GENDER' => Yii::t('app', 'Jenis Kelamin'),
 			'EMP_STS' => Yii::t('app', 'Status'),
 			'JAB_ID' => Yii::t('app', 'Jabatan'),
-			'EMP_IMG' => Yii::t('app', 'Picture'),
-			'upload_file' => Yii::t('app', 'Upload File'),
+			'EMP_JOIN_DATE' => Yii::t('app', 'Join Date'),
+			'EMP_RESIGN_DATE' => Yii::t('app', 'Resign Date'),		
 						
 			//Employe Profile - Author: -ptr.nov-
             'EMP_KTP' => Yii::t('app', 'No.KTP'),
@@ -79,8 +81,16 @@ class Employe extends \yii\db\ActiveRecord
 			'EMP_ZIP' => Yii::t('app', 'Telphone'),
             'EMP_TLP' => Yii::t('app', 'Telphone'),
             'EMP_HP' => Yii::t('app', 'Handphone'),
+			'EMP_TGL_LAHIR' => Yii::t('app', ' BridthDay'),
             'EMP_EMAIL' => Yii::t('app', 'Email'),
+			
+			/*Modul HRD*/
             'GRP_NM' => Yii::t('app', 'Modul'),
+			
+			/*Image Temporary Upload*/
+			'upload_file' => Yii::t('app', 'Upload File'),
+			
+			
 			'EMP_JOIN_DATE' => Yii::t('app', 'Join Date'),
 			//UMUM
             'corpOne.CORP_NM' => Yii::t('app', 'Company'),
