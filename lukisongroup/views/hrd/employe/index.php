@@ -14,6 +14,7 @@ use app\models\hrd\Corp;
 use app\models\hrd\Dept;
 use app\models\hrd\Jabatan;
 use app\models\hrd\Status;
+use lukisongroup\models\system\side_menu\M1000;
 
 /*	KARTIK WIDGET -> Penambahan componen dari yii2 dan nampak lebih cantik*/
 use kartik\grid\GridView;
@@ -35,6 +36,24 @@ $Combo_Corp = ArrayHelper::map(Corp::find()->orderBy('SORT')->asArray()->all(), 
 $Combo_Dept = ArrayHelper::map(Dept::find()->orderBy('SORT')->asArray()->all(), 'DEP_NM','DEP_NM');
 $Combo_Jab = ArrayHelper::map(Jabatan::find()->orderBy('SORT')->asArray()->all(), 'JAB_NM','JAB_NM');
 $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all(), 'STS_NM','STS_NM');
+$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
+?>
+<aside class="main-sidebar">
+    <?php
+	
+    if (!Yii::$app->user->isGuest) {
+        echo SideNav::widget([
+            'items' => $side_menu,
+            'encodeLabels' => false,
+            //'heading' => $heading,
+            'type' => SideNav::TYPE_DEFAULT,
+            'options' => ['class' => 'sidebar-nav'],
+        ]);
+    };
+
+    ?>
+</aside>
+<?php
 
     //print_r($dataProvider);												/*SHOW ARRAY YII Author: -Devandro-*/
 	//echo  \yii\helpers\Json::encode($dataProvider->getModels());			/*SHOW ARRAY JESON Author: -ptr.nov-*/
@@ -94,8 +113,7 @@ $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all
 			],
             [
 				'class' => 'yii\grid\ActionColumn',
-				//'template' => '{view} {update}',
-				'template' => '{view}',
+				'template' => '{view} {update}',
 				//Yii::t('app', 'Emplo'),
 			],
             //['class' => 'yii\grid\CheckboxColumn'],
@@ -118,6 +136,9 @@ $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all
         'striped'=>true,	
     ]);
 
+
+	
+	
 /*Employe Profile Author: -ptr.nov */
     //print_r($dataProvider);
     $tab_profile= GridView::widget([
@@ -161,22 +182,6 @@ $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all
     ]);
 ?>
 
-<aside class="main-sidebar">
-    <?php
-	
-    if (!Yii::$app->user->isGuest) {
-        echo SideNav::widget([
-            'items' => $side_menu,
-            'encodeLabels' => false,
-            //'heading' => $heading,
-            'type' => SideNav::TYPE_DEFAULT,
-            'options' => ['class' => 'sidebar-nav'],
-        ]);
-    };
-
-    ?>
-
-</aside>
 
 <?php
 use kartik\rating\StarRating;
@@ -266,10 +271,6 @@ use kartik\alert\Alert;
 	
 ?>
 
-
-
-
-
 <div class="panel panel-default" style="margin-top: 0px">
      <div class="panel-body">
         <?php
@@ -283,6 +284,7 @@ use kartik\alert\Alert;
                     'active'=>true,
 
                 ],
+				
                 [
                     'label'=>'<i class="glyphicon glyphicon-home"></i> Employe Grids','content'=>$tab_profile,
                 ],
