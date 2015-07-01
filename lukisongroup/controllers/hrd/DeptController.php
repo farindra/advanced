@@ -17,24 +17,20 @@ namespace lukisongroup\controllers\hrd;
 /* VARIABLE PRIMARY JOIN/SEARCH/FILTER/SORT Author: -ptr.nov- */
 	use app\models\hrd\Employe;			/* TABLE CLASS JOIN */
 	use app\models\hrd\EmployeSearch;	/* TABLE CLASS SEARCH */
-	
-
-/* VARIABLE SIDE MENU Author: -Eka- */
-	//use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
-	//use lukisongroup\models\system\side_menu\M1000Search;	/* TABLE CLASS SEARCH */
-/* CLASS SIDE MENU Author: -ptr.nov- */
+	use app\models\hrd\Dept;			/* TABLE CLASS JOIN */
+	use app\models\hrd\DeptSearch;		/* TABLE CLASS SEARCH */
 	use yii\web\UploadedFile;
 	
 /**
  * HRD | CONTROLLER EMPLOYE .
  */
-class EmployeController extends Controller
+class DeptController extends Controller
 {
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(['Employe1','Pendidikan']),
+                'class' => VerbFilter::className(['Dept']),
                 'actions' => [
                     //'delete' => ['post'],
 					'save' => ['post'],
@@ -48,30 +44,13 @@ class EmployeController extends Controller
      */
     public function actionIndex()
     {
-		/*	variable content View Side Menu Author: -Eka- */
-		//set menu side menu index - Array Jeson Decode
-       // $side_menu=M1000::find()->findMenu('sss_berita_acara')->one()->jval;
-        //$side_menu=json_decode($side_menu,true);
-
 		/*	variable content View Employe Author: -ptr.nov- */
-        $searchModel = new EmployeSearch();
-		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		 
-		/*	variable content View Additional Author: -ptr.nov- */ 
-		//$searchFilter = $searchModel->searchALL(Yii::$app->request->queryParams);
-        $dataProvider1 = $searchModel->searchAll(Yii::$app->request->queryParams);
+        $searchModel_Dept = new DeptSearch();
+		$dataProvider_Dept = $searchModel_Dept->search(Yii::$app->request->queryParams);
 		
-		/*SHOW ARRAY YII Author: -Devandro-*/
-		//print_r($dataProvider->getModels());
-		
-		/*SHOW ARRAY JESON Author: -ptr.nov-*/
-		//echo  \yii\helpers\Json::encode($dataProvider->getModels());
-        
 		return $this->render('index', [
-			//'side_menu'=>$side_menu,			/* Content variable Array -SideMenu- */
-            'searchModel' => $searchModel, 		/* Content variable Array -Filter Search- */
-            'dataProvider' => $dataProvider,	/* Content variable Array -Class Table Join- */
-            'dataProvider1' => $dataProvider1,  /* Content variable Array Aditional -Class Table Join- */ 
+			'searchModel_Dept'=>$searchModel_Dept,
+			'dataProvider_Dept'=>$dataProvider_Dept,
         ]);
     }
 
@@ -80,31 +59,17 @@ class EmployeController extends Controller
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);;
-		if ($model->load(Yii::$app->request->post())){
-			$upload_file=$model->uploadFile();
-			var_dump($model->validate());
-			if($model->validate()){
-				if($model->save()) {
-					if ($upload_file !== false) {
-						$path=$model->getUploadedFile();
-						$upload_file->saveAs($path);
-					}
-					return $this->redirect(['view', 'id' => $model->EMP_ID]);	
-				} 
-			}
-		}else {
-            return $this->render('view', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
     /**
      * ACTION CREATE note | $id=PrimaryKey -> TRIGER FROM VIEW  -ptr.nov-
      */
     public function actionCreate()
-    {		
+    {
+		
         $model = new Employe();
 
         if ($model->load(Yii::$app->request->post())){
