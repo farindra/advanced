@@ -9,7 +9,10 @@
 namespace app\models\hrd;
 use Yii;
 use yii\web\UploadedFile;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2de149a230d5feb9862d42ee46f82dbac79c526b
 /**
  * EMPLOYE CLASS  Author: -ptr.nov-
  */
