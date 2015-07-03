@@ -13,21 +13,20 @@ namespace lukisongroup\controllers\hrd;
 	use yii\web\Controller;
 	use yii\web\NotFoundHttpException;
 	use yii\filters\VerbFilter;
-
 /* VARIABLE PRIMARY JOIN/SEARCH/FILTER/SORT Author: -ptr.nov- */
-	use app\models\hrd\Jabatan;			/* TABLE CLASS JOIN */
-	use app\models\hrd\JabatanSearch;	/* TABLE CLASS SEARCH */
+	use app\models\hrd\Modulhrd;			/* TABLE CLASS JOIN */
+	use app\models\hrd\ModulhrdSearch;		/* TABLE CLASS SEARCH */
 	
 /**
- * HRD | CONTROLLER EMPLOYE .
+ * HRD | CONTROLLER MODUL HRD .
  */
-class JabatanController extends Controller
+class ModulhrdController extends Controller
 {
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(['Jabatan']),
+                'class' => VerbFilter::className(['Modulhrd']),
                 'actions' => [
                     //'delete' => ['post'],
 					'save' => ['post'],
@@ -41,13 +40,13 @@ class JabatanController extends Controller
      */
     public function actionIndex()
     {
-		/*	variable content View Employe Author: -ptr.nov- */
-        $searchModel_Jab = new JabatanSearch();
-		$dataProvider_Jab = $searchModel_Jab->search(Yii::$app->request->queryParams);
+		/*	variable content View Modul Hrd Author: -ptr.nov- */
+        $searchModel_Mdlhrd = new ModulhrdSearch();
+		$dataProvider_Mdlhrd = $searchModel_Mdlhrd->search(Yii::$app->request->queryParams);
 		
 		return $this->render('index', [
-			'searchModel_Jab'=>$searchModel_Jab,
-			'dataProvider_Jab'=>$dataProvider_Jab,
+			'searchModel_Mdlhrd'=>$searchModel_Mdlhrd,
+			'dataProvider_Mdlhrd'=>$dataProvider_Mdlhrd,
         ]);
     }
 
@@ -56,11 +55,11 @@ class JabatanController extends Controller
      */
     public function actionView($id)
     {
-       $model = $this->findModel($id);;
+        $model = $this->findModel($id);;
 		if ($model->load(Yii::$app->request->post())){
 			if($model->validate()){
 				if($model->save()) {
-					return $this->redirect(['view', 'id' => $model->JAB_ID]);	
+					return $this->redirect(['view', 'id' => $model->MDL_ID]);	
 				} 
 			}
 		}else {
@@ -74,13 +73,12 @@ class JabatanController extends Controller
      * ACTION CREATE note | $id=PrimaryKey -> TRIGER FROM VIEW  -ptr.nov-
      */
     public function actionCreate()
-    {
-        $model = new Jabatan();
+    {		
+        $model = new Modulhrd();
         if ($model->load(Yii::$app->request->post())){
-			var_dump($model->validate());
-			if($model->validate()){
+				if($model->validate()){
 				if($model->save()) {
-					return $this->redirect(['view', 'id' => $model->JAB_ID]);	
+					return $this->redirect(['view', 'id' => $model->MDL_ID]);	
 				} 
 			}
 		}else {
@@ -98,7 +96,7 @@ class JabatanController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->JAB_ID]);
+            return $this->redirect(['view', 'id' => $model->MDL_ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -122,7 +120,7 @@ class JabatanController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Jabatan::findOne($id)) !== null) {
+        if (($model = Modulhrd::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
