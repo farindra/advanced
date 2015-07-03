@@ -5,6 +5,10 @@ use yii\widgets\ActiveForm;
 use app\models\esm\ro\Requestorder;
 use app\models\esm\ro\RequestorderSearch;
 
+
+use yii\helpers\ArrayHelper;
+use app\models\master\Perusahaan;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\ro\Requestorder */
 /* @var $form yii\widgets\ActiveForm */
@@ -25,13 +29,17 @@ use app\models\esm\ro\RequestorderSearch;
 	?>
 	
 <div class="row">
-	<div class="col-md-6"><?= $form->field($model, 'KD_RO')->textInput(['maxlength' => true]) ?></div>
-	<div class="col-md-6"><?= $form->field($model, 'ID_USER')->textInput(['maxlength' => true]) ?></div>
+	<div class="col-md-6 col-sm-6"><?= $form->field($model, 'KD_RO')->textInput(['maxlength' => true]) ?></div>
+	<div class="col-md-6 col-sm-6"><?= $form->field($model, 'ID_USER')->textInput(['maxlength' => true]) ?></div>
 </div>
 
 <div class="row">
-	<div class="col-md-6"><?= $form->field($model, 'ID_USER')->textInput(['maxlength' => true]) ?></div>
-	<div class="col-md-6"><?= $form->field($model, 'KD_CORP')->textInput(['maxlength' => true]) ?></div>
+	<div class="col-md-6 col-sm-6"><?= $form->field($model, 'KD_CAB')->textInput(['maxlength' => true]) ?></div>
+	
+	<?php
+		$drop = ArrayHelper::map(Perusahaan::find()->all(), 'KD_CORP', 'NM_CORP');
+	?>
+	<div class="col-md-6 col-sm-6"><?= $form->field($model, 'KD_CORP')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Perusahaan') ?></div>
 </div>
 
 	
@@ -41,11 +49,11 @@ use app\models\esm\ro\RequestorderSearch;
 
     
 
-    <?= $form->field($model, 'KD_CAB')->textInput(['maxlength' => true]) ?>
+    
 
-    <?= $form->field($model, 'KD_DEP')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'KD_DEP')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'STATUS')->textInput() ?>
+    <?php //= $form->field($model, 'STATUS')->textInput() ?>
 
     <?= $form->field($model, 'CREATED_AT')->textInput() ?>
 

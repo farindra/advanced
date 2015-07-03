@@ -4,7 +4,6 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-use yii\bootstrap\Modal;  
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\esm\ro\RequestorderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,48 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-		
-<?php
-Modal::begin([
-    'id' => 'myModal',
-    'header' => '<h4 class="modal-title">Buat Request Order</h4>',
-]);
- 
- require("_form.php");
- 
-Modal::end();
-?>
-
-
-<?php
-
-
-/*
-Modal::begin([
-    'id' => 'mview',
-    'header' => '<h4 class="modal-title">Buat Request Order</h4>',
-]);
-
- require("detail.php");
- 
-Modal::end();
- 
-$this->registerJs("
-    $('#mview').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget)
-        var modal = $(this)
-        var title = button.data('title') 
-        var href = button.attr('href') 
-        modal.find('.modal-title').html(title)
-        modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
-        $.post(href)
-            .done(function( data ) {
-                modal.find('.modal-body').html(data)
-            });
-        })
-");
-*/
-?>
 
     <p>
         <?= Html::a('Create Request Order', ['create'], ['class' => 'btn btn-success']) ?>
