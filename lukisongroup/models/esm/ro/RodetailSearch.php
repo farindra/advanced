@@ -5,12 +5,12 @@ namespace app\models\esm\ro;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\esm\ro\Requestorder;
+use app\models\esm\ro\Rodetail;
 
 /**
- * RequestorderSearch represents the model behind the search form about `app\models\esm\ro\Requestorder`.
+ * RodetailSearch represents the model behind the search form about `app\models\esm\ro\Rodetail`.
  */
-class RequestorderSearch extends Requestorder
+class RodetailSearch extends Rodetail
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class RequestorderSearch extends Requestorder
     public function rules()
     {
         return [
-            [['ID', 'STATUS'], 'integer'],
-            [['KD_RO', 'NOTE', 'ID_USER', 'KD_CORP', 'KD_CAB', 'KD_DEP', 'CREATED_AT', 'UPDATED_ALL', 'DATA_ALL'], 'safe'],
+            [['ID', 'QTY', 'STATUS'], 'integer'],
+            [['KD_RO', 'KD_BARANG', 'NM_BARANG', 'NO_URUT', 'NOTE', 'CREATED_AT', 'UPDATED_AT'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class RequestorderSearch extends Requestorder
      */
     public function search($params)
     {
-        $query = Requestorder::find();
+        $query = Rodetail::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,18 +57,17 @@ class RequestorderSearch extends Requestorder
 
         $query->andFilterWhere([
             'ID' => $this->ID,
+            'QTY' => $this->QTY,
             'STATUS' => $this->STATUS,
             'CREATED_AT' => $this->CREATED_AT,
+            'UPDATED_AT' => $this->UPDATED_AT,
         ]);
 
         $query->andFilterWhere(['like', 'KD_RO', $this->KD_RO])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE])
-            ->andFilterWhere(['like', 'ID_USER', $this->ID_USER])
-            ->andFilterWhere(['like', 'KD_CORP', $this->KD_CORP])
-            ->andFilterWhere(['like', 'KD_CAB', $this->KD_CAB])
-            ->andFilterWhere(['like', 'KD_DEP', $this->KD_DEP])
-            ->andFilterWhere(['like', 'UPDATED_ALL', $this->UPDATED_ALL])
-            ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
+            ->andFilterWhere(['like', 'KD_BARANG', $this->KD_BARANG])
+            ->andFilterWhere(['like', 'NM_BARANG', $this->NM_BARANG])
+            ->andFilterWhere(['like', 'NO_URUT', $this->NO_URUT])
+            ->andFilterWhere(['like', 'NOTE', $this->NOTE]);
 
         return $dataProvider;
     }
