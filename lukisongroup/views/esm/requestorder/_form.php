@@ -68,11 +68,11 @@ $form = ActiveForm::begin([
 
 	$brg = ArrayHelper::map(Barangumum::find()->all(), 'KD_BARANG', 'NM_BARANG');
 ?>
-<?php echo $form->field($rodetail, 'KD_RO')->hiddenInput(['value' => $id])->label(false);	 ?>	
 <?php echo $form->field($rodetail, 'CREATED_AT')->hiddenInput(['value' => date('Y-m-d H:i:s')])->label(false);	 ?>	
 <?php echo $form->field($rodetail, 'NM_BARANG')->hiddenInput(['value' => ''])->label(false);	 ?>	
 
 <div class="row">
+  <div class="col-xs-3"><?php echo $form->field($rodetail, 'KD_RO')->textInput(['value' => $id, 'readonly' => true]); ?></div>
   <div class="col-xs-3"><?php echo $form->field($rodetail, 'KD_BARANG')->dropDownList($brg, ['prompt'=>' -- Pilih Salah Satu --','onchange' => '$("#rodetail-nm_barang").val($(this).find("option:selected").text())']); ?></div>
   <div class="col-xs-3"><?php echo $form->field($rodetail, 'QTY')->textInput(['maxlength' => true, 'placeholder'=>'Jumlah Barang']); ?></div>
   <div class="col-xs-3"><?php echo $form->field($rodetail, 'NOTE')->textInput(['maxlength' => true, 'placeholder'=>'Catatan Barang']); ?></div>
@@ -102,7 +102,7 @@ echo "<br/><br/>";
 		  //  ],
 		]);
 		*/
-		print_r($dataProvider);
+		var_dump($dataProvider);
 //		print_r($provider);
 		echo GridView::widget([
         'dataProvider' => $dataProvider,
@@ -114,14 +114,14 @@ echo "<br/><br/>";
 			
 			[
 				'class' => 'yii\grid\ActionColumn',
-			 'template' => '{link}',
-            'buttons' => [
-                'link' => function ($url,$model) {
-                    return Html::a(
-                        '<span class="glyphicon glyphicon-delete"></span>',
-                        $url);
-                },
-            ],
+				'template' => '{hapus}',
+				'buttons' => [
+					'hapus' => function ($model) {
+						return Html::a(
+							'<span class="glyphicon glyphicon-trash"></span>',['hapus','id'=>'this.ID']
+						);
+					},
+				],
 
 				//'botton'=>[
 				//	'delete'=> function()
