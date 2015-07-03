@@ -3,6 +3,8 @@
 namespace app\models\esm\ro;
 
 use Yii;
+use app\models\esm\ro\Rodetail;
+use app\models\hrd\Employe;
 
 /**
  * This is the model class for table "r0001".
@@ -36,14 +38,28 @@ class Requestorder extends \yii\db\ActiveRecord
     {
         return Yii::$app->get('db_esm');
     }
-
+	
+    public function getRodet()
+    {
+        return $this->hasOne(Rodetail::className(), ['KD_RO' => 'KD_RO']);
+    }
+	
+	/*
+	public function getEmploy()
+	{
+		return $this->hasOne(Employe::className(), ['EMP_ID' => 'EMP_ID']);
+		//return $this->hasMany(Pendidikan::className(), ['EMP_ID' => 'EMP_ID']);
+	}
+	*/
+	
+	
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['KD_RO', 'NOTE', 'ID_USER', 'KD_CORP', 'KD_CAB', 'KD_DEP', 'STATUS', 'CREATED_AT', 'UPDATED_ALL', 'DATA_ALL'], 'required'],
+//            [['KD_RO', 'NOTE', 'ID_USER', 'KD_CORP', 'KD_CAB', 'KD_DEP', 'STATUS', 'CREATED_AT', 'UPDATED_ALL', 'DATA_ALL'], 'required'],
             [['NOTE', 'DATA_ALL'], 'string'],
             [['STATUS'], 'integer'],
             [['CREATED_AT'], 'safe'],
