@@ -32,9 +32,9 @@ class Jabatan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['JAB_ID'], 'required'],
+            [['JAB_ID','JAB_NM'], 'required'],
             [['JAB_ID'], 'string', 'max' => 5],
-            [['JAB_NM'], 'string', 'max' => 30],
+            [['JAB_NM','JAB_DCRP'], 'string'],
 			[['SORT'], 'integer'],
         ];
     }

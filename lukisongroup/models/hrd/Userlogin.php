@@ -1,56 +1,46 @@
 <?php
 
 namespace app\models\hrd;
-//use yii\data\ActiveDataProvider;
 use kartik\builder\Form;
 use Yii;
 
-/**
- * This is the model class for table "{{%maxi_b0001}}".
- *
- * @property string $BRG_ID
- * @property string $BRG_NM
- */
 class Userlogin extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-	 
-	 
-	 
 	 public static function getDb()
 	{
 		/* Author -ptr.nov- : HRD | Dashboard I */
-		return \Yii::$app->db2;  
+		return \Yii::$app->db1;  
 	}
 	
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{dbm001.user}}';
     }
 
-		
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['ID'], 'required'],
-            [['username'], 'string', 'max' => 50],
-           // [['PEN_ID','PEN_NM','TGL_MASUK','TGL_KELUAR','NILAI'], 'string', 'max' => 5],
+            [['id','username','auth_key','password_hash'], 'required'],
+			[['username','auth_key','password_hash','password_reset_token','EMP_ID'], 'string'],
+            [['email','avatar','avatarImage'], 'string'],
+			[['id','status','created_at','updated_at'],'integer'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'USERNAME'),
+            'id' => Yii::t('app', 'User.ID'),
+            'username' => Yii::t('app', 'Username'),
+			'auth_key' => Yii::t('app', 'AuthKey'),
+			'password_hash' => Yii::t('app', 'Password Hash'),
+			'password_reset_token' => Yii::t('app', 'Reset Password'),
+			'email' => Yii::t('app', 'Email'),
+			'EMP_ID' => Yii::t('app', 'Employe.ID'),
+			'created_at' => Yii::t('app', 'Created'),
+			'updated_at' => Yii::t('app', 'Update'),
+			'avatar' => Yii::t('app', 'Avatar'),
+			'avatarImage' => Yii::t('app', 'Avatar Image'),
         ];
     } 
 	 

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\maxi\Maxiprodak */
 
 //$this->title = Yii::t('app', 'Create Maxiprodak');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Jabatan'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Employe'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="panel panel-default" style="margin-top: 0px">
