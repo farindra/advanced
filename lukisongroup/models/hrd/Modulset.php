@@ -13,7 +13,7 @@ use Yii;
 /**
  * DEPARTMENT CLASS  Author: -ptr.nov-
  */
-class Dept extends \yii\db\ActiveRecord
+class Modulset extends \yii\db\ActiveRecord
 {
 	/* [1] SOURCE DB */
     public static function getDb()
@@ -25,17 +25,17 @@ class Dept extends \yii\db\ActiveRecord
 	/* [2] TABLE SELECT */
     public static function tableName()
     {
-        return '{{dbm000.a0002}}';
+        return '{{dbm002.b0004}}';
     }
 
 	/* [3] RULE SCENARIO -> DetailView */
     public function rules()
     {
         return [
-            [['DEP_ID','DEP_NM'], 'required'],
-            [['DEP_ID'], 'string', 'max' => 5],
-            [['DEP_NM'], 'string', 'max' => 30],
-			[['DEP_DCRP'], 'string'],
+            [['MDL_ID','DEP_NM'], 'required'],
+            [['MDL_ID','MDL_STS'], 'integer'],
+            [['MDL_NM'], 'string', 'max' => 50],
+			[['MDL_DCRP'], 'string'],
 			[['SORT'], 'integer'],
         ];
     }
@@ -44,11 +44,10 @@ class Dept extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'DEP_ID' => Yii::t('app', 'Dept.ID'),
+            'MDL_ID' => Yii::t('app', 'Dept.ID'),
             'DEP_NM' => Yii::t('app', 'Name'),
-            'DEP_STS' => Yii::t('app', 'Status'),
-            'DEP_AVATAR' => Yii::t('app', 'Avatar'),
-            'DEP_DCRP' => Yii::t('app', 'Description'),
+            'MDL_STS' => Yii::t('app', 'Status'),
+            'MDL_DCRP' => Yii::t('app', 'Description'),
             'SORT' => Yii::t('app', 'Sorting'),
         ];
     }

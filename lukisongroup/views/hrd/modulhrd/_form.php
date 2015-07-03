@@ -1,6 +1,6 @@
 <?php 
 use yii\helpers\Html;
-use app\models\hrd\Dept;
+use app\models\hrd\Modulhrd;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\builder\FormGrid;
@@ -8,7 +8,7 @@ use kartik\widgets\FileInput;
 use yii\helpers\ArrayHelper;
 
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);
-$nlDigit= (Dept::find()->count())+1;
+$nlDigit= (Modulhrd::find()->count())+1;
 $nl='LG'.$nlDigit;
 ?>
 <aside class="main-sidebar">

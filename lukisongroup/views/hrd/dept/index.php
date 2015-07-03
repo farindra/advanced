@@ -9,33 +9,27 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
 
 /* TABLE CLASS DEVELOPE -> |DROPDOWN,PRIMARYKEY-> ATTRIBUTE */
-use app\models\hrd\Employe;
-use app\models\hrd\Corp;
 use app\models\hrd\Dept;
-use app\models\hrd\Jabatan;
-use app\models\hrd\Status;
-use lukisongroup\models\system\side_menu\M1000;
-
 /*	KARTIK WIDGET -> Penambahan componen dari yii2 dan nampak lebih cantik*/
 use kartik\grid\GridView;
 use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
-use kartik\sidenav\SideNav;
 
 use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
-$this->title = Yii::t('app', 'Employe');
+$this->title = Yii::t('app', 'Department');
 $this->params['breadcrumbs'][] = $this->title;
-
-/*variable Dropdown*/
-$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
 ?>
 <aside class="main-sidebar">
-    <?php	
+    <?php
+		/*variable Dropdown*/
+		use lukisongroup\models\system\side_menu\M1000;
+		use kartik\sidenav\SideNav;
+		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);		
 		if (!Yii::$app->user->isGuest) {
 			echo SideNav::widget([
 				'items' => $side_menu,
@@ -61,16 +55,17 @@ $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval
 					'DEP_NM',
 					'DEP_DCRP',
 					'SORT',
-					['class' => 'yii\grid\ActionColumn'],
-					//['class' => 'yii\grid\CheckboxColumn'],
-					//['class' => '\kartik\grid\RadioColumn'],
+					[
+						'class' => 'yii\grid\ActionColumn',
+						'template' => '{view}',
+					],
 				],
 				'panel'=>[
-					'heading' =>true,// $hdr,//<div class="col-lg-4"><h8>'. $hdr .'</h8></div>',
+					'heading' =>false,// $hdr,//<div class="col-lg-4"><h8>'. $hdr .'</h8></div>',
 					'type' =>GridView::TYPE_SUCCESS,//TYPE_WARNING, //TYPE_DANGER, //GridView::TYPE_SUCCESS,//GridView::TYPE_INFO, //TYPE_PRIMARY, TYPE_INFO
-					'after'=> Html::a('<i class="glyphicon glyphicon-plus"></i> Add', '#', ['class'=>'btn btn-success']) . ' ' .
-						//Html::submitButton('<i class="glyphicon glyphicon-floppy-disk"></i> Save', ['class'=>'btn btn-primary']) . ' ' .
-						Html::a('<i class="glyphicon glyphicon-remove"></i> Delete  ', '#', ['class'=>'btn btn-danger'])
+					'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Create {modelClass}',
+					['modelClass' => 'Department',]),
+					['create'], ['class' => 'btn btn-success']),
 				],
 				'hover'=>true, //cursor selec
 				'responsive'=>true,

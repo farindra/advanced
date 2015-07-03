@@ -13,13 +13,9 @@ namespace lukisongroup\controllers\hrd;
 	use yii\web\Controller;
 	use yii\web\NotFoundHttpException;
 	use yii\filters\VerbFilter;
-
 /* VARIABLE PRIMARY JOIN/SEARCH/FILTER/SORT Author: -ptr.nov- */
-	use app\models\hrd\Employe;			/* TABLE CLASS JOIN */
-	use app\models\hrd\EmployeSearch;	/* TABLE CLASS SEARCH */
 	use app\models\hrd\Dept;			/* TABLE CLASS JOIN */
 	use app\models\hrd\DeptSearch;		/* TABLE CLASS SEARCH */
-	use yii\web\UploadedFile;
 	
 /**
  * HRD | CONTROLLER EMPLOYE .
@@ -59,29 +55,30 @@ class DeptController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $model = $this->findModel($id);;
+		if ($model->load(Yii::$app->request->post())){
+			if($model->validate()){
+				if($model->save()) {
+					return $this->redirect(['view', 'id' => $model->DEP_ID]);	
+				} 
+			}
+		}else {
+            return $this->render('view', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
      * ACTION CREATE note | $id=PrimaryKey -> TRIGER FROM VIEW  -ptr.nov-
      */
     public function actionCreate()
-    {
-		
-        $model = new Employe();
-
+    {		
+        $model = new Dept();
         if ($model->load(Yii::$app->request->post())){
-			$upload_file=$model->uploadFile();
-			var_dump($model->validate());
-			if($model->validate()){
+				if($model->validate()){
 				if($model->save()) {
-					if ($upload_file !== false) {
-						$path=$model->getUploadedFile();
-						$upload_file->saveAs($path);
-					}
-					return $this->redirect(['view', 'id' => $model->EMP_ID]);	
+					return $this->redirect(['view', 'id' => $model->DEP_ID]);	
 				} 
 			}
 		}else {
@@ -99,7 +96,7 @@ class DeptController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->EMP_ID]);
+            return $this->redirect(['view', 'id' => $model->DEP_ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -123,7 +120,7 @@ class DeptController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Employe::findOne($id)) !== null) {
+        if (($model = Dept::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
