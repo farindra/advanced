@@ -11,6 +11,25 @@ use app\models\master\Barangumum;
 $this->title = 'Barang Umum';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<aside class="main-sidebar">
+    <?php
+		/*variable Dropdown*/
+		use lukisongroup\models\system\side_menu\M1000;
+		use kartik\sidenav\SideNav;
+		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('esm')->one()->jval);		
+		if (!Yii::$app->user->isGuest) {
+			echo SideNav::widget([
+				'items' => $side_menu,
+				'encodeLabels' => false,
+				//'heading' => $heading,
+				'type' => SideNav::TYPE_DEFAULT,
+				'options' => ['class' => 'sidebar-nav'],
+			]);
+		};
+    ?>
+</aside>
+
 <div class="barangumum-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
