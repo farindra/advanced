@@ -48,12 +48,20 @@ dmstr\web\AdminLteAsset::register($this);
 					'items' => $menu['children']
 				];
 			};
-			$ModelUserAttr = UserloginSearch::findUserAttr(Yii::$app->user->id)->one();
-			/*Validasi database Default EMP_ID =0 Author: -ptr.nov-, note error : lost left join Field unn\known attribute properties*/
-			$MainAvatar =  $ModelUserAttr->emp->EMP_IMG;
-			$MainUserProfile = $ModelUserAttr->emp->EMP_NM . ' '. $ModelUserAttr->emp->EMP_NM_BLK;
-			//print_r($ModelUserAttr);
-			//echo $ModelUserAttr->emp->EMP_IMG;
+
+			/**
+			 * Validasi database Default EMP_ID =0 
+			 * note error : lost left join Field unn\known attribute properties
+			 * Author: -ptr.nov-, 
+			 */
+			if (!Yii::$app->user->isGuest) {
+				$ModelUserAttr = UserloginSearch::findUserAttr(Yii::$app->user->id)->one();
+				//print_r($ModelUserAttr);
+				//echo $ModelUserAttr->emp->EMP_IMG;
+				$MainAvatar =  $ModelUserAttr->emp->EMP_IMG;
+				$MainUserProfile = $ModelUserAttr->emp->EMP_NM . ' '. $ModelUserAttr->emp->EMP_NM_BLK;
+			
+			}
 			$corp="<p class='pull-left'>&copy; LukisonGroup <?= date('Y') ?></p>";			
 		?>
 		
