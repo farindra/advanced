@@ -27,7 +27,7 @@ class Employe extends \yii\db\ActiveRecord
 	/* [2] TABLE SELECT */
 	public static function tableName()
     {
-        return '{{%a0001}}';
+        return '{{dbm002.a0001}}';
     }   
     
 	/* [3] RULE SCENARIO -> DetailView */
