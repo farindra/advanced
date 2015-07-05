@@ -187,7 +187,7 @@ dmstr\web\AdminLteAsset::register($this);
 								<!-- User Login -->
 									<div class="user-panel">
 										<div class="pull-left image">
-											<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') ?>/Piter.jpg" class="img-circle" alt="User Image"/>
+											<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') ?>/1436076377.jpg" class="img-circle" alt="User Image"/>
 										</div>
 										<div class="pull-left info">
 											<p>Alexander Pierce</p>
