@@ -17,8 +17,12 @@ $this->mddPage = 'hrd';
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL,'options'=>['enctype'=>'multipart/form-data']]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);
-$nlDigit= (Employe::find()->count())+1;
-$nl='LG'.$nlDigit;
+/*Author: -ptr.nov- Generate digit EMP_ID */
+$cnt= (Employe::find()->count())+1;
+$digit=str_pad($cnt,4,"0",STR_PAD_LEFT);
+$thn=date("Y");
+$nl='LG'.'.'.$thn.'.'.$digit;
+/*Author: Eka Side Menu */
 $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
 
 echo FormGrid::widget([
