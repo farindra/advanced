@@ -15,8 +15,8 @@ use kartik\builder\Form;
 use kartik\icons\Icon;
 use kartik\widgets\Growl;
 use kartik\widgets\FileInput;
-/* @var $this yii\web\View */
-/* @var $model app\models\maxi\Maxiprodak */
+
+$this->mddPage = 'hrd';
 
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['prodak']];
 //$this->params['breadcrumbs'][] = $this->title;

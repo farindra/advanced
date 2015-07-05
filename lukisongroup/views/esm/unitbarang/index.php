@@ -7,6 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\UnitbarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->mddPage = 'esm';
 $this->title = 'Unit';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

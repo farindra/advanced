@@ -11,26 +11,10 @@ use kartik\builder\Form;
 use kartik\icons\Icon;
 use kartik\widgets\Growl;
 
+$this->mddPage = 'hrd';
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['prodak']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<aside class="main-sidebar">
-    <?php
-		/*variable Dropdown*/
-		use lukisongroup\models\system\side_menu\M1000;
-		use kartik\sidenav\SideNav;
-		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);	
-		if (!Yii::$app->user->isGuest) {
-			echo SideNav::widget([
-				'items' => $side_menu,
-				'encodeLabels' => false,
-				//'heading' => $heading,
-				'type' => SideNav::TYPE_DEFAULT,
-				'options' => ['class' => 'sidebar-nav'],
-			]);
-		};
-    ?>
-</aside>
 <div class="panel panel-default" style="margin-top: 0px">
      <div class="panel-body">
 		<?php	

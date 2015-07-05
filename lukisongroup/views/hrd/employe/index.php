@@ -28,6 +28,7 @@ use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
+$this->mddPage = 'hrd';
 $this->title = Yii::t('app', 'Employe');
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -37,23 +38,6 @@ $Combo_Dept = ArrayHelper::map(Dept::find()->orderBy('SORT')->asArray()->all(), 
 $Combo_Jab = ArrayHelper::map(Jabatan::find()->orderBy('SORT')->asArray()->all(), 'JAB_NM','JAB_NM');
 $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all(), 'STS_NM','STS_NM');
 $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
-?>
-<aside class="main-sidebar">
-    <?php
-	
-    if (!Yii::$app->user->isGuest) {
-        echo SideNav::widget([
-            'items' => $side_menu,
-            'encodeLabels' => false,
-            //'heading' => $heading,
-            'type' => SideNav::TYPE_DEFAULT,
-            'options' => ['class' => 'sidebar-nav'],
-        ]);
-    };
-
-    ?>
-</aside>
-<?php
 
     //print_r($dataProvider);												/*SHOW ARRAY YII Author: -Devandro-*/
 	//echo  \yii\helpers\Json::encode($dataProvider->getModels());			/*SHOW ARRAY JESON Author: -ptr.nov-*/

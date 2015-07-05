@@ -24,25 +24,13 @@ use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
+$this->mddPage = 'hrd';
 $this->title = Yii::t('app', 'Jabatan');
 $this->params['breadcrumbs'][] = $this->title;
 
 /*variable Dropdown*/
 $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
 ?>
-<aside class="main-sidebar">
-    <?php	
-		if (!Yii::$app->user->isGuest) {
-			echo SideNav::widget([
-				'items' => $side_menu,
-				'encodeLabels' => false,
-				//'heading' => $heading,
-				'type' => SideNav::TYPE_DEFAULT,
-				'options' => ['class' => 'sidebar-nav'],
-			]);
-		};
-    ?>
-</aside>
 <div class="panel panel-default" style="margin-top: 0px">
      <div class="panel-body">
 		<?php

@@ -10,17 +10,11 @@ use kartik\builder\Form;
 use kartik\builder\FormGrid;
 use kartik\widgets\FileInput;
 use yii\helpers\ArrayHelper;
-use lukisongroup\models\system\side_menu\M1000;
-use kartik\sidenav\SideNav;
 
-$this->mddPage = 'hrd';
-$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL,'options'=>['enctype'=>'multipart/form-data']]);
-//$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL]);
+$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);
 $nlDigit= (Employe::find()->count())+1;
 $nl='LG'.$nlDigit;
-$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
-
 echo FormGrid::widget([
 	'model'=>$model,
 	'form'=>$form,
@@ -196,22 +190,15 @@ echo FormGrid::widget([
 		],
 		[	
 			'columns'=>3,
-			'attributes'=>[				
+			'attributes'=>[
+				
 				'address_detail' => [ 
 					'label'=>'Picture',
 					'columns'=>6,
 					'attributes'=>[
-						'upload_file'=>[
+						'EMP_IMG'=>[
 							'type' => Form::INPUT_WIDGET,
-							'widgetClass'=>'\kartik\widgets\FileInput',							
-							'options'=>[
-								'pluginOptions' => [
-									'showPreview' => true,
-									'showCaption' => false,
-									'showRemove' => false,
-									'showUpload' => false
-									],
-							],
+							'widgetClass'=>'\kartik\widgets\FileInput',
 							'columnOptions'=>['colspan'=>2],
 							//'hint'=>'Enter Picture',
 						],
@@ -219,6 +206,39 @@ echo FormGrid::widget([
 				],
 			],			
 		],
+		
+		/*
+		[
+			'attributes'=>[
+				'birthday'=>['type'=>Form::INPUT_WIDGET, 'widgetClass'=>'\kartik\widgets\DatePicker', 'hint'=>'Enter birthday (mm/dd/yyyy)'],
+				//'state_1'=>['type'=>Form::INPUT_DROPDOWN_LIST, 'items'=>$model->typeahead_data, 'hint'=>'Type and select state'],
+				'color'=>['type'=>Form::INPUT_WIDGET, 'widgetClass'=>'\kartik\widgets\ColorInput', 'hint'=>'Choose your color'],
+				
+			],
+		],
+		[
+			'attributes'=>[       // 3 column layout
+				'rememberMe'=>[   // radio list
+					'type'=>Form::INPUT_RADIO_LIST, 
+					'items'=>[true=>'Yes', false=>'No'], 
+					'options'=>['inline'=>true]
+				],
+				'brightness'=>[   // uses widget class with widget options
+					'type'=>Form::INPUT_WIDGET, 
+					'label'=>Html::label('Brightness (%)'), 
+					'widgetClass'=>'\kartik\widgets\RangeInput',
+					'options'=>['width'=>'80%']
+				],
+				'actions'=>[    // embed raw HTML content
+					'type'=>Form::INPUT_RAW, 
+					'value'=>  '<div style="text-align: right; margin-top: 20px">' . 
+						Html::resetButton('Reset', ['class'=>'btn btn-default']) . ' ' .
+						Html::submitButton('Submit', ['class'=>'btn btn-primary']) . 
+						'</div>'
+				],
+			],
+		],
+		*/
 		[ //-Action Author: -ptr.nov-
 			'attributes'=>[ 
 				'actions'=>[    // embed raw HTML content

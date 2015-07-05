@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\esm\DistributorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$this->mddPage = 'esm';
 $this->title = 'Distributor';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -6,6 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\ro\Rodetail */
 
+$this->mddPage = 'esm';
 $this->title = 'Create Rodetail';
 $this->params['breadcrumbs'][] = ['label' => 'Rodetails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

@@ -7,6 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\esm\ro\RodetailSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->mddPage = 'esm';
 $this->title = 'Rodetails';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

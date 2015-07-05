@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\ro\Requestorder */
-
+$this->mddPage = 'esm';
 $this->title = $model->ID;
 $this->params['breadcrumbs'][] = ['label' => 'Requestorders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Distributor */
-
+$this->mddPage = 'esm';
 $this->title = 'Update Distributor: ' . ' ' . $model->ID_DISTRIBUTOR;
 $this->params['breadcrumbs'][] = ['label' => 'Distributor', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->ID_DISTRIBUTOR, 'url' => ['view', 'id' => $model->ID_DISTRIBUTOR]];

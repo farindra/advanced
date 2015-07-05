@@ -14,6 +14,8 @@ use kartik\icons\Icon;
 use dmstr\widgets\Alert;
 /* @var $this \yii\web\View */
 /* @var $content string */
+/* VARIABLE SIDE MENU Author: -Eka- */
+	use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
 
 //AppAsset::register($this);
 dmstr\web\AdminLteAsset::register($this);
@@ -26,6 +28,7 @@ dmstr\web\AdminLteAsset::register($this);
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<?= Html::csrfMetaTags() ?>
 			<title><?= Html::encode($this->title) ?></title>
+			<title><?= Html::encode($this->mddPage) ?></title> 
 			<?php $this->head() ?>
 		</head>
 		<?php
@@ -41,7 +44,9 @@ dmstr\web\AdminLteAsset::register($this);
 					'items' => $menu['children']
 				];
 			};
-		
+			/*Side Menu*/
+			$side_menu=M1000::find()->findMenu('hrd')->one()->jval;
+			$side_menu=json_decode($side_menu,true);
 			$corp="<p class='pull-left'>&copy; LukisonGroup <?= date('Y') ?></p>";			
 		?>
 		
@@ -178,10 +183,47 @@ dmstr\web\AdminLteAsset::register($this);
 
 						<div class="content-wrapper" >
 							<aside class="main-sidebar">
-								<?php
+							
+								<!-- User Login -->
+									<div class="user-panel">
+										<div class="pull-left image">
+											<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') ?>/Piter.jpg" class="img-circle" alt="User Image"/>
+										</div>
+										<div class="pull-left info">
+											<p>Alexander Pierce</p>
+
+											<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+										</div>
+									</div>
+								<!-- /.User Login -->
+								<!-- search form -->
+									<form action="#" method="get" class="sidebar-form">
+										<div class="input-group">
+											<input type="text" name="q" class="form-control" placeholder="Search..."/>
+										  <span class="input-group-btn">
+											<button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
+											</button>
+										  </span>
+										</div>
+									</form>
+								<!-- /.search form -->
+								
+								<?php								
+									/**
+									 * Author: -ptr.nov-
+									 * Noted: add variable "mddPage" get value
+									 * \vendor\yiisoft\yii2\web\View.php
+									*/
+									//echo $this->mddPage;
+									if ($this->mddPage != false) {
+										$getSideMenu=$this->mddPage;
+									}else{
+										$getSideMenu='mdefault';
+									}
+									$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu($getSideMenu)->one()->jval);
 									if (!Yii::$app->user->isGuest) {
 										echo SideNav::widget([
-											'items' => $menuItems,
+											'items' => $side_menu,
 											'encodeLabels' => false,
 											//'heading' => $heading,
 											'type' => SideNav::TYPE_DEFAULT,
@@ -191,10 +233,8 @@ dmstr\web\AdminLteAsset::register($this);
 								?>
 
 
-								<form class="sidebar-form" method="get" action="#"></form>
-								<li class="header">
-									
-								</li>
+								
+								
 							</aside>
 							<section class="content">
 								<?php /*echo Breadcrumbs::widget([
