@@ -1,5 +1,5 @@
 *
-!*/esm/*
-!*/hrd/*
-!*/master/*
+!esm/*
+!hrd/*
+!master/*
 !.gitignore
