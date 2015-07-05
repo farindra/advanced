@@ -17,6 +17,7 @@ use yii\data\ActiveDataProvider;
  */
 class UserloginSearch extends Userlogin
 {
+	public $emp;
 	/*	[1] FILTER */
     public function rules()
     {
@@ -54,5 +55,24 @@ class UserloginSearch extends Userlogin
 			/* FILTER COLUMN Author -ptr.nov-*/
 			 $query->andFilterWhere(['like', 'username', $this->username]);			
         return $dataProvider_Userlogin;
+    }
+	
+	public function attributes()
+	{
+		/*Author -ptr.nov- add related fields to searchable attributes */
+		return array_merge(parent::attributes(), ['emp.EMP_IMG','emp.EMP_NM','emp.EMP_NM_BLK']);
+	}
+	
+	public function findUserAttr($id)
+    {
+		$model = Userlogin::find()->select('*')
+				->joinWith('emp',true,'LEFT JOIN')
+				->Where(['dbm001.user.id' => $id]);
+				//->one();
+		if ($model !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 }

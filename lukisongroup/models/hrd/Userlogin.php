@@ -6,6 +6,7 @@ use Yii;
 
 class Userlogin extends \yii\db\ActiveRecord
 {
+	
 	 public static function getDb()
 	{
 		/* Author -ptr.nov- : HRD | Dashboard I */
@@ -43,7 +44,12 @@ class Userlogin extends \yii\db\ActiveRecord
 			'avatarImage' => Yii::t('app', 'Avatar Image'),
         ];
     } 
-	 
+	public function getEmp()
+	{
+		return $this->hasOne(Employe::className(), ['EMP_ID' => 'EMP_ID']);
+	}
+
+	
      
 }
 

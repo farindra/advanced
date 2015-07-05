@@ -12,6 +12,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use kartik\icons\Icon;
 use dmstr\widgets\Alert;
+use app\models\hrd\UserloginSearch;
 /* @var $this \yii\web\View */
 /* @var $content string */
 /* VARIABLE SIDE MENU Author: -Eka- */
@@ -19,6 +20,9 @@ use dmstr\widgets\Alert;
 
 //AppAsset::register($this);
 dmstr\web\AdminLteAsset::register($this);
+
+
+
 ?>
 <?php $this->beginPage() ?>
 	<!DOCTYPE html>
@@ -44,9 +48,12 @@ dmstr\web\AdminLteAsset::register($this);
 					'items' => $menu['children']
 				];
 			};
-			/*Side Menu*/
-			$side_menu=M1000::find()->findMenu('hrd')->one()->jval;
-			$side_menu=json_decode($side_menu,true);
+			$ModelUserAttr = UserloginSearch::findUserAttr(Yii::$app->user->id)->one();
+			/*Validasi database Default EMP_ID =0 Author: -ptr.nov-, note error : lost left join Field unn\known attribute properties*/
+			$MainAvatar =  $ModelUserAttr->emp->EMP_IMG;
+			$MainUserProfile = $ModelUserAttr->emp->EMP_NM . ' '. $ModelUserAttr->emp->EMP_NM_BLK;
+			//print_r($ModelUserAttr);
+			//echo $ModelUserAttr->emp->EMP_IMG;
 			$corp="<p class='pull-left'>&copy; LukisonGroup <?= date('Y') ?></p>";			
 		?>
 		
@@ -187,10 +194,10 @@ dmstr\web\AdminLteAsset::register($this);
 								<!-- User Login -->
 									<div class="user-panel">
 										<div class="pull-left image">
-											<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') ?>/1436076377.jpg" class="img-circle" alt="User Image"/>
+											<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $MainAvatar; ?>" class="img-circle" alt="User Image"/>
 										</div>
 										<div class="pull-left info">
-											<p>Alexander Pierce</p>
+											<p><?php echo $MainUserProfile; ?></p>
 
 											<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 										</div>
