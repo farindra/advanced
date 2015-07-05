@@ -1,3 +1,24 @@
+#systemit
+/systemit
+
+#tests
+/tests
+
+#frontend
+/frontend
+
+# backend
+/backend
+
+#common
+/common
+
+# console
+/console
+
+#environments
+/environments
+
 # yii console command
 /yii
 
