@@ -35,7 +35,7 @@ class Employe extends \yii\db\ActiveRecord
     {
         return [
             [['EMP_ID'], 'required'],
-            [['EMP_ID','EMP_ZIP','EMP_CORP_ID'], 'string', 'max' => 10],
+            [['EMP_ID','EMP_ZIP','EMP_CORP_ID'], 'string', 'max' => 15],
             [['EMP_NM','EMP_NM_BLK','EMP_IMG','EMP_KTP','GRP_NM'], 'string', 'max' => 20], 
 			[['DEP_ID','JAB_ID'], 'string', 'max' => 5], 
 			[['EMP_STS'], 'integer'],
