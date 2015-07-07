@@ -25,38 +25,34 @@ $this->mddPage = 'hrd';
 $this->title = Yii::t('app', 'Modul HRD');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="panel panel-default" style="margin-top: 0px">
-     <div class="panel-body">
-		<?php
-			/*MODUL HRD Author: -ptr.nov */
-			//print_r($dataProvider);
-			echo GridView::widget([
-				'dataProvider' => $dataProvider_Mdlhrd,
-				'filterModel' => $searchModel_Mdlhrd,
-				'columns' => [
-					['class' => 'yii\grid\SerialColumn'],
-					'MDL_ID',
-					'MDL_NM',
-					'MDL_DCRP',
-					'SORT',
-					[
-						'class' => 'yii\grid\ActionColumn',
-						'template' => '{view}',
-					],
-				],
-				'panel'=>[
-					'heading' =>false,// $hdr,//<div class="col-lg-4"><h8>'. $hdr .'</h8></div>',
-					'type' =>GridView::TYPE_SUCCESS,//TYPE_WARNING, //TYPE_DANGER, //GridView::TYPE_SUCCESS,//GridView::TYPE_INFO, //TYPE_PRIMARY, TYPE_INFO
-					'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Create {modelClass}',
-					['modelClass' => 'Modul HRD',]),
-					['create'], ['class' => 'btn btn-success']),
-				],
-				'hover'=>true, //cursor selec
-				'responsive'=>true,
-				'bordered'=>true,
-				'striped'=>true,
-			]);
-		?>
-	</div>
-</div>
+<?php
+	/*MODUL HRD Author: -ptr.nov */
+	//print_r($dataProvider);
+	echo GridView::widget([
+		'dataProvider' => $dataProvider_Mdlhrd,
+		'filterModel' => $searchModel_Mdlhrd,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
+			'MDL_ID',
+			'MDL_NM',
+			'MDL_DCRP',
+			'SORT',
+			[
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{view}',
+			],
+		],
+		'panel'=>[
+			'heading' =>false,// $hdr,//<div class="col-lg-4"><h8>'. $hdr .'</h8></div>',
+			'type' =>GridView::TYPE_SUCCESS,//TYPE_WARNING, //TYPE_DANGER, //GridView::TYPE_SUCCESS,//GridView::TYPE_INFO, //TYPE_PRIMARY, TYPE_INFO
+			'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Create {modelClass}',
+			['modelClass' => 'Modul HRD',]),
+			['create'], ['class' => 'btn btn-success']),
+		],
+		'hover'=>true, //cursor selec
+		'responsive'=>true,
+		'bordered'=>true,
+		'striped'=>true,
+	]);
+?>
 

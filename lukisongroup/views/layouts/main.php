@@ -12,7 +12,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use kartik\icons\Icon;
 use dmstr\widgets\Alert;
-use app\models\hrd\UserloginSearch;
+use app\models\system\user\UserloginSearch;
 /* @var $this \yii\web\View */
 /* @var $content string */
 /* VARIABLE SIDE MENU Author: -Eka- */
@@ -258,7 +258,11 @@ dmstr\web\AdminLteAsset::register($this);
 										*/
 								?>
 								<?= Alert::widget() ?>
-								<?php echo $content; ?>
+								<div class="panel panel-default" style="margin-top: 0px">
+									<div class="panel-body">
+										<?php echo $content; ?>
+									</div>
+								</div>
 							</section>
 						</div>
 					</div>			

@@ -255,50 +255,44 @@ use kartik\alert\Alert;
 	
 ?>
 
-<div class="panel panel-default" style="margin-top: 0px">
-     <div class="panel-body">
-        <?php
-            /* echo Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]);
-			*/
-            $items=[
-                [
-                    'label'=>'<i class="glyphicon glyphicon-home"></i> Employe List','content'=>$tab_employe,
-                    'active'=>true,
+<?php
+	/* echo Breadcrumbs::widget([
+				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+			]);
+	*/
+	$items=[
+		[
+			'label'=>'<i class="glyphicon glyphicon-home"></i> Employe List','content'=>$tab_employe,
+			'active'=>true,
 
-                ],
-				
-                [
-                    'label'=>'<i class="glyphicon glyphicon-home"></i> Employe Grids','content'=>$tab_profile,
-                ],
-				[
-                    'label'=>'<i class="glyphicon glyphicon-home"></i> Test Affix','content'=>$KiriMenu.$affk,//$sortImg,// ,
-                ],
-				[
-                    'label'=>'<i class="glyphicon glyphicon-home"></i> Alrt','content'=>$strRat,//$sortImg,// ,
-                ],
-				[
-                    'label'=>'<i class="glyphicon glyphicon-home"></i> RATING','content'=>$strRat,//$sortImg,// ,
-                ],
-
-            ];
-
-
-
-            echo TabsX::widget([
-                'items'=>$items,
-                'position'=>TabsX::POS_ABOVE,
-				//'height'=>'tab-height-xs',
-                'bordered'=>true,
-                'encodeLabels'=>false,
-                //'align'=>TabsX::ALIGN_LEFT,
-
-            ]);
+		],
 		
-        ?>
+		[
+			'label'=>'<i class="glyphicon glyphicon-home"></i> Employe Grids','content'=>$tab_profile,
+		],
+		[
+			'label'=>'<i class="glyphicon glyphicon-home"></i> Test Affix','content'=>$KiriMenu.$affk,//$sortImg,// ,
+		],
+		[
+			'label'=>'<i class="glyphicon glyphicon-home"></i> Alrt','content'=>$strRat,//$sortImg,// ,
+		],
+		[
+			'label'=>'<i class="glyphicon glyphicon-home"></i> RATING','content'=>$strRat,//$sortImg,// ,
+		],
 
-     </div>
-	 
-</div>
+	];
+
+
+
+	echo TabsX::widget([
+		'items'=>$items,
+		'position'=>TabsX::POS_ABOVE,
+		//'height'=>'tab-height-xs',
+		'bordered'=>true,
+		'encodeLabels'=>false,
+		//'align'=>TabsX::ALIGN_LEFT,
+
+	]);
+
+?>
 

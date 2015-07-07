@@ -15,48 +15,44 @@ $this->mddPage = 'hrd';
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['prodak']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="panel panel-default" style="margin-top: 0px">
-     <div class="panel-body">
-		<?php	
-			$Dept_MDL = Dept::find()->where(['DEP_ID'=>$model->DEP_ID])->orderBy('SORT')->one();
-			$Val_Jabatan=$Dept_MDL->DEP_NM;
-			$attribute = [
-				[
-					'attribute' =>'DEP_ID',
-					//'inputWidth'=>'20%'
-				],	
-				[
-					'attribute' =>	'DEP_NM',
-					//'inputWidth'=>'40%'					
-				],
-				[
-					'attribute' =>	'DEP_DCRP',
-					'format'=>'raw',
-					//'value'=>'DEP_DCRP',
-					'type'=>DetailView::INPUT_TEXTAREA, 
-					'widgetOptions'=>[
-						'data'=>'DEP_DCRP',
-						'options'=>['placeholder'=>'Position Description ...'],
-						'pluginOptions'=>['allowClear'=>true],
-					],
-				],
-				[
-					'attribute' =>	'SORT',
-					//'inputWidth'=>'40%'
-				],			
-			];
-			echo DetailView::widget([
-				'model' => $model,				
-				'condensed'=>true,
-				'hover'=>true,
-				'mode'=>DetailView::MODE_VIEW,
-				'panel'=>[
-					'heading'=>$model->DEP_ID . '| '.$model->DEP_NM,
-					'type'=>DetailView::TYPE_INFO,
-				],	
-				'attributes'=>$attribute,
-			]);			
-		?>
-	</div>
-</div>
+<?php	
+	$Dept_MDL = Dept::find()->where(['DEP_ID'=>$model->DEP_ID])->orderBy('SORT')->one();
+	$Val_Jabatan=$Dept_MDL->DEP_NM;
+	$attribute = [
+		[
+			'attribute' =>'DEP_ID',
+			//'inputWidth'=>'20%'
+		],	
+		[
+			'attribute' =>	'DEP_NM',
+			//'inputWidth'=>'40%'					
+		],
+		[
+			'attribute' =>	'DEP_DCRP',
+			'format'=>'raw',
+			//'value'=>'DEP_DCRP',
+			'type'=>DetailView::INPUT_TEXTAREA, 
+			'widgetOptions'=>[
+				'data'=>'DEP_DCRP',
+				'options'=>['placeholder'=>'Position Description ...'],
+				'pluginOptions'=>['allowClear'=>true],
+			],
+		],
+		[
+			'attribute' =>	'SORT',
+			//'inputWidth'=>'40%'
+		],			
+	];
+	echo DetailView::widget([
+		'model' => $model,				
+		'condensed'=>true,
+		'hover'=>true,
+		'mode'=>DetailView::MODE_VIEW,
+		'panel'=>[
+			'heading'=>$model->DEP_ID . '| '.$model->DEP_NM,
+			'type'=>DetailView::TYPE_INFO,
+		],	
+		'attributes'=>$attribute,
+	]);			
+?>
 

@@ -31,40 +31,38 @@ $this->params['breadcrumbs'][] = $this->title;
 /*variable Dropdown*/
 $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
 ?>
-<div class="panel panel-default" style="margin-top: 0px">
-     <div class="panel-body">
-		<?php
-			/*DEPARTMENT Author: -ptr.nov */
-			//print_r($dataProvider);
-			echo GridView::widget([
-				'dataProvider' => $dataProvider_Jab,
-				'filterModel' => $searchModel_Jab,
-				'columns' => [
-					['class' => 'yii\grid\SerialColumn'],
-					'JAB_ID',
-					'JAB_NM',
-					'JAB_DCRP',
-					'SORT',
-					[
-						'class' => 'yii\grid\ActionColumn',
-						'template' => '{view}',
-					],
-					//['class' => 'yii\grid\CheckboxColumn'],
-					//['class' => '\kartik\grid\RadioColumn'],
-				],
-				'panel'=>[
-					'heading' =>false,// $hdr,//<div class="col-lg-4"><h8>'. $hdr .'</h8></div>',
-					'type' =>GridView::TYPE_SUCCESS,//TYPE_WARNING, //TYPE_DANGER, //GridView::TYPE_SUCCESS,//GridView::TYPE_INFO, //TYPE_PRIMARY, TYPE_INFO
-					'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Create {modelClass}',
-					['modelClass' => 'Jabatan',]),
-					['create'], ['class' => 'btn btn-success']),
-				],
-				'hover'=>true, //cursor selec
-				'responsive'=>true,
-				'bordered'=>true,
-				'striped'=>true,
-			]);
-		?>
-	</div>
-</div>
+
+<?php
+	/*DEPARTMENT Author: -ptr.nov */
+	//print_r($dataProvider);
+	echo GridView::widget([
+		'dataProvider' => $dataProvider_Jab,
+		'filterModel' => $searchModel_Jab,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
+			'JAB_ID',
+			'JAB_NM',
+			'JAB_DCRP',
+			'SORT',
+			[
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{view}',
+			],
+			//['class' => 'yii\grid\CheckboxColumn'],
+			//['class' => '\kartik\grid\RadioColumn'],
+		],
+		'panel'=>[
+			'heading' =>false,// $hdr,//<div class="col-lg-4"><h8>'. $hdr .'</h8></div>',
+			'type' =>GridView::TYPE_SUCCESS,//TYPE_WARNING, //TYPE_DANGER, //GridView::TYPE_SUCCESS,//GridView::TYPE_INFO, //TYPE_PRIMARY, TYPE_INFO
+			'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Create {modelClass}',
+			['modelClass' => 'Jabatan',]),
+			['create'], ['class' => 'btn btn-success']),
+		],
+		'hover'=>true, //cursor selec
+		'responsive'=>true,
+		'bordered'=>true,
+		'striped'=>true,
+	]);
+?>
+	
 
