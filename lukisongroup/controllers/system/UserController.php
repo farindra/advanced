@@ -139,7 +139,7 @@ class UserController extends Controller
                     return $this->goHome();
                 }
 				*/
-				return $this->goHome(); // Return url user menu admin -ptr.nov-
+				return $this->goBack();//.'/admin'; // Return url user menu admin -ptr.nov-
             }
         }
 
