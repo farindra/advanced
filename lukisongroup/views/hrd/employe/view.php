@@ -43,22 +43,17 @@ $this->mddPage = 'hrd';
 			//'value'=>('<img src =' . Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $model->EMP_IMG. ' height="100" width="100"' . '>' )
 			'value'=>Yii::getAlias('@HRD_EMP_UploadUrl') .'/'.$model->EMP_IMG,
 			'format'=>['image',['width'=>'100','height'=>'100']],
-			'type' => DetailView::INPUT_FILE,
-			
+			'type' => DetailView::INPUT_FILEINPUT,
 			'widgetOptions'=>[
-					//'type' => DetailView::INPUT_WIDGET,
-					'class'=>DetailView::INPUT_FILEINPUT,
-					//'widgetClass'=>'\kartik\widgets\FileInput',					
-					'options'=>[
 						'pluginOptions' => [
 							'showPreview' => true,
 							'showCaption' => false,
 							'showRemove' => false,
 							'showUpload' => false
 						],
-					],
+					
 			],
-			
+			//'inputContainer' => ['class'=>'col-md-2'],
 			//'format' => 'html', //'format' => 'image',
 			//'value'=>function($data){
 			//			return Html::img(Yii::getAlias('HRD_EMP_UploadUrl') . '/'. $data->EMP_IMG, ['width'=>'40']);
@@ -67,6 +62,7 @@ $this->mddPage = 'hrd';
 		[
 			'attribute' =>'EMP_ID',
 			//'inputWidth'=>'20%'
+			//'inputContainer' => ['class'=>'col-md-1'],
 		],	
 		[
 			'attribute' =>	'EMP_NM',
@@ -89,6 +85,7 @@ $this->mddPage = 'hrd';
 				'options'=>['placeholder'=>'Select ...'],
 				'pluginOptions'=>['allowClear'=>true],
 			],
+		//	'inputContainer' => ['class'=>'col-sm-3'],
 			//'inputWidth'=>'40%'
 		],
 		[ // Department - Author: -ptr.nov-
@@ -102,6 +99,7 @@ $this->mddPage = 'hrd';
 				'pluginOptions'=>['allowClear'=>true],
 			],
 			//'inputWidth'=>'40%'
+		//	'inputContainer' => ['class'=>'col-sm-3'],
 		],				
 		[// Jabatan - Author: -ptr.nov-
 			'attribute' =>	'JAB_ID' ,
@@ -113,6 +111,7 @@ $this->mddPage = 'hrd';
 				'options'=>['placeholder'=>'Select ...'],
 				'pluginOptions'=>['allowClear'=>true],
 			],
+			//'inputContainer' => ['class'=>'col-sm-3'],
 			//'inputWidth'=>'40%'
 		],				
 		[// Jabatan - Author: -ptr.nov-
@@ -125,6 +124,7 @@ $this->mddPage = 'hrd';
 				'options'=>['placeholder'=>'Select ...'],
 				'pluginOptions'=>['allowClear'=>true],
 			],
+			//'inputContainer' => ['class'=>'col-sm-3'],
 			//'inputWidth'=>'40%'
 			
 		],
@@ -135,6 +135,7 @@ $this->mddPage = 'hrd';
 			'widgetOptions'=>[
 				'pluginOptions'=>['format'=>'yyyy-mm-dd']
 			],
+			//'inputContainer' => ['class'=>'col-sm-3'],
 			//'inputWidth'=>'40%'
 		],
 		[
@@ -145,6 +146,7 @@ $this->mddPage = 'hrd';
 				'pluginOptions'=>['format'=>'yyyy-mm-dd']
 			],
 			//'inputWidth'=>'40%'
+		//	'inputContainer' => ['class'=>'col-sm-3'],
 		],
 		
 		
@@ -188,11 +190,10 @@ $this->mddPage = 'hrd';
 	];
 	
 
-
+$form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]);
 
 	echo DetailView::widget([
 		'model' => $model,
-		
 		'condensed'=>true,
 		'hover'=>true,
 		'mode'=>DetailView::MODE_VIEW,
@@ -242,7 +243,8 @@ $this->mddPage = 'hrd';
 			//'sttOne.STS_NM',	
 		],
 		*/
-	]);			
+	]);		
+ActiveForm::end();	
 ?>
 	
 
