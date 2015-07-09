@@ -97,7 +97,8 @@ $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval
 			],
             [
 				'class' => 'yii\grid\ActionColumn',
-				'template' => '{view} {update}',
+				'template' => '{view}',
+				//'template' => '{view} {update}',
 				//Yii::t('app', 'Emplo'),
 			],
             //['class' => 'yii\grid\CheckboxColumn'],

@@ -18,8 +18,20 @@ $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL,'options'=>['enct
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);
 /*Author: -ptr.nov- Generate digit EMP_ID */
-$cnt= (Employe::find()->count())+1;
-$digit=str_pad($cnt,4,"0",STR_PAD_LEFT);
+
+/*Get Id count Author:-ptr.nov-*/
+//$cnt= (Employe::find()->count())+1;
+
+/*get ID Sparator Array , Author: -ptr.nov-*/
+$sql = 'SELECT max(EMP_ID) as EMP_ID FROM a0001';
+$cnt= Employe::findBySql($sql)->one(); 
+$arySplit=explode('.',$cnt->EMP_ID);
+$str_id_cnt=trim($arySplit[2]);
+//print_r($str_id_cnt+1);
+$id_cnt=$str_id_cnt+1;
+
+/*Combine String and Digit Author: -ptr.nov- */
+$digit=str_pad($id_cnt,4,"0",STR_PAD_LEFT);
 $thn=date("Y");
 $nl='LG'.'.'.$thn.'.'.$digit;
 /*Author: Eka Side Menu */
