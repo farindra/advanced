@@ -16,6 +16,7 @@ use kartik\icons\Icon;
 use kartik\widgets\Growl;
 use kartik\widgets\FileInput;
 
+
 $this->mddPage = 'hrd';
 
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['prodak']];
@@ -39,10 +40,18 @@ $this->mddPage = 'hrd';
 	
 	$attribute = [
 		[
+			'group'=>true,
+			'label'=>'SECTION 1: Identification Information',
+			'rowOptions'=>['class'=>'info'],
+			//'groupOptions'=>['class'=>'text-center']
+		],
+		[
 			'attribute' =>	'upload_file' ,
+			'label'=>'',
 			//'value'=>('<img src =' . Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $model->EMP_IMG. ' height="100" width="100"' . '>' )
 			'value'=>Yii::getAlias('@HRD_EMP_UploadUrl') .'/'.$model->EMP_IMG,
-			'format'=>['image',['width'=>'100','height'=>'100']],
+			'format'=>['image',['width'=>'100','height'=>'120']],
+			//'format'=>'raw', 
 			'type' => DetailView::INPUT_FILEINPUT,
 			'widgetOptions'=>[
 						'pluginOptions' => [
@@ -72,7 +81,12 @@ $this->mddPage = 'hrd';
 			'attribute' =>	'EMP_NM_BLK',
 			//'inputWidth'=>'40%'
 		],
-			
+		[
+			'group'=>true,
+			'label'=>'SECTION 1: Identification Information',
+			'rowOptions'=>['class'=>'info'],
+			//'groupOptions'=>['class'=>'text-center']
+		],
 		[ // Coorporation - Author: -ptr.nov-
 			'attribute' =>'EMP_CORP_ID',
 			'format'=>'raw',
@@ -148,7 +162,12 @@ $this->mddPage = 'hrd';
 			//'inputWidth'=>'40%'
 		//	'inputContainer' => ['class'=>'col-sm-3'],
 		],
-		
+		[
+			'group'=>true,
+			'label'=>'SECTION 1: Identification Information',
+			'rowOptions'=>['class'=>'info'],
+			//'groupOptions'=>['class'=>'text-center']
+		],
 		
 		//Employe Profile - Author: -ptr.nov-
 		[
@@ -201,7 +220,9 @@ $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]);
 			'heading'=>$model->EMP_NM . ' '.$model->EMP_NM_BLK,
 			'type'=>DetailView::TYPE_INFO,
 		],	
-		'attributes'=>$attribute,
+		
+			'attributes'=>$attribute,
+		
 		
 		'deleteOptions'=>[
 			'url'=>['delete', 'id' => $model->EMP_ID],

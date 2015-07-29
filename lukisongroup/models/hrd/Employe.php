@@ -75,7 +75,7 @@ class Employe extends \yii\db\ActiveRecord
 			//Employe Profile - Author: -ptr.nov-
             'EMP_KTP' => Yii::t('app', 'No.KTP'),
             'EMP_ALAMAT' => Yii::t('app', 'Alamat'),
-			'EMP_ZIP' => Yii::t('app', 'Telphone'),
+			'EMP_ZIP' => Yii::t('app', 'Postal Code'),
             'EMP_TLP' => Yii::t('app', 'Telphone'),
             'EMP_HP' => Yii::t('app', 'Handphone'),
 			'EMP_TGL_LAHIR' => Yii::t('app', ' BridthDay'),

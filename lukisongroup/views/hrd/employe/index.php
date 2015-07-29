@@ -45,7 +45,13 @@ $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],            
+            //['class' => 'yii\grid\SerialColumn'], 
+			[
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{view}',
+				//'template' => '{view} {update}',
+				//Yii::t('app', 'Emplo'),
+			],			
 			[
 				/*Author -ptr.nov- image*/
                'attribute' => 'PIC',
@@ -94,12 +100,6 @@ $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval
 				//] 
 				]),
 				
-			],
-            [
-				'class' => 'yii\grid\ActionColumn',
-				'template' => '{view}',
-				//'template' => '{view} {update}',
-				//Yii::t('app', 'Emplo'),
 			],
             //['class' => 'yii\grid\CheckboxColumn'],
             //['class' => '\kartik\grid\RadioColumn'],
