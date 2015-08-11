@@ -16,7 +16,7 @@ use app\models\system\user\UserloginSearch;
 /* @var $this \yii\web\View */
 /* @var $content string */
 /* VARIABLE SIDE MENU Author: -Eka- */
-	use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
+use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
 
 //AppAsset::register($this);
 dmstr\web\AdminLteAsset::register($this);
@@ -35,6 +35,7 @@ dmstr\web\AdminLteAsset::register($this);
 			<title><?= Html::encode($this->mddPage) ?></title> 
 			<?php $this->head() ?>
 		</head>
+
 		<?php
 			/*
 			* == Call Variable Menu manipulation | --author: ptr.nov--
@@ -67,21 +68,22 @@ dmstr\web\AdminLteAsset::register($this);
 		
 		<! - NOT LOGIN- Author : -ptr.nov- >
 		<?php if (Yii::$app->user->isGuest) { ?>
-			<body class="skin-blue sidebar-mini"> 
+			<body class="skin-red sidebar-mini">
 				<!Refrensi:skin-blue|skin-blue-light|skin-green|skin-yellow|skin-purple|skin-red|skin-black>
 				<?php $this->beginBody(); ?>  
-					<div class="wrapper bg-lime"> 
+					<div class="wrapper bg-olive">
 						<!Refrensi:bg-light-blue|bg-green|bg-yellow|bg-red|bg-aqua|bg-purple|bg-blue|bg-navy|bg-teal|bg-maroon|bg-black|bg-gray|bg-olive|bg-lime|bg-orange|bg-fuchsia>
 						<header class="main-header">
 							<a  class="logo">
 								<!-- LOGO -->
 								LukisonGroup
 							</a>
+
 							<?php
 								// echo  \yii\helpers\Json::encode($menuItems);
 								if (Yii::$app->user->isGuest) {
 									//$menuItemsNoLogin[] = ['label' => '<a data-toggle="modal" data-target="#modal" style="cursor: pointer">Click me gently!</a>' , 'url'=> ['/site/login5']];
-                                    $menuItemsNoLogin[] = ['label' => Icon::show('home').'Home', 'url' => ['/site/index']];
+                                    $menuItemsNoLogin[] = ['label' => Icon::show('home').'Home', 'url' => ['/site/']];
 									$menuItemsNoLogin[] = [
 										'label' => Icon::show('shopping-cart') .'e-Procurement', 'url' => ['/site/loginc'],
 											'items' => [
@@ -123,82 +125,95 @@ dmstr\web\AdminLteAsset::register($this);
 								  'items' => [
 									 // equivalent to the above
 									  [
-										'content' => '<img src="'.Yii::getAlias('@path_carousel') . '/Cover.jpg" style="width:100%; height:100%"/>',
-										'options' =>[ 'style' =>'width: 100%; height: 150px;'],
+										'content' => '<img src="'.Yii::getAlias('@path_carousel') . '/test1.jpg" style="width:100%; height:100%"/>',
+									//	'options' =>[ 'style' =>'width: 100%; height: 300px;'],
 									  ],
 									[
-										'content' => '<img src="'.Yii::getAlias('@path_carousel') . '/carousel2.jpg" style="width:100%; height:100%"/>',
-										'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+										'content' => '<img src="'.Yii::getAlias('@path_carousel') . '/test2.jpg" style="width:100%; height:100%"/>',
+										//'options' =>[ 'style' =>'width: 100% ; height: 300px;'],
 									  ],
-									  
+
 									  // the item contains both the image and the caption
 									  [
-										  'content' => '<img src="'.Yii::getAlias('@path_carousel') . '/carousel3.jpg" style="width:100%;height:100%"/>',
+										  'content' => '<img src="'.Yii::getAlias('@path_carousel') . '/test1.jpg" style="width:100%;height:100%"/>',
 										  //'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
-										 'options' =>[ 'style' =>'width: 100%; height: 150px;'],
-										
+										// 'options' =>[ 'style' =>'width: 100%; height: 300px;'],
+
 									  ],
 								  ],
-								   'options' =>[ 'style' =>'width: 100%!important; height: 150px;'],
+								   //'options' =>[ 'style' =>'width: 100%!important; height: 300px;'],
 								]);
-							?>		
+							?>
 						<?php echo $content; ?>
 					</div>
-					<footer class="main-footer">
-							<p class="pull-left"> <?php echo $corp . date('Y') ?></p>
-					</footer>
+                    <footer class="footer bg-black" style="height: 50px">
+                        <br>
+                            <?php echo $corp . date('Y') ?>
+                        </br>
+                    </footer>
 				<?php $this->endBody() ?>
 			</body>
 		<?php } ?>
 
 		<! -LOGIN- Author : -ptr.nov- >
 		<?php if (!Yii::$app->user->isGuest) { ?>
-			<body class="skin-green-light sidebar-mini">
+			<body class="skin-blue  sidebar-mini">
 				<?php $this->beginBody(); ?>
-					<div class="wrapper">
+					<div class="wrapper bg-black|">
 						<header class="main-header">
+
 							<a  class="logo">
 								<!-- LOGO -->
 								LukisonGroup
 							</a>
-							<?php
-								// echo  \yii\helpers\Json::encode($menuItems);
-								if (!Yii::$app->user->isGuest) {
-									//$menuItems  = MenuHelper::getAssignedMenu(Yii::$app->user->id);
-									$menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback);
-									$menuItems[] = [
-										'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-										'url' => ['/site/logout'],
-										'linkOptions' => ['data-method' => 'post']
-									];
-									
-									NavBar::begin([
-										//'brandLabel' => 'LukisonGroup',
-										//'brandUrl' => Yii::$app->homeUrl,
-										'options' => [
-											//'class' => 'navbar-inverse navbar-fixed-top',
-										   //'class' =>  'navbar navbar-inverse navbar-static-top',
-											'class' => 'navbar-inverse navbar-static-top',
-										   // 'class' => 'navbar navbar-fixed-top',
-											'role'=>'navigation'//,'style'=>'margin-bottom: 0'
-										],
-									]);
+                               <!--  <div class="navbar-custom-menu">!-->
+                                    <?php
+                                        // echo  \yii\helpers\Json::encode($menuItems);
+                                        if (!Yii::$app->user->isGuest) {
+                                            //$menuItems  = MenuHelper::getAssignedMenu(Yii::$app->user->id);
+                                            $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback);
+                                            $menuItems[] = [
+                                                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                                                'url' => ['/site/logout'],
+                                                'linkOptions' => ['data-method' => 'post']
+                                            ];
 
-									echo NavX::widget([
-										'options' => ['class' => 'navbar-nav navbar-left'],
-										'items' => $menuItems,
-										'activateParents' => true,
-										'encodeLabels' => false,
-									]);
-									NavBar::end();
-								};
+                                            NavBar::begin([
+                                                //'brandLabel' => 'LukisonGroup',
+                                                //'brandUrl' => Yii::$app->homeUrl,
+                                                //-ptr.nov-
+                                                'brandLabel' => '<!-- Sidebar toggle button-->
+                                                                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                                                                    <span class="sr-only">Toggle Navigation</span>
+                                                                </a>',
+                                                'options' => [
+                                                    //'class' => 'navbar-inverse navbar-fixed-top',
+                                                   //'class' =>  'navbar navbar-inverse navbar-static-top',
+                                                    //'class' => 'navbar-inverse navbar-static-top',
+                                                   // 'class' => 'navbar-inverse navbar',
+                                                    // 'class' => 'navbar navbar-fixed-top',
+                                                    'role'=>'navigation','style'=>'margin-bottom: 0'
+                                                ],
+                                            ]);
 
-							?>
+                                            echo NavX::widget([
+                                                'options' => ['class' => 'navbar-nav  navbar-left'],
+                                                'items' => $menuItems,
+                                                'activateParents' => true,
+                                                'encodeLabels' => false,
+                                            ]);
+
+                                            NavBar::end();
+                                        };
+                                    ?>
+                               <!-- </div>!-->
+                          </nav>
 						 </header>
 
-						<div class="content-wrapper" >
+
+
 							<aside class="main-sidebar">
-							
+                                <section class="sidebar">
 								<!-- User Login -->
 									<div class="user-panel">
 										<div class="pull-left image">
@@ -246,12 +261,9 @@ dmstr\web\AdminLteAsset::register($this);
 										]);
 									};
 								?>
-
-
-								
-								
+                                    </section>
 							</aside>
-							<section class="content">
+                             <div class="content-wrapper">
 								<?php /*echo Breadcrumbs::widget([
 												'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 											]);
@@ -263,8 +275,7 @@ dmstr\web\AdminLteAsset::register($this);
 										<?php echo $content; ?>
 									</div>
 								</div>
-							</section>
-						</div>
+                            </div>
 					</div>			
 					<footer class="main-footer">
 						<p class="pull-left"> <?php echo $corp . date('Y') ?></p>

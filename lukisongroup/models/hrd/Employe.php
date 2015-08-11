@@ -41,7 +41,8 @@ class Employe extends \yii\db\ActiveRecord
 			[['EMP_STS'], 'integer'],
 			[['EMP_JOIN_DATE','EMP_TGL_LAHIR','EMP_RESIGN_DATE'], 'safe'],
 			[['EMP_JOIN_DATE','EMP_TGL_LAHIR','EMP_RESIGN_DATE'], 'date','format' => 'yyyy-mm-dd'], 
-			[['EMP_ALAMAT'], 'string'], 
+			[['EMP_ALAMAT'],  'filter', 'filter' => function($value) {
+                    return trim(htmlentities(strip_tags($value), ENT_QUOTES, 'UTF-8'));}],
 			[['EMP_TLP','EMP_HP'], 'string', 'max' => 15], 
 			[['EMP_GENDER'], 'string', 'max' => 6], 
 			[['EMP_EMAIL'], 'string', 'max' => 30],  			

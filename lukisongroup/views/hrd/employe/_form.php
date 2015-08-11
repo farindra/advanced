@@ -12,6 +12,7 @@ use kartik\widgets\FileInput;
 use yii\helpers\ArrayHelper;
 use lukisongroup\models\system\side_menu\M1000;
 use kartik\sidenav\SideNav;
+use kartik\markdown\Markdown;
 
 $this->mddPage = 'hrd';
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL,'options'=>['enctype'=>'multipart/form-data']]);
@@ -164,8 +165,10 @@ echo FormGrid::widget([
 							'columnOptions'=>['colspan'=>2],
 						],
 						'EMP_ALAMAT'=>[
-							'type'=>Form::INPUT_TEXTAREA, 
-							'options'=>['placeholder'=>'Enter address...'],
+							//'type'=>Form::INPUT_TEXTAREA,
+                            'type'=>Form::INPUT_WIDGET,
+                            'widgetClass'=>'kartik\markdown\MarkdownEditor',
+							//'options'=>['placeholder'=>'Enter address...'],
 							'columnOptions'=>['colspan'=>6],
 						],
 						'EMP_ZIP'=>[							
