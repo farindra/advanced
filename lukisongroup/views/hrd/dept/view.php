@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use app\models\hrd\Dept;
+use lukisongroup\models\hrd\Dept;
 use kartik\detail\DetailView;
 use yii\bootstrap\Modal;
 use kartik\widgets\ActiveField;

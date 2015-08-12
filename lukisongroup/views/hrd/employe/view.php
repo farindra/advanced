@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use app\models\hrd\Corp;
-use app\models\hrd\Dept;
-use app\models\hrd\Jabatan;
-use app\models\hrd\Status;
+use lukisongroup\models\hrd\Corp;
+use lukisongroup\models\hrd\Dept;
+use lukisongroup\models\hrd\Jabatan;
+use lukisongroup\models\hrd\Status;
 
 use kartik\detail\DetailView;
 use yii\bootstrap\Modal;

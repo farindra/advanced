@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
 
 /* TABLE CLASS DEVELOPE -> |DROPDOWN,PRIMARYKEY-> ATTRIBUTE */
-use app\models\hrd\Jabatan;
+use lukisongroup\models\hrd\Jabatan;
 use lukisongroup\models\system\side_menu\M1000;
 
 /*	KARTIK WIDGET -> Penambahan componen dari yii2 dan nampak lebih cantik*/

@@ -1,6 +1,6 @@
 <?php 
 use yii\helpers\Html;
-use app\models\hrd\Jabatan;
+use lukisongroup\models\hrd\Jabatan;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\builder\FormGrid;

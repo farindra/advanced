@@ -1,6 +1,6 @@
 <?php 
 use yii\helpers\Html;
-use app\models\hrd\Modulhrd;
+use lukisongroup\models\hrd\Modulhrd;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\builder\FormGrid;
@@ -28,7 +28,7 @@ echo FormGrid::widget([
 					'label'=>'Dept.ID',
 					'columns'=>5,
 					'attributes'=>[
-						'DEP_ID'=>[
+						'MDL_ID'=>[
 							'type'=>Form::INPUT_TEXT,
 							'Form::SIZE_LARGE', 							
 							'options'=>[
@@ -42,12 +42,12 @@ echo FormGrid::widget([
 							//'label'=>$nl,
 							//'value'=>$nl,
 						],
-						'DEP_NM'=>[
+						'MDL_NM'=>[
 							'type'=>Form::INPUT_TEXT, 
 							'options'=>['placeholder'=>'Department Name...'],
 							'columnOptions'=>['colspan'=>4],
 						],
-						'DEP_DCRP'=>[
+						'MDL_DCRP'=>[
 							'type'=>Form::INPUT_TEXTAREA, 
 							'options'=>['placeholder'=>'Department Description ...'],
 							'columnOptions'=>['colspan'=>4],

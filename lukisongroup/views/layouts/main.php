@@ -209,9 +209,6 @@ dmstr\web\AdminLteAsset::register($this);
                                <!-- </div>!-->
                           </nav>
 						 </header>
-
-
-
 							<aside class="main-sidebar">
                                 <section class="sidebar">
 								<!-- User Login -->
@@ -237,49 +234,48 @@ dmstr\web\AdminLteAsset::register($this);
 										</div>
 									</form>
 								<!-- /.search form -->
-								
-								<?php								
-									/**
-									 * Author: -ptr.nov-
-									 * Noted: add variable "mddPage" get value
-									 * \vendor\yiisoft\yii2\web\View.php
-									*/
-									//echo $this->mddPage;
-									if ($this->mddPage != false) {
-										$getSideMenu=$this->mddPage;
-									}else{
-										$getSideMenu='mdefault';
-									}
-									$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu($getSideMenu)->one()->jval);
-									if (!Yii::$app->user->isGuest) {
-										echo SideNav::widget([
-											'items' => $side_menu,
-											'encodeLabels' => false,
-											//'heading' => $heading,
-											'type' => SideNav::TYPE_DEFAULT,
-											'options' => ['class' => 'sidebar-nav'],
-										]);
-									};
-								?>
-                                    </section>
+                                    <?php
+                                        /**
+                                         * Author: -ptr.nov-
+                                         * Noted: add variable "mddPage" get value
+                                         * \vendor\yiisoft\yii2\web\View.php
+                                        */
+                                        //echo $this->mddPage;
+                                        if ($this->mddPage != false) {
+                                            $getSideMenu=$this->mddPage;
+                                        }else{
+                                            $getSideMenu='mdefault';
+                                        }
+                                        $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu($getSideMenu)->one()->jval);
+                                        if (!Yii::$app->user->isGuest) {
+                                            echo SideNav::widget([
+                                                'items' => $side_menu,
+                                                'encodeLabels' => false,
+                                                //'heading' => $heading,
+                                                'type' => SideNav::TYPE_DEFAULT,
+                                                'options' => ['class' => 'sidebar-nav'],
+                                            ]);
+                                        };
+                                    ?>
+                                </section>
 							</aside>
-                             <div class="content-wrapper">
-								<?php /*echo Breadcrumbs::widget([
-												'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-											]);
-										*/
-								?>
-								<?= Alert::widget() ?>
-								<div class="panel panel-default" style="margin-top: 0px">
-									<div class="panel-body">
-										<?php echo $content; ?>
-									</div>
-								</div>
+                            <div class="content-wrapper">
+                                 <section class="content-header">
+                                     <?php echo Breadcrumbs::widget([
+                                                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                                                    ]);
+
+                                     ?>
+                                     <?= Alert::widget() ?>
+                                 </section>
+                                 <div class="panel panel-default" style="margin-left: 2px">
+                                        <?php echo $content; ?>
+                                 </div>
                             </div>
-					</div>			
-					<footer class="main-footer">
-						<p class="pull-left"> <?php echo $corp . date('Y') ?></p>
-					</footer>
+                    </div>
+                    <div class="box-footer" style="color: blue">
+                        <p class="pull-left"> <?php echo $corp .'-'. date('Y') ?></p>
+                    </div>
 				<?php $this->endBody() ?>
 			</body>
 		<?php } ?>

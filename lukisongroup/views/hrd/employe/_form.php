@@ -1,10 +1,10 @@
 <?php 
 use yii\helpers\Html;
-use app\models\hrd\Corp;
-use app\models\hrd\Dept;
-use app\models\hrd\Jabatan;
-use app\models\hrd\Status;
-use app\models\hrd\Employe;
+use lukisongroup\models\hrd\Corp;
+use lukisongroup\models\hrd\Dept;
+use lukisongroup\models\hrd\Jabatan;
+use lukisongroup\models\hrd\Status;
+use lukisongroup\models\hrd\Employe;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\builder\FormGrid;
@@ -15,7 +15,7 @@ use kartik\sidenav\SideNav;
 use kartik\markdown\Markdown;
 
 $this->mddPage = 'hrd';
-$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL,'options'=>['enctype'=>'multipart/form-data']]);
+$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL,'options'=>['enctype'=>'multipart/form-data']]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);
 /*Author: -ptr.nov- Generate digit EMP_ID */

@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
 
 /* TABLE CLASS DEVELOPE -> |DROPDOWN,PRIMARYKEY-> ATTRIBUTE */
-use app\models\hrd\Dept;
+use lukisongroup\models\hrd\Dept;
 /*	KARTIK WIDGET -> Penambahan componen dari yii2 dan nampak lebih cantik*/
 use kartik\grid\GridView;
 use kartik\widgets\ActiveForm;

@@ -6,7 +6,7 @@
  * Author: -ptr.nov-
 */
 
-namespace app\models\hrd;
+namespace lukisongroup\models\hrd;
 use Yii;
 use yii\web\UploadedFile;
 
@@ -155,6 +155,11 @@ class Employe extends \yii\db\ActiveRecord
 			$pic = isset($this->EMP_IMG) ? $this->EMP_IMG : 'default.jpg';
 			return Yii::$app->params['HRD_EMP_UploadUrl'].$pic;
 		}
+
+    //public static function primaryKey()
+   // {
+    //    return ['EMP_ID'];
+   // }
 
 }
 
