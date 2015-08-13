@@ -143,7 +143,16 @@ $tab_employe= GridView::widget([
 					['modelClass' => 'Employe',]),
 					['create'], ['class' => 'btn btn-success']),
         ],
-		'pjax'=>true,
+        'pjax'=>true,
+        'pjaxSettings'=>[
+            'options'=>[
+                'enablePushState'=>false,
+                'id'=>'active',
+                //'formSelector'=>'ddd1',
+                //'options'=>[
+                //    'id'=>'active'
+               // ],
+        ],
         'hover'=>true, //cursor select
         //'responsive'=>true,
         'responsiveWrap'=>true,
@@ -155,6 +164,8 @@ $tab_employe= GridView::widget([
             'showConfirmAlert'=>false,
             'target'=>GridView::TARGET_BLANK
         ],
+
+    ],
        // 'floatHeaderOptions' => ['scrollingTop' => $scrollingTop],
        // 'containerOptions' => ['style' => 'overflow: auto'],
     //'persistResize'=>true,
@@ -264,6 +275,16 @@ $tab_employe_resign= GridView::widget([
                 ['create'], ['class' => 'btn btn-success']),
     ],
     'pjax'=>true,
+    'pjaxSettings'=>[
+        'options'=>[
+            'enablePushState'=>false,
+            'id'=>'resign',
+            //'formSelector'=>'ddd',
+            //'options'=>[
+            //    'id'=>'resign'
+            //],
+        ],
+    ],
     'hover'=>true, //cursor select
     //'responsive'=>true,
     'responsiveWrap'=>true,
