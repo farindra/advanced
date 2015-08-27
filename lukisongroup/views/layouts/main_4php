@@ -70,13 +70,13 @@ dmstr\web\AdminLteAsset::register($this);
 		
 		<! - NOT LOGIN- Author : -ptr.nov- >
 		<?php if (Yii::$app->user->isGuest) { ?>
-			<body class="skin-blue sidebar-mini">
+			<body class="skin-red sidebar-mini">
 				<!Refrensi:skin-blue|skin-blue-light|skin-green|skin-yellow|skin-purple|skin-red|skin-black>
 				<?php $this->beginBody(); ?>  
 					<div class="wrapper bg-olive">
 						<!Refrensi:bg-light-blue|bg-green|bg-yellow|bg-red|bg-aqua|bg-purple|bg-blue|bg-navy|bg-teal|bg-maroon|bg-black|bg-gray|bg-olive|bg-lime|bg-orange|bg-fuchsia>
 						<header class="main-header">
-							<a  class="logo bg-red">
+							<a  class="logo">
 								<!-- LOGO -->
 								LukisonGroup
 							</a>
@@ -189,10 +189,7 @@ dmstr\web\AdminLteAsset::register($this);
                                                             </a>',
                                             'options' => [
                                                 //'class' => 'navbar-inverse navbar-fixed-top',
-                                               'class' => [
-                                                   'navbar navbar-inverse navbar-static-top',
-                                                   'style'=>'background-color:#313131'
-                                               ],
+                                               'class' =>  'navbar navbar-inverse navbar-static-top',
                                                 //'class' => 'navbar-inverse navbar-static-top',
                                                // 'class' => 'navbar-inverse navbar',
                                                 // 'class' => 'navbar navbar-fixed-top',
@@ -229,7 +226,7 @@ dmstr\web\AdminLteAsset::register($this);
                                 </div>
                             <!-- /.User Login -->
                             <!-- search form -->
-                                <form action="#" method="get" class="sidebar-form skin-blue">
+                                <form action="#" method="get" class="sidebar-form">
                                     <div class="input-group">
                                         <input type="text" name="q" class="form-control" placeholder="Search..."/>
                                       <span class="input-group-btn">
@@ -259,8 +256,8 @@ dmstr\web\AdminLteAsset::register($this);
                                             //'heading' => $heading,
                                             'type' => SideNav::TYPE_DEFAULT,
                                             'options' => [
-                                                'class' => 'navbar-default bg-black',
-                                                //'style'=>'background-color:#313131',
+                                                'class' => 'navbar-inverse',
+                                                'style'=>'background-color:#313131',
                                             ],
                                         ]);
                                     };
