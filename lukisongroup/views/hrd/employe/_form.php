@@ -168,6 +168,8 @@ echo FormGrid::widget([
 							//'type'=>Form::INPUT_TEXTAREA,
                             'type'=>Form::INPUT_WIDGET,
                             'widgetClass'=>'kartik\markdown\MarkdownEditor',
+							'value'=>'<span class="text-justify"><em>' . $model->EMP_ALAMAT . 
+							'</em></span>',
 							//'options'=>['placeholder'=>'Enter address...'],
 							'columnOptions'=>['colspan'=>6],
 						],

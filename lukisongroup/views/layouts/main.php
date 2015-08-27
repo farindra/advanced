@@ -1,9 +1,8 @@
 <?php
-use lukisongroup\assets\AppAsset;
-use mdm\admin\components\MenuHelper;
+
 use yii\helpers\Html;
 use yii\bootstrap\Carousel;
-use yii\bootstrap\Modal;
+
 use kartik\form\ActiveForm;
 /*use yii\bootstrap\Nav;*/
 use kartik\nav\NavX;
@@ -17,7 +16,9 @@ use app\models\system\user\UserloginSearch;
 /* @var $content string */
 /* VARIABLE SIDE MENU Author: -Eka- */
 use lukisongroup\models\system\side_menu\M1000;			/* TABLE CLASS */
-
+use lukisongroup\assets\AppAsset;
+use mdm\admin\components\MenuHelper;
+use yii\bootstrap\Modal;
 //AppAsset::register($this);
 dmstr\web\AdminLteAsset::register($this);
 
@@ -32,7 +33,7 @@ dmstr\web\AdminLteAsset::register($this);
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<?= Html::csrfMetaTags() ?>
 			<title><?= Html::encode($this->title) ?></title>
-            
+
             <title><?= Html::encode($this->mddPage) ?></title>
 			<?php $this->head() ?>
 		</head>
@@ -158,7 +159,7 @@ dmstr\web\AdminLteAsset::register($this);
 
 		<! -LOGIN- Author : -ptr.nov- >
 		<?php if (!Yii::$app->user->isGuest) { ?>
-			<body class="skin-blue  sidebar-mini">
+			<body class="hold-transition skin-blue "> <!--  sidebar-mini !-->
 				<?php $this->beginBody(); ?>
 					<div class="wrapper bg-black|">
 						<header class="main-header">
@@ -188,7 +189,7 @@ dmstr\web\AdminLteAsset::register($this);
                                                                     <span class="sr-only">Toggle Navigation</span>
                                                                 </a>',
                                                 'options' => [
-                                                    //'class' => 'navbar-inverse navbar-fixed-top',
+                                                    'class' => 'navbar-inverse navbar-fixed-top',
                                                    //'class' =>  'navbar navbar-inverse navbar-static-top',
                                                     //'class' => 'navbar-inverse navbar-static-top',
                                                    // 'class' => 'navbar-inverse navbar',
@@ -208,10 +209,10 @@ dmstr\web\AdminLteAsset::register($this);
                                         };
                                     ?>
                                <!-- </div>!-->
-                          </nav>
+           
 						 </header>
-							<aside class="main-sidebar">
-                                <section class="sidebar">
+							<aside class="main-sidebar  ">
+                                <section class="sidebar affix">
 								<!-- User Login -->
 									<div class="user-panel">
 										<div class="pull-left image">
@@ -254,7 +255,7 @@ dmstr\web\AdminLteAsset::register($this);
                                                 'encodeLabels' => false,
                                                 //'heading' => $heading,
                                                 'type' => SideNav::TYPE_DEFAULT,
-                                                'options' => ['class' => 'sidebar-nav'],
+                                                'options' => ['class' => 'sidebar-nav navbar-inverse  '],
                                             ]);
                                         };
                                     ?>
