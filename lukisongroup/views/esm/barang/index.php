@@ -7,7 +7,7 @@ use app\models\esm\Barang;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\esm\BarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-$this->mddPage = 'esm';
+$this->mddPage = 'esm_prodak';
 $this->title = 'Barang';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

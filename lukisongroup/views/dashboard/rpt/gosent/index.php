@@ -1,12 +1,15 @@
 <?php
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\widgets\DetailView;
 use yii\bootstrap\ActiveForm;
 use kartik\tabs\TabsX;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\system\Dashboard */
+$this->title = Yii::t('app', 'Reporting - PT.  Gosend ');
+echo Html::panel(
+    ['heading' => Html::encode($this->title) ],
+    Html::TYPE_DANGER
+);
 ?>
 <div class="panel panel-default">
     

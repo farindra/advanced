@@ -21,7 +21,7 @@ use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
-$this->mddPage = 'hrd';
+$this->mddPage = 'hrd_employee';
 $this->title = Yii::t('app', 'Modul HRD');
 $this->params['breadcrumbs'][] = $this->title;
 ?>

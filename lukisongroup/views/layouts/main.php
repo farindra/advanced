@@ -269,17 +269,19 @@ dmstr\web\AdminLteAsset::register($this);
                         </section>
                     </aside>
                     <div class="content-wrapper">
-                        <div class="panel panel-default" style="margin-bottom: 0">
+                        <!--<div class="panel panel-default" style="margin-bottom: 0">!-->
                             <?php
-                               echo Breadcrumbs::widget([
+                               /*
+							   echo Breadcrumbs::widget([
                                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                                                'options'=>[
                                                    'class' => 'breadcrumb',
                                                    'style'=>'background-color:#e1e1e1;margin-bottom:0;margin-top:0',
                                                ],
                                            ]);
+								*/
                             ?>
-                        </div>
+                        <!--</div>!-->
                         <div class="panel panel-default" style="margin-left: 2px; margin-right: 2px ;margin-bottom: 0">
                             <?php
                                echo $content;

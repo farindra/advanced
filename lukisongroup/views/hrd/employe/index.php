@@ -24,11 +24,11 @@ use kartik\date\DatePicker;
 use kartik\builder\Form;
 use kartik\sidenav\SideNav;
 
-use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
-AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
+//use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
+//AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
-$this->mddPage = 'hrd';
+$this->mddPage = 'hrd_employee';
 $this->title = Yii::t('app', 'Employe');
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -37,11 +37,6 @@ $Combo_Corp = ArrayHelper::map(Corp::find()->orderBy('SORT')->asArray()->all(), 
 $Combo_Dept = ArrayHelper::map(Dept::find()->orderBy('SORT')->asArray()->all(), 'DEP_NM','DEP_NM');
 $Combo_Jab = ArrayHelper::map(Jabatan::find()->orderBy('SORT')->asArray()->all(), 'JAB_NM','JAB_NM');
 $Combo_Status = ArrayHelper::map(Status::find()->orderBy('SORT')->asArray()->all(), 'STS_NM','STS_NM');
-$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
-
-    //print_r($dataProvider);												/*SHOW ARRAY YII Author: -Devandro-*/
-	//echo  \yii\helpers\Json::encode($dataProvider->getModels());			/*SHOW ARRAY JESON Author: -ptr.nov-*/
-//$tab_employe='';
 
 //--EMPLOYE ACTIVED--
 $tab_employe= GridView::widget([
