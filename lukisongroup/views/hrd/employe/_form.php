@@ -14,7 +14,7 @@ use lukisongroup\models\system\side_menu\M1000;
 use kartik\sidenav\SideNav;
 use kartik\markdown\Markdown;
 
-$this->mddPage = 'hrd_employee';
+$this->sideMenu = 'hrd_employee';
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL,'options'=>['enctype'=>'multipart/form-data']]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL]);
 //$form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);

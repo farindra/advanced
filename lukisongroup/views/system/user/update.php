@@ -9,7 +9,7 @@ use yii\helpers\Html;
 //    'modelClass' => 'Maxiprodak',
 //]) . ' ' . $model->EMP_ID;
 /* add Menu Author: -ptr.nov-*/
-$this->mddPage = 'admin';
+$this->sideMenu = 'admin';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->EMP_ID, 'url' => ['view', 'id' => $model->BRG_ID]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');

@@ -17,7 +17,7 @@ use kartik\widgets\Growl;
 use kartik\widgets\FileInput;
 
 
-$this->mddPage = 'hrd_employee';
+$this->sideMenu = 'hrd_employee';
 
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['prodak']];
 //$this->params['breadcrumbs'][] = $this->title;

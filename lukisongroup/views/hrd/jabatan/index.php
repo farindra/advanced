@@ -24,7 +24,7 @@ use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
-$this->mddPage = 'hrd_employee';
+$this->sideMenu = 'hrd_employee';
 $this->title = Yii::t('app', 'Jabatan');
 $this->params['breadcrumbs'][] = $this->title;
 

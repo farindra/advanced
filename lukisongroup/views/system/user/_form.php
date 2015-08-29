@@ -7,7 +7,7 @@ use kartik\builder\FormGrid;
 use kartik\widgets\FileInput;
 use yii\helpers\ArrayHelper;
 
-$this->mddPage = 'hrd';
+$this->sideMenu = 'hrd';
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);
 $nlDigit= (Dept::find()->count())+1;
 $nl='LG'.$nlDigit;

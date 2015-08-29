@@ -4,13 +4,17 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\esm\Barang;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\esm\BarangSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-$this->mddPage = 'esm_prodak';
+$this->sideMenu = 'esm prodak';
 $this->title = 'Barang';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->sideCorp = 'PT. Efenbi Sukses Makmur';       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
+$this->sideMenu = 'esm_barang';                     /* kd_menu untuk list menu pada sidemenu, get from table of database */
+$this->title = Yii::t('app', 'ESN - Barang ');      /* title pada header page */
+$this->params['breadcrumbs'][] = $this->title;      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
 ?>
+
+
 <div class="barang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

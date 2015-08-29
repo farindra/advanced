@@ -5,12 +5,12 @@ use yii\widgets\DetailView;
 use yii\bootstrap\ActiveForm;
 use kartik\tabs\TabsX;
 
-$this->title = Yii::t('app', 'Reporting - PT.  Efembi Sukses Makmur ');
-echo Html::panel(
-    ['heading' => Html::encode($this->title) ],
-    Html::TYPE_DANGER
-);
+$this->sideCorp = 'PT. Efenbi Sukses Makmur';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
+$this->sideMenu = '';                                    /* kd_menu untuk list menu pada sidemenu, get from table of database */
+$this->title = Yii::t('app', 'Reporting - PT.  Efembi Sukses Makmur');           /* title pada header page */
+$this->params['breadcrumbs'][] = $this->title;                      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
 ?>
+
 <div class="panel panel-default">
     
 			<?php

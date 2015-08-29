@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\maxi\Maxiprodak */
 /* add Menu Author: -ptr.nov-*/
-$this->mddPage = 'admin';
+$this->sideMenu = 'admin';
 //$this->title = Yii::t('app', 'Create Maxiprodak');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Employe'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

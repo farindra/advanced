@@ -7,7 +7,7 @@ use app\models\esm\Barang;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Barang */
 
-$this->mddPage = 'esm';
+$this->sideMenu = 'esm';
 $this->title = $model->KD_BARANG;
 $this->params['breadcrumbs'][] = ['label' => 'Barang', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

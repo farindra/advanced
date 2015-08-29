@@ -7,7 +7,7 @@ use common\components\MenuWidget;
 /* @var $searchModel backend\models\ProggresjobSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->mddPage = 'itprogrammer';
+$this->sideMenu = 'itprogrammer';
 $this->title = 'Proggresjobs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

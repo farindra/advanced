@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Unitbarang */
-$this->mddPage = 'esm';
+$this->sideMenu = 'esm';
 $this->title = 'Buat Unit Baru';
 $this->params['breadcrumbs'][] = ['label' => 'Unit', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

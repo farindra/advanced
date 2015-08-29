@@ -21,7 +21,7 @@ use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /* add Menu Author: -ptr.nov-*/
-$this->mddPage = 'admin';
+$this->sideMenu = 'admin';
 /*Title page Modul*/
 $this->title = Yii::t('app', 'Department');
 $this->params['breadcrumbs'][] = $this->title;

@@ -28,7 +28,7 @@ use kartik\sidenav\SideNav;
 //AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
 /*Title page Modul*/
-$this->mddPage = 'hrd_employee';
+$this->sideMenu = 'hrd_employee';
 $this->title = Yii::t('app', 'Employe');
 $this->params['breadcrumbs'][] = $this->title;
 

@@ -10,7 +10,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 use dosamigos\ckeditor\CKEditorInline;
 
 
-$this->mddPage = 'itprogrammer';
+$this->sideMenu = 'itprogrammer';
 
 //$this->title = $model->proggres_id;
 $this->params['breadcrumbs'][] = ['label' => 'Proggresjobs', 'url' => ['index']];

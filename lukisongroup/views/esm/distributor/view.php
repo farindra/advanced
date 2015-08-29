@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Distributor */
-$this->mddPage = 'esm';
+$this->sideMenu = 'esm';
 $this->title = $model->KD_DISTRIBUTOR;
 $this->params['breadcrumbs'][] = ['label' => 'Distributor', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

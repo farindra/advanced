@@ -29,7 +29,7 @@ use scotthuangzl\googlechart\GoogleChart;
 
 use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
 AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
-$this->mddPage = 'itprogrammer';
+$this->sideMenu = 'itprogrammer';
 $this->title = Yii::t('app', 'Programmer Dashboard ');
 $this->params['breadcrumbs'][] = $this->title;
 

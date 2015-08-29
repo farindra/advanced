@@ -12,7 +12,7 @@ use kartik\icons\Icon;
 use kartik\widgets\Growl;
 
 /* add Menu Author: -ptr.nov-*/
-$this->mddPage = 'admin';
+$this->sideMenu = 'admin';
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maxiprodaks'), 'url' => ['prodak']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>

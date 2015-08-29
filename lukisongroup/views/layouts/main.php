@@ -1,6 +1,7 @@
 <?php
 
-use yii\helpers\Html;
+//use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\bootstrap\Carousel;
 
 use kartik\form\ActiveForm;
@@ -33,8 +34,10 @@ dmstr\web\AdminLteAsset::register($this);
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<?= Html::csrfMetaTags() ?>
 			<title><?= Html::encode($this->title) ?></title>
+            <!-- tambahan variable untuk template Author: --ptr.nov-- !-->
+            <title><?= Html::encode($this->sideMenu) ?></title>
+            <title><?= Html::encode($this->sideCorp) ?></title>
 
-            <title><?= Html::encode($this->mddPage) ?></title>
 			<?php $this->head() ?>
 		</head>
 
@@ -65,7 +68,7 @@ dmstr\web\AdminLteAsset::register($this);
 				$MainUserProfile = $ModelUserAttr->emp->EMP_NM . ' '. $ModelUserAttr->emp->EMP_NM_BLK;
 			
 			}
-			$corp="<p class='pull-left'>&copy; LukisonGroup <?= date('Y') ?></p>";			
+			$corp="<p class='pull-left'>&copy; LukisonGroup <?= date('Y') ?></p>";
 		?>
 		
 		<! - NOT LOGIN- Author : -ptr.nov- >
@@ -164,6 +167,9 @@ dmstr\web\AdminLteAsset::register($this);
                 <div class="wrapper">
                     <header class="main-header">
                         <a  class="logo bg-red">
+                            <?php
+                            echo Html::img('http://lukisongroup.com/favicon.ico', ['width'=>'20']);
+                            ?>
                             <!-- LOGO -->
                             LukisonGroup
                         </a>
@@ -218,15 +224,28 @@ dmstr\web\AdminLteAsset::register($this);
                         <section class="sidebar">
                             <!-- User Login -->
                                 <div class="user-panel">
-                                    <div class="pull-left image">
-                                        <img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $MainAvatar; ?>" class="img-circle" alt="User Image"/>
+                                    <div class="pull-left" style="text-align: left">
+                                        <img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $MainAvatar; ?>" class="img-circle" alt="Cinque Terre" width="80" height="80"/>
                                     </div>
-                                    <div class="pull-left info">
+                                    <div class="pull-left info" style="margin-left: 40px" >
                                         <p><?php echo $MainUserProfile; ?></p>
-
+                                    
                                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                                     </div>
                                 </div>
+                            <div class="user-panel bg-red">
+                                <!-- /.Company Select Dashboard -->
+                                 <p>
+                                    <?php
+                                        if ($this->sideCorp != '') {
+                                            echo $this->sideCorp;
+                                        }else{
+                                            echo 'PT. Lukison Group';
+                                        }
+                                    ?>
+                                 </p>
+                            </div>
+                               
                             <!-- /.User Login -->
                             <!-- search form -->
                                 <form action="#" method="get" class="sidebar-form skin-blue">
@@ -242,15 +261,27 @@ dmstr\web\AdminLteAsset::register($this);
                                 <?php
                                     /**
                                      * Author: -ptr.nov-
-                                     * Noted: add variable "mddPage" get value
+                                     * Noted: add variable "sideMenu" get value
                                      * \vendor\yiisoft\yii2\web\View.php
                                     */
-                                    //echo $this->mddPage;
-                                    if ($this->mddPage != false) {
-                                        $getSideMenu=$this->mddPage;
+                                $side_menu='';
+                                    //echo $this->sideMenu;
+                                    if ($this->sideMenu != false) {
+                                        $getSideMenu=$this->sideMenu;
+                                        if (M1000::find()->findMenu($this->sideMenu)->one()){
+                                            $getSideMenu=$this->sideMenu;
+
+                                        }else{
+                                            echo Html::panel(
+                                                ['heading' => 'variabel $this->sideMenu = "'.  $getSideMenu . '"; Tidak ditemukan dalam database dbm000, tabel m1000, tambahkan pada view anda menu yang benar untuk menu samping '],
+                                                Html::TYPE_INFO
+                                            );
+                                             $getSideMenu='mdefault';
+                                        }
                                     }else{
                                         $getSideMenu='mdefault';
                                     }
+
                                     $side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu($getSideMenu)->one()->jval);
                                     if (!Yii::$app->user->isGuest) {
                                         echo SideNav::widget([
@@ -284,6 +315,12 @@ dmstr\web\AdminLteAsset::register($this);
                         <!--</div>!-->
                         <div class="panel panel-default" style="margin-left: 2px; margin-right: 2px ;margin-bottom: 0">
                             <?php
+                                // Title Penganti Breadcrumbs Author: -ptr.nov-
+                                echo Html::panel(
+                                    ['heading' => $this->title ],
+                                    Html::TYPE_DANGER
+                                );
+
                                echo $content;
                             ?>
                        </div>

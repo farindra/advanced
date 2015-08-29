@@ -11,7 +11,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
 use kartik\editable\Editable;
 use kartik\widgets\DepDrop;
-$this->mddPage = 'itprogrammer';
+$this->sideMenu = 'itprogrammer';
 
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_HORIZONTAL,'options'=>['enctype'=>'multipart/form-data']]);
 ?>

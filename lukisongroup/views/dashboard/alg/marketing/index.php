@@ -1,9 +1,4 @@
 <?php
-/*
- * By ptr.nov
- * Load Config CSS/JS
- */
-/* YII CLASS */
 //use yii\helpers\Html;
 use kartik\helpers\Html;
 use yii\helpers\ArrayHelper;
@@ -17,22 +12,16 @@ use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
-//use dosamigos\chartjs\Chart;
-//use miloschuman\highcharts\Highcharts;
-//use yii\web\JsExpression;
-//CLASS Chart GoogleChart
 use scotthuangzl\googlechart\GoogleChart;
 
-use backend\assets\AppAsset; 	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
-AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
-$this->mddPage = 'alg_marketing';
-$this->title = Yii::t('app', 'ALG- Marketing Dashboard ');
-$this->params['breadcrumbs'][] = $this->title;
+//use backend\assets\AppAsset;  	/* CLASS ASSET CSS/JS/THEME Author: -ptr.nov-*/
+//AppAsset::register($this);		/* INDEPENDENT CSS/JS/THEME FOR PAGE  Author: -ptr.nov-*/
 
-echo Html::panel(
-    ['heading' => Html::encode($this->title) ],
-    Html::TYPE_DANGER
-);
+$this->sideCorp = 'PT. Arta Lipat Ganda';                   /* Title Select Company pada header pasa sidemenu/menu samping kiri */
+$this->sideMenu = 'alg_marketing';                          /* kd_menu untuk list menu pada sidemenu, get from table of database */
+$this->title = Yii::t('app', 'ALG - Marketing Dashboard ');  /* title pada header page */
+$this->params['breadcrumbs'][] = $this->title;              /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
+
 				$pertama= GoogleChart::widget(array('visualization' => 'PieChart',
 					'data' => array(
 						array('Task', 'Hours per Day'),

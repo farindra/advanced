@@ -8,7 +8,7 @@ use app\models\esm\ro\RequestorderSearch;
 
 use yii\helpers\ArrayHelper;
 use app\models\master\Perusahaan;
-$this->mddPage = 'esm';
+$this->sideMenu = 'esm';
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\ro\Requestorder */
 /* @var $form yii\widgets\ActiveForm */

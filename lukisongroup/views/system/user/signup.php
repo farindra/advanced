@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\SignupForm */
 /* add Menu Author: -ptr.nov-*/
-$this->mddPage = 'admin';
+$this->sideMenu = 'admin';
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

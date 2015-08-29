@@ -34,7 +34,7 @@ dmstr\web\AdminLteAsset::register($this);
 			<?= Html::csrfMetaTags() ?>
 			<title><?= Html::encode($this->title) ?></title>
 
-            <title><?= Html::encode($this->mddPage) ?></title>
+            <title><?= Html::encode($this->sideMenu) ?></title>
 			<?php $this->head() ?>
 		</head>
 
@@ -239,12 +239,12 @@ dmstr\web\AdminLteAsset::register($this);
                                 <?php
                                     /**
                                      * Author: -ptr.nov-
-                                     * Noted: add variable "mddPage" get value
+                                     * Noted: add variable "sideMenu" get value
                                      * \vendor\yiisoft\yii2\web\View.php
                                     */
-                                    //echo $this->mddPage;
-                                    if ($this->mddPage != false) {
-                                        $getSideMenu=$this->mddPage;
+                                    //echo $this->sideMenu;
+                                    if ($this->sideMenu != false) {
+                                        $getSideMenu=$this->sideMenu;
                                     }else{
                                         $getSideMenu='mdefault';
                                     }
