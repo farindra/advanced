@@ -45,10 +45,13 @@ dmstr\web\AdminLteAsset::register($this);
 			/*
 			* == Call Variable Menu manipulation | --author: ptr.nov--
 			*/
+        //Icon::showStack('twitter', 'square-o', ['class'=>'fa-lg'])
 			$callback = function($menu){
+                $data1=($menu['data']);
 				$data = eval($menu['data']);
+                echo $data;
 				return [
-					'label' => $menu['name'],
+					'label' => Icon::show($data1).$menu['name'],
 					'url' => [$menu['route']],
 					//'options' => $data,
 					'items' => $menu['children']
@@ -180,7 +183,8 @@ dmstr\web\AdminLteAsset::register($this);
                                         //$menuItems  = MenuHelper::getAssignedMenu(Yii::$app->user->id);
                                         $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback);
                                         $menuItems[] = [
-                                            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                                            'label' => Icon::show('power-off') . 'Logout (' . Yii::$app->user->identity->username . ')',
+                                            //'label' => Icon::showStack('twitter', 'square-o', ['class'=>'fa-lg']) . 'Logout (' . Yii::$app->user->identity->username . ')',
                                             'url' => ['/site/logout'],
                                             'linkOptions' => ['data-method' => 'post']
                                         ];
