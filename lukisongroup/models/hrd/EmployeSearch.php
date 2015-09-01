@@ -216,4 +216,20 @@ class EmployeSearch extends Employe
         }
         return $dataProvider1;
     }
+
+
+    public function search_empid($Emp_Id)
+    {
+        $query = Employe::find()
+            ->JoinWith('corpOne',true,'LEFT JOIN')
+            ->JoinWith('deptOne',true,'left JOIN')
+            ->JoinWith('jabOne',true,'left JOIN')
+            ->JoinWith('sttOne',true,'left JOIN')
+            ->where("a0001.EMP_ID='". $Emp_Id . "'");
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        return $dataProvider;
+    }
+
 }

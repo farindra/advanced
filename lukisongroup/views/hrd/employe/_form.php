@@ -1,5 +1,6 @@
 <?php 
-use yii\helpers\Html;
+//use yii\helpers\Html;
+use kartik\helpers\Html;
 use lukisongroup\models\hrd\Corp;
 use lukisongroup\models\hrd\Dept;
 use lukisongroup\models\hrd\Jabatan;
@@ -36,9 +37,15 @@ $digit=str_pad($id_cnt,4,"0",STR_PAD_LEFT);
 $thn=date("Y");
 $nl='LG'.'.'.$thn.'.'.$digit;
 /*Author: Eka Side Menu */
-$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
+//$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('hrd')->one()->jval);
 
-echo FormGrid::widget([
+$this->sideCorp = 'PT. Lukisongroup';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
+$this->sideMenu = 'hrd_employee';                           /* kd_menu untuk list menu pada sidemenu, get from table of database */
+$this->title = Yii::t('app', 'Employee');                   /* title pada header page */
+$this->params['breadcrumbs'][] = $this->title;              /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
+
+
+$EmployeeInput= FormGrid::widget([
 	'model'=>$model,
 	'form'=>$form,
 	'autoGenerateColumns'=>true,
@@ -254,4 +261,30 @@ echo FormGrid::widget([
 	]
   
 ]);
+
+?>
+<div class="panel panel-default" style="margin-top: 0px">
+    <div class="panel-body">
+		<div class="dashboard-view">
+			<div class="col-lg-12">
+                <?php
+                    echo Html::listGroup([
+                         [
+                             //'content' => 'Welcome : Piter Novian',
+                             'url' => '#',
+                             'badge' => '',
+                             'active' => true
+                         ],
+                         [
+                             'content' => $EmployeeInput,
+
+                         ],
+                    ]);
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
 ActiveForm::end();
+?>

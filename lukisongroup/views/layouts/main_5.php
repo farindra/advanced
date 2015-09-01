@@ -332,11 +332,10 @@ dmstr\web\AdminLteAsset::register($this);
                             ?>
                        </div>
                     </div>
-                </div>
                 <div class="box-footer bg-black" style="color: blue">
                     <p> <?php echo $corp .'-'. date('Y') ?></p>
                 </div>
-
+            </div>
 			<?php $this->endBody() ?>
 		</body>
 	<?php }; ?>
