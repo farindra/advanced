@@ -72,21 +72,35 @@ ActiveForm::end();
 
       <table id="table1" style="display:block;padding-left: 0">
 		<tr>
-			<td width="auto"  valign="top">Name  </td>
-			<td valign="top" style="padding-left: 2px"> :</td>
-			<td  width="auto">Piter Novian asdas asdasd zasdas asdas</td>
+			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
+			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
 		</tr>
 		<tr>
-			<td width="auto"> Jabatan </td>
-			<td valign="top" style="padding-left: 2px"> :</td>
-			<td  width="auto">This table will  </td>
+			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
+			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
 		</tr>
 		<tr>
-			<td width="auto"> Company </td>
-			<td valign="top" style="padding-left: 2px"> :</td>
-			<td  width="auto">This table will  </td>
+			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
+			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
 		</tr>
-
+		<tr>
+			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
+			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
+		</tr>
+		<tr>
+			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
+			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
+		</tr>
+		<tr>
+			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
+			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
+		</tr>
 
 	</table>
 

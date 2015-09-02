@@ -34,7 +34,7 @@ $prof=$this->render('login_index/_info', [
 					<?php
 					echo Html::panel(
 						[
-							'heading' => $this->title,
+							'heading' => '<div></div>',
 							'body'=>$prof,
 						],
 						Html::TYPE_INFO
@@ -45,7 +45,7 @@ $prof=$this->render('login_index/_info', [
 			<?php
 				echo Html::panel([
 						'id'=>'home1',
-						'heading' => 'Tools',
+						'heading' => 'Daily Task',
 						'postBody' => Html::listGroup([
 								[
 									'content' => 'Memo ',
@@ -78,7 +78,7 @@ $prof=$this->render('login_index/_info', [
 			<?php
 				echo Html::panel([
 						'id'=>'home1',
-						'heading' => 'Tools',
+						'heading' => 'Progress Task',
 						'postBody' => Html::listGroup([
 								[
 									'content' => 'Memo ',
@@ -111,7 +111,7 @@ $prof=$this->render('login_index/_info', [
 			<?php
 				echo Html::panel([
 						'id'=>'home1',
-						'heading' => 'Tools',
+						'heading' => 'Additional Task',
 						'postBody' => Html::listGroup([
 								[
 									'content' => 'Memo ',
