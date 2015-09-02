@@ -186,7 +186,7 @@ dmstr\web\AdminLteAsset::register($this);
                                         //$menuItems  = MenuHelper::getAssignedMenu(Yii::$app->user->id);
                                         $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback);
                                         $menuItems[] = [
-                                            'label' => Icon::show('power-off') . 'Logout (' . Yii::$app->user->identity->username . ')',
+                                            'label' => Icon::show('power-off') ,//. 'Logout',// (' . Yii::$app->user->identity->username . ')',
                                             //'label' => Icon::showStack('twitter', 'square-o', ['class'=>'fa-lg']) . 'Logout (' . Yii::$app->user->identity->username . ')',
                                             'url' => ['/site/logout'],
                                             'linkOptions' => ['data-method' => 'post']
