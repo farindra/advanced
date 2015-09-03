@@ -65,73 +65,67 @@ ActiveForm::end();
 	?>
 	
 	<div class="col-xs-12 col-sm-3 col-dm-2 col-lg-2"  style="valign:bottom; margin-left:0 ; text-align: center"  >
-      	<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $model->EMP_IMG; ?>" class="img-thumbnail" alt="Cinque Terre" width="auto" height="auto"/>
+      	<img src="<?= Yii::getAlias('@HRD_EMP_UploadUrl') .'/'. $model->EMP_IMG; ?>" class="img-thumbnail" alt="Cinque Terre" width="100px" height="100px"/>
 	</div>
 	
     <div class="col-xs-12 col-sm-5 col-dm-3 col-lg-3"  style="margin-left:0 ;padding-left: 0; padding-top:10px; margin-bottom: 20px">
 
-      <table id="table1" style="display:block;padding-left: 0">
+      <table id="table1" style="display:block;padding-left: 0; color: darkred">
+          <tr>
+              <td colspan = "3" width="auto"  valign="top" style="color: #000000"><b>LG23423432</b>  </td>
+          </tr>
+          <tr>
+              <td colspan = "3" width="auto"  valign="top" style="color:red"><b>PITER NOVIAN</b>  </td>
+          </tr>
+
+
+
 		<tr>
-			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td width="auto"  valign="top">Job Title</td>
 			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
-			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
+			<td  width="auto" style="padding-left: 2px">CTO</td>
 		</tr>
 		<tr>
-			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td width="auto"  valign="top">Job Level</td>
 			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
-			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
+			<td  width="auto" style="padding-left: 2px">Manager</td>
 		</tr>
 		<tr>
-			<td width="auto"  valign="top"><b>Name</b>  </td>
+			<td width="auto"  valign="top">Organization</td>
 			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
-			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
-		</tr>
-		<tr>
-			<td width="auto"  valign="top"><b>Name</b>  </td>
-			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
-			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
-		</tr>
-		<tr>
-			<td width="auto"  valign="top"><b>Name</b>  </td>
-			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
-			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
-		</tr>
-		<tr>
-			<td width="auto"  valign="top"><b>Name</b>  </td>
-			<td valign="top" style="padding-left: 2px"><b> :</b> </td>
-			<td  width="auto" style="padding-left: 2px">Piter Novian asdas asdasd zasdas asdas</td>
+			<td  width="auto" style="padding-left: 2px">IT Department</td>
 		</tr>
 
 	</table>
 
     </div>
-    <div class=" col-xs-12 col-sm-4 col-dm-3 col-lg-3"  style="padding-left:0 "  >
-     <table id="table1" style="display:block;">
-		<tr>
-			<td width="auto"> table </td>
-			<td width="1px" style="padding-left: 10px"> :</td>
-			<td  width="auto">This table will  </td>
-		</tr>
-		<tr>
-			<td width="auto"> table </td>
-			<td width="1px" style="padding-left: 10px"> :</td>
-			<td  width="auto">This table will  </td>
-		</tr>
-		<tr>
-			<td width="auto"> table </td>
-			<td width="1px" style="padding-left: 10px"> :</td>
-			<td  width="auto">This table will  </td>
-		</tr>
-          <tr>
-              <td width="auto"> table </td>
-              <td width="1px" style="padding-left: 10px"> :</td>
-              <td  width="auto">This table will  </td>
-          </tr>
-          <tr>
-              <td width="auto"> table </td>
-              <td width="1px" style="padding-left: 10px"> :</td>
-              <td  width="auto">This table will  </td>
-          </tr>
+    <div class=" col-xs-12 col-sm-4 col-dm-3 col-lg-3"  style="padding-left:0"  >
+     <table id="table1" style="display:block;; color: darkred">
+         <tr>
+             <td width="auto"  valign="top">Company  </td>
+             <td valign="top" style="padding-left: 2px"><b> :</b> </td>
+             <td  width="auto" style="padding-left: 2px">PT.Sarana Sinar Surya</td>
+         </tr>
+         <tr>
+             <td width="auto"  valign="top">Location  </td>
+             <td valign="top" style="padding-left: 2px"><b> :</b> </td>
+             <td  width="auto" style="padding-left: 2px">Demension c12</td>
+         </tr>
+         <tr>
+             <td width="auto"  valign="top">Join Date</td>
+             <td valign="top" style="padding-left: 2px"><b> :</b> </td>
+             <td  width="auto" style="padding-left: 2px">03/03/2013</td>
+         </tr>
+         <tr>
+             <td width="auto"  valign="top">Emp. Status</td>
+             <td valign="top" style="padding-left: 2px"><b> :</b> </td>
+             <td  width="auto" style="padding-left: 2px">Permanent</td>
+         </tr>
+         <tr>
+             <td width="auto"  valign="top">e-Mail</td>
+             <td valign="top" style="padding-left: 2px"><b> :</b> </td>
+             <td  width="auto" style="padding-left: 2px">piter@lukison.com</td>
+         </tr>
 	</table>
     </div>
    

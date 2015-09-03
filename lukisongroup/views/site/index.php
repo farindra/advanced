@@ -7,6 +7,7 @@ use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\widgets\FileInput;
 use kartik\builder\FormGrid;
+use kartik\tabs\TabsX;
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL,'options'=>['enctype'=>'multipart/form-data']]);
 $ProfAttribute1 = [
     [
@@ -26,11 +27,13 @@ $this->title = 'Workbench <i class="fa  fa fa-coffee"></i> ' . $model->EMP_NM . 
 $prof=$this->render('login_index/_info', [
     'model' => $model,
 ]);
+$EmpDashboard=$this->render('login_index/_dashboard', [
+    'model' => $model,
+]);
 ?>
 
 <div class="container-fluid" style="padding-left: 20px; padding-right: 20px" >
 		<div class="row">
-
 					<?php
 					echo Html::panel(
 						[
@@ -41,11 +44,22 @@ $prof=$this->render('login_index/_info', [
 					);
 					?>
 		</div>
+        <div class="row">
+            <?php
+            echo Html::panel(
+                [
+                    'heading' => '<div></div>',
+                    'body'=>$EmpDashboard,
+                ],
+                Html::TYPE_INFO
+            );
+            ?>
+        </div>
 		 <div class="col-xs-12 col-sm-6 col-dm-4  col-lg-4" >
 			<?php
 				echo Html::panel([
 						'id'=>'home1',
-						'heading' => 'Daily Task',
+						'heading' => 'Approval',
 						'postBody' => Html::listGroup([
 								[
 									'content' => 'Memo ',
@@ -78,7 +92,7 @@ $prof=$this->render('login_index/_info', [
 			<?php
 				echo Html::panel([
 						'id'=>'home1',
-						'heading' => 'Progress Task',
+						'heading' => 'Reminder',
 						'postBody' => Html::listGroup([
 								[
 									'content' => 'Memo ',
@@ -111,7 +125,7 @@ $prof=$this->render('login_index/_info', [
 			<?php
 				echo Html::panel([
 						'id'=>'home1',
-						'heading' => 'Additional Task',
+						'heading' => 'Task Manager',
 						'postBody' => Html::listGroup([
 								[
 									'content' => 'Memo ',
@@ -140,6 +154,45 @@ $prof=$this->render('login_index/_info', [
 				);
 			?>
 		</div>
+         <div class="col-xs-12 col-sm-12 col-dm-12  col-lg-12" >
+            <?php
+            $items=[
+                [
+                    'label'=>'<i class="glyphicon glyphicon-home"></i>Jobsdesk','content'=>'asdasdasd',
+                ],
+                [
+                    'label'=>'<i class="glyphicon glyphicon-home"></i>Master Plan','content'=>'asdasdsad',
+                    //'active'=>true,
+
+                ],
+
+                [
+                    'label'=>'<i class="glyphicon glyphicon-home"></i>Attendance','content'=>'asdasdasd',
+                ],
+                [
+                    'label'=>'<i class="glyphicon glyphicon-home"></i>Mutation','content'=>'asdasdasd',                ],
+
+                [
+                    'label'=>'<i class="glyphicon glyphicon-home"></i>Regulations','content'=>'asdasdsadasd',
+                ],
+
+
+            ];
+
+            echo TabsX::widget([
+                'items'=>$items,
+                'position'=>TabsX::POS_ABOVE,
+                //'height'=>'tab-height-xs',
+                'bordered'=>true,
+                'encodeLabels'=>false,
+                //'align'=>TabsX::ALIGN_LEFT,
+
+            ]);
+            ?>
+         </div>
+
+
+
  </div>
 
     <script src="js/jquery.min.js"></script>
