@@ -5,6 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\ro\Rodetail */
 
+$this->sideMenu = 'esm';
 $this->title = 'Update Rodetail: ' . ' ' . $model->ID;
 $this->params['breadcrumbs'][] = ['label' => 'Rodetails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->ID, 'url' => ['view', 'id' => $model->ID]];
