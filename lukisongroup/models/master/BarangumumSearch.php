@@ -1,17 +1,19 @@
 <?php
 
-namespace app\models\master;
+namespace lukisongroup\models\master;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\master\Barangumum;
+use lukisongroup\models\master\Barangumum;
 
 /**
  * BarangumumSearch represents the model behind the search form about `app\models\master\Barangumum`.
  */
 class BarangumumSearch extends Barangumum
 {
+	public $nmtype;
+	public $nmktegori;
     /**
      * @inheritdoc
      */
@@ -21,6 +23,7 @@ class BarangumumSearch extends Barangumum
             [['ID', 'STATUS'], 'integer'],
             [['KD_BARANG', 'NM_BARANG', 'KD_TYPE', 'KD_KATEGORI', 'KD_UNIT', 'KD_SUPPLIER', 'KD_DISTRIBUTOR', 'PARENT', 'BARCODE', 'IMAGE', 'NOTE', 'KD_CORP', 'KD_CAB', 'KD_DEP', 'CREATED_BY', 'CREATED_AT', 'UPDATED_BY', 'UPDATED_AT', 'DATA_ALL'], 'safe'],
             [['HPP', 'HARGA'], 'number'],
+            [['nmtype','nmktegori'], 'safe'],
         ];
     }
 
@@ -42,20 +45,46 @@ class BarangumumSearch extends Barangumum
      */
     public function search($params)
     {
-        $query = Barangumum::find();
+        $query = Barangumum::find()->where('B1000.STATUS <> 3');
+		$query->joinWith(['type' => function ($q) {
+			$q->where('B1001.NM_TYPE LIKE "%' . $this->nmtype . '%"');
+		}]);
+		$query->joinWith(['kategori' => function ($q) {
+			$q->where('B1002.NM_KATEGORI LIKE "%' . $this->nmktegori . '%"');
+		}]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
-        $this->load($params);
+		 $dataProvider->setSort([
+			'attributes' => [
+            'KD_BARANG',
+            'NM_BARANG',
+				'nmtype' => [
+					'asc' => ['B1001.NM_TYPE' => SORT_ASC],
+					'desc' => ['B1001.NM_TYPE' => SORT_DESC],
+					'label' => 'Type',
+				],
+				'nmktegori' => [
+					'asc' => ['B1002.NM_KATEGORI' => SORT_ASC],
+					'desc' => ['B1002.NM_KATEGORI' => SORT_DESC],
+					'label' => 'Type'
+				]
+			]
+		]);
+		
+    if (!($this->load($params) && $this->validate())) {
+        /**
+         * The following line will allow eager loading with country data 
+         * to enable sorting by country on initial loading of the grid.
+         */ 
+        $query->joinWith(['type']);
+        $query->joinWith(['kategori']);
+        return $dataProvider;
+    }
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
+/*
         $query->andFilterWhere([
             'ID' => $this->ID,
             'HPP' => $this->HPP,
@@ -64,7 +93,6 @@ class BarangumumSearch extends Barangumum
             'CREATED_AT' => $this->CREATED_AT,
             'UPDATED_AT' => $this->UPDATED_AT,
         ]);
-
         $query->andFilterWhere(['like', 'KD_BARANG', $this->KD_BARANG])
             ->andFilterWhere(['like', 'NM_BARANG', $this->NM_BARANG])
             ->andFilterWhere(['like', 'KD_TYPE', $this->KD_TYPE])
@@ -72,7 +100,6 @@ class BarangumumSearch extends Barangumum
             ->andFilterWhere(['like', 'KD_UNIT', $this->KD_UNIT])
             ->andFilterWhere(['like', 'KD_SUPPLIER', $this->KD_SUPPLIER])
             ->andFilterWhere(['like', 'KD_DISTRIBUTOR', $this->KD_DISTRIBUTOR])
-            ->andFilterWhere(['like', 'PARENT', $this->PARENT])
             ->andFilterWhere(['like', 'BARCODE', $this->BARCODE])
             ->andFilterWhere(['like', 'IMAGE', $this->IMAGE])
             ->andFilterWhere(['like', 'NOTE', $this->NOTE])
@@ -82,7 +109,7 @@ class BarangumumSearch extends Barangumum
             ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
             ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY])
             ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
-
+*/
         return $dataProvider;
     }
 }
