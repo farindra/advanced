@@ -44,7 +44,7 @@ class SuplierSearch extends Suplier
     {
         $query = Suplier::find()->where('STATUS <> 3');
 		$query->joinWith(['perusahaan' => function ($q) {
-			$q->where('C1000.NM_CORP LIKE "%' . $this->nmgroup . '%"');
+			$q->where('c1000.NM_CORP LIKE "%' . $this->nmgroup . '%"');
 		}]);
 		
         $dataProvider = new ActiveDataProvider([
@@ -58,8 +58,8 @@ class SuplierSearch extends Suplier
 				'ALAMAT',
 				'KOTA',
 				'nmgroup' => [
-					'asc' => ['C1000.NM_CORP' => SORT_ASC],
-					'desc' => ['C1000.NM_CORP' => SORT_DESC],
+					'asc' => ['c1000.NM_CORP' => SORT_ASC],
+					'desc' => ['c1000.NM_CORP' => SORT_DESC],
 					'label' => 'Group Perusahaan'
 				]
 			]
