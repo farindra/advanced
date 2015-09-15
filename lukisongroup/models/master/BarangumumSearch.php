@@ -4,8 +4,7 @@ namespace lukisongroup\models\master;
 
 use Yii;
 use yii\base\Model;
-use yii\data\ActiveDataProvider;
-use lukisongroup\models\master\Barangumum;
+use yii\data\ActiveDataProvider;;
 
 /**
  * BarangumumSearch represents the model behind the search form about `app\models\master\Barangumum`.
@@ -45,42 +44,42 @@ class BarangumumSearch extends Barangumum
      */
     public function search($params)
     {
-        $query = Barangumum::find()->where('B1000.STATUS <> 3');
-		$query->joinWith(['type' => function ($q) {
-			$q->where('B1001.NM_TYPE LIKE "%' . $this->nmtype . '%"');
-		}]);
-		$query->joinWith(['kategori' => function ($q) {
-			$q->where('B1002.NM_KATEGORI LIKE "%' . $this->nmktegori . '%"');
-		}]);
+        $query = Barangumum::find()->where('b1000.STATUS <> 3');
+		//$query->joinWith(['type' => function ($q) {
+		//	$q->where('b1001.NM_TYPE LIKE "%' . $this->nmtype . '%"');
+		//}]);
+		//$query->joinWith(['kategori' => function ($q) {
+		//	$q->where('b1002.NM_KATEGORI LIKE "%' . $this->nmktegori . '%"');
+		//}]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+/*
 		 $dataProvider->setSort([
 			'attributes' => [
             'KD_BARANG',
             'NM_BARANG',
 				'nmtype' => [
-					'asc' => ['B1001.NM_TYPE' => SORT_ASC],
-					'desc' => ['B1001.NM_TYPE' => SORT_DESC],
+					'asc' => ['b1001.NM_TYPE' => SORT_ASC],
+					'desc' => ['b1001.NM_TYPE' => SORT_DESC],
 					'label' => 'Type',
 				],
 				'nmktegori' => [
-					'asc' => ['B1002.NM_KATEGORI' => SORT_ASC],
-					'desc' => ['B1002.NM_KATEGORI' => SORT_DESC],
+					'asc' => ['b1002.NM_KATEGORI' => SORT_ASC],
+					'desc' => ['b1002.NM_KATEGORI' => SORT_DESC],
 					'label' => 'Type'
 				]
 			]
 		]);
-		
+		*/
     if (!($this->load($params) && $this->validate())) {
         /**
          * The following line will allow eager loading with country data 
          * to enable sorting by country on initial loading of the grid.
          */ 
-        $query->joinWith(['type']);
-        $query->joinWith(['kategori']);
+       // $query->joinWith(['type']);
+     //   $query->joinWith(['kategori']);
         return $dataProvider;
     }
 
