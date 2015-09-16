@@ -47,10 +47,10 @@ class TipebarangController extends Controller
      * @param string $kd_type
      * @return mixed
      */
-    public function actionView($ID, $KD_TYPE)
+    public function actionView($id, $kd_type)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID, $KD_TYPE),
+            'model' => $this->findModel($id, $kd_type),
         ]);
     }
 
@@ -64,7 +64,7 @@ class TipebarangController extends Controller
         $model = new Tipebarang();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_TYPE' => $model->KD_TYPE]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_type' => $model->kd_type]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -79,12 +79,12 @@ class TipebarangController extends Controller
      * @param string $kd_type
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_TYPE)
+    public function actionUpdate($id, $kd_type)
     {
-        $model = $this->findModel($ID, $KD_TYPE);
+        $model = $this->findModel($id, $kd_type);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_TYPE' => $model->KD_TYPE]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_type' => $model->kd_type]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -99,9 +99,9 @@ class TipebarangController extends Controller
      * @param string $kd_type
      * @return mixed
      */
-    public function actionDelete($ID, $KD_TYPE)
+    public function actionDelete($id, $kd_type)
     {
-        $this->findModel($ID, $KD_TYPE)->delete();
+        $this->findModel($id, $kd_type)->delete();
 
         return $this->redirect(['index']);
     }
@@ -114,9 +114,9 @@ class TipebarangController extends Controller
      * @return Tipebarang the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_TYPE)
+    protected function findModel($id, $kd_type)
     {
-        if (($model = Tipebarang::findOne(['ID' => $ID, 'KD_TYPE' => $KD_TYPE])) !== null) {
+        if (($model = Tipebarang::findOne(['id' => $id, 'kd_type' => $kd_type])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

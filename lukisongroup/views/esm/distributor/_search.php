@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'ID_DISTRIBUTOR') ?>
+    <?= $form->field($model, 'idDbtr') ?>
 
-    <?= $form->field($model, 'KD_DISTRIBUTOR') ?>
+    <?= $form->field($model, 'kdDbtr') ?>
 
-    <?= $form->field($model, 'NM_DISTRIBUTOR') ?>
+    <?= $form->field($model, 'nmDbtr') ?>
 
-    <?= $form->field($model, 'ALAMAT') ?>
+    <?= $form->field($model, 'alamat') ?>
 
-    <?= $form->field($model, 'PIC') ?>
+    <?= $form->field($model, 'pic') ?>
 
     <?php // echo $form->field($model, 'tlp1') ?>
 
@@ -35,9 +35,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'website') ?>
 
-    <?php // echo $form->field($model, 'NOTE') ?>
+    <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'STATUS') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'createBy') ?>
 
@@ -45,7 +45,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'updateAt') ?>
 
-    <?php // echo $form->field($model, 'DATA_ALL') ?>
+    <?php // echo $form->field($model, 'data_all') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Suplier */
 
-$this->title = 'Update Suplier: ' . ' ' . $model->NM_SUPPLIER;
+$this->title = 'Update Suplier: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Suplier', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->ID, 'url' => ['view', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="suplier-update">

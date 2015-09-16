@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 use yii\helpers\ArrayHelper;
-use app\models\master\Perusahaan;
+use app\models\esm\Perusahaan;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Suplier */
@@ -15,51 +15,51 @@ use app\models\master\Perusahaan;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'KD_SUPPLIER')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kd_supplier')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NM_SUPPLIER')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nm_supplier')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ALAMAT')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'alamat')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'KOTA')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kota')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TLP')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tlp')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'MOBILE')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'FAX')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'fax')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'EMAIL')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'WEBSITE')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'IMAGE')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NOTE')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 
 	<?php
-		$drop = ArrayHelper::map(Perusahaan::find()->all(), 'KD_CORP', 'NM_CORP');
+		$drop = ArrayHelper::map(Perusahaan::find()->all(), 'kd_corp', 'nm_corp');
 	?>
-    <?= $form->field($model, 'KD_CORP')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Group Perusahaan') ?>
-    <?php //= $form->field($model, 'KD_CORP')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kd_corp')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Group Perusahaan') ?>
+    <?php //= $form->field($model, 'kd_corp')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'KD_CAB')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'kd_cab')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'KD_DEP')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'kd_dep')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'STATUS')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
-    <?php //= $form->field($model, 'STATUS')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
+    <?php //= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'CREATED_BY')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
-    <?php //= $form->field($model, 'CREATED_BY')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'created_by')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
+    <?php //= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'CREATED_AT')->textInput() ?>
+    <?php //= $form->field($model, 'created_at')->textInput() ?>
 
-    <?php //= $form->field($model, 'UPDATED_BY')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'updated_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'UPDATED_AT')->textInput() ?>
+    <?php //= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?php //= $form->field($model, 'DATA_ALL')->textarea(['rows' => 6]) ?>
+    <?php //= $form->field($model, 'data_all')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

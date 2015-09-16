@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Distributor */
 
-$this->title = 'Buat Distributor';
-$this->params['breadcrumbs'][] = ['label' => 'Distributor', 'url' => ['index']];
+$this->title = 'Create Distributor';
+$this->params['breadcrumbs'][] = ['label' => 'Distributors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

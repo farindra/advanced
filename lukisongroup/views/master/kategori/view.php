@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\master\Kategori */
 
-$this->title = $model->NM_KATEGORI;
+$this->title = $model->nm_kategori;
 $this->params['breadcrumbs'][] = ['label' => 'Kategori', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'ID' => $model->ID, 'KD_KATEGORI' => $model->KD_KATEGORI], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'ID' => $model->ID, 'KD_KATEGORI' => $model->KD_KATEGORI], [
+        <?= Html::a('Update', ['update', 'id' => $model->id, 'kd_kategori' => $model->kd_kategori], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'kd_kategori' => $model->kd_kategori], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 <?php
-	if($model->STATUS == '1'){
+	if($model->status == '1'){
 		$stat = "Aktif";
 	} else {
 		$stat = "Tidak Aktif";
@@ -35,16 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-//			'ID',
-			'KD_KATEGORI',
-			'NM_KATEGORI',
-			'NOTE:ntext',
-//			'CREATED_BY',
-//			'CREATED_AT',
-//			'UPDATED_BY',
-//			'UPDATED_AT',
+//			'id',
+			'kd_kategori',
+			'nm_kategori',
+			'note:ntext',
+//			'created_by',
+//			'created_at',
+//			'updated_by',
+//			'updated_at',
 			[
-				'label' => 'STATUS',
+				'label' => 'Status',
 				'value' => $stat,
 			],
         ],

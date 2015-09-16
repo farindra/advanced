@@ -18,8 +18,8 @@ class SuplierSearch extends Suplier
     public function rules()
     {
         return [
-            [['ID', 'STATUS'], 'integer'],
-            [['KD_SUPPLIER', 'NM_SUPPLIER', 'ALAMAT', 'KOTA', 'TLP', 'MOBILE', 'FAX', 'EMAIL', 'WEBSITE', 'IMAGE', 'NOTE', 'KD_CORP', 'KD_CAB', 'KD_DEP', 'CREATED_BY', 'CREATED_AT', 'UPDATED_BY', 'UPDATED_AT', 'DATA_ALL'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['kd_supplier', 'nm_supplier', 'alamat', 'kota', 'tlp', 'mobile', 'fax', 'email', 'website', 'image', 'note', 'kd_corp', 'kd_cab', 'kd_dep', 'created_by', 'created_at', 'updated_by', 'updated_at', 'data_all'], 'safe'],
         ];
     }
 
@@ -56,29 +56,29 @@ class SuplierSearch extends Suplier
         }
 
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'STATUS' => $this->STATUS,
-            'CREATED_AT' => $this->CREATED_AT,
-            'UPDATED_AT' => $this->UPDATED_AT,
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_SUPPLIER', $this->KD_SUPPLIER])
-            ->andFilterWhere(['like', 'NM_SUPPLIER', $this->NM_SUPPLIER])
-            ->andFilterWhere(['like', 'ALAMAT', $this->ALAMAT])
-            ->andFilterWhere(['like', 'KOTA', $this->KOTA])
-            ->andFilterWhere(['like', 'TLP', $this->TLP])
-            ->andFilterWhere(['like', 'MOBILE', $this->MOBILE])
-            ->andFilterWhere(['like', 'FAX', $this->FAX])
-            ->andFilterWhere(['like', 'EMAIL', $this->EMAIL])
-            ->andFilterWhere(['like', 'WEBSITE', $this->WEBSITE])
-            ->andFilterWhere(['like', 'IMAGE', $this->IMAGE])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE])
-            ->andFilterWhere(['like', 'KD_CORP', $this->KD_CORP])
-            ->andFilterWhere(['like', 'KD_CAB', $this->KD_CAB])
-            ->andFilterWhere(['like', 'KD_DEP', $this->KD_DEP])
-            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
-            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY])
-            ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
+        $query->andFilterWhere(['like', 'kd_supplier', $this->kd_supplier])
+            ->andFilterWhere(['like', 'nm_supplier', $this->nm_supplier])
+            ->andFilterWhere(['like', 'alamat', $this->alamat])
+            ->andFilterWhere(['like', 'kota', $this->kota])
+            ->andFilterWhere(['like', 'tlp', $this->tlp])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'fax', $this->fax])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'website', $this->website])
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'note', $this->note])
+            ->andFilterWhere(['like', 'kd_corp', $this->kd_corp])
+            ->andFilterWhere(['like', 'kd_cab', $this->kd_cab])
+            ->andFilterWhere(['like', 'kd_dep', $this->kd_dep])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by])
+            ->andFilterWhere(['like', 'data_all', $this->data_all]);
 
         return $dataProvider;
     }

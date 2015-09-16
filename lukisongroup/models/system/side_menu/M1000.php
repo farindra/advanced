@@ -1,6 +1,9 @@
 <?php
+
 namespace lukisongroup\models\system\side_menu;
+
 use Yii;
+
 /**
  * This is the model class for table "m1000".
  *
@@ -24,6 +27,7 @@ class M1000 extends \yii\db\ActiveRecord
     {
         return 'm1000';
     }
+
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
@@ -31,6 +35,7 @@ class M1000 extends \yii\db\ActiveRecord
     {
         return Yii::$app->get('db4');
     }
+
     /**
      * @inheritdoc
      */
@@ -46,13 +51,14 @@ class M1000 extends \yii\db\ActiveRecord
             [['created_by', 'updated_by'], 'string', 'max' => 100]
         ];
     }
+
     /**
      * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'ID', yii::$app->params
             'kd_menu' => 'Kd Menu',
             'nm_menu' => 'Nm Menu',
             'jval' => 'Jval',
@@ -64,6 +70,7 @@ class M1000 extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
     /**
      * @inheritdoc
      * @return M1000Query the active query used by this AR class.

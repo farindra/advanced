@@ -9,11 +9,11 @@ use Yii;
  *
  * @property string $id
  * @property string $kd_unit
- * @property string $NM_UNIT
+ * @property string $nm_unit
  * @property string $size
  * @property double $wight
  * @property string $color
- * @property string $NOTE
+ * @property string $note
  * @property string $created_by
  * @property string $created_at
  * @property string $updated_by
@@ -44,14 +44,14 @@ class Unitbarang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['KD_UNIT', 'NM_UNIT', 'STATUS'], 'required'],
-            [['WIGHT'], 'number'],
-            [['NOTE'], 'string'],
-            [['CREATED_AT', 'UPDATED_AT'], 'safe'],
-            [['STATUS'], 'integer'],
-            [['KD_UNIT'], 'string', 'max' => 5],
-            [['NM_UNIT'], 'string', 'max' => 200],
-            [['SIZE', 'COLOR', 'CREATED_BY', 'UPDATED_BY'], 'string', 'max' => 100]
+            [['kd_unit', 'nm_unit', 'status'], 'required'],
+            [['wight'], 'number'],
+            [['note'], 'string'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['status'], 'integer'],
+            [['kd_unit'], 'string', 'max' => 5],
+            [['nm_unit'], 'string', 'max' => 200],
+            [['size', 'color', 'created_by', 'updated_by'], 'string', 'max' => 100]
         ];
     }
 
@@ -61,18 +61,18 @@ class Unitbarang extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'KD_UNIT' => 'Kode Unit',
-            'NM_UNIT' => 'Nama Unit',
-            'SIZE' => 'Size',
-            'WIGHT' => 'Wight',
-            'COLOR' => 'Color',
-            'NOTE' => 'NOTE',
-            'CREATED_BY' => 'Created By',
-            'CREATED_AT' => 'Created At',
-            'UPDATED_BY' => 'Updated By',
-            'UPDATED_AT' => 'Updated At',
-            'STATUS' => 'STATUS',
+            'id' => 'ID',
+            'kd_unit' => 'Kode Unit',
+            'nm_unit' => 'Nama Unit',
+            'size' => 'Size',
+            'wight' => 'Wight',
+            'color' => 'Color',
+            'note' => 'Note',
+            'created_by' => 'Created By',
+            'created_at' => 'Created At',
+            'updated_by' => 'Updated By',
+            'updated_at' => 'Updated At',
+            'status' => 'Status',
         ];
     }
 }

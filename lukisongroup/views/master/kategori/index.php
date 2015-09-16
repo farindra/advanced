@@ -10,25 +10,6 @@ use yii\grid\GridView;
 $this->title = 'Kategori';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<aside class="main-sidebar">
-    <?php
-		/*variable Dropdown*/
-		use lukisongroup\models\system\side_menu\M1000;
-		use kartik\sidenav\SideNav;
-		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('esm')->one()->jval);		
-		if (!Yii::$app->user->isGuest) {
-			echo SideNav::widget([
-				'items' => $side_menu,
-				'encodeLabels' => false,
-				//'heading' => $heading,
-				'type' => SideNav::TYPE_DEFAULT,
-				'options' => ['class' => 'sidebar-nav'],
-			]);
-		};
-    ?>
-</aside>
-
 <div class="kategori-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -45,19 +26,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'ID',
-            'KD_KATEGORI',
-            'NM_KATEGORI',
-            'NOTE:ntext',
-            //'CREATED_BY',
-            // 'CREATED_AT',
-            // 'UPDATED_BY',
-            // 'UPDATED_AT',
-            //'STATUS',
+            //'id',
+            'kd_kategori',
+            'nm_kategori',
+            'note:ntext',
+            //'created_by',
+            // 'created_at',
+            // 'updated_by',
+            // 'updated_at',
+            //'status',
 			[
-				'attribute' => 'STATUS',
+				'attribute' => 'Status',
 				'value' => function ($model) {
-					return $model->STATUS == 1 ? 'Aktif' : 'Tidak Aktif';
+					return $model->status == 1 ? 'Aktif' : 'Tidak Aktif';
 				},
 			],
 

@@ -47,10 +47,10 @@ class SuplierController extends Controller
      * @param string $kd_supplier
      * @return mixed
      */
-    public function actionView($ID, $KD_SUPPLIER)
+    public function actionView($id, $kd_supplier)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID, $KD_SUPPLIER),
+            'model' => $this->findModel($id, $kd_supplier),
         ]);
     }
 
@@ -64,7 +64,7 @@ class SuplierController extends Controller
         $model = new Suplier();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -79,12 +79,12 @@ class SuplierController extends Controller
      * @param string $kd_supplier
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_SUPPLIER)
+    public function actionUpdate($id, $kd_supplier)
     {
-        $model = $this->findModel($ID, $KD_SUPPLIER);
+        $model = $this->findModel($id, $kd_supplier);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -99,9 +99,9 @@ class SuplierController extends Controller
      * @param string $kd_supplier
      * @return mixed
      */
-    public function actionDelete($ID, $KD_SUPPLIER)
+    public function actionDelete($id, $kd_supplier)
     {
-        $this->findModel($ID, $KD_SUPPLIER)->delete();
+        $this->findModel($id, $kd_supplier)->delete();
 
         return $this->redirect(['index']);
     }
@@ -114,9 +114,9 @@ class SuplierController extends Controller
      * @return Suplier the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_SUPPLIER)
+    protected function findModel($id, $kd_supplier)
     {
-        if (($model = Suplier::findOne(['ID' => $ID, 'KD_SUPPLIER' => $KD_SUPPLIER])) !== null) {
+        if (($model = Suplier::findOne(['id' => $id, 'kd_supplier' => $kd_supplier])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

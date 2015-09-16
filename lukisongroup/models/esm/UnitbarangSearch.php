@@ -18,8 +18,8 @@ class UnitbarangSearch extends Unitbarang
     public function rules()
     {
         return [
-            [['ID', 'QTY', 'SIZE', 'WEIGHT', 'STATUS'], 'integer'],
-            [['KD_UNIT', 'NM_UNIT', 'COLOR', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_AT'], 'safe'],
+            [['id', 'qty', 'size', 'weight', 'status'], 'integer'],
+            [['kdUnit', 'nmUnit', 'color', 'note', 'created_by', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -56,20 +56,20 @@ class UnitbarangSearch extends Unitbarang
         }
 
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'QTY' => $this->QTY,
-            'SIZE' => $this->SIZE,
-            'WEIGHT' => $this->WEIGHT,
-            'STATUS' => $this->STATUS,
+            'id' => $this->id,
+            'qty' => $this->qty,
+            'size' => $this->size,
+            'weight' => $this->weight,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_UNIT', $this->KD_UNIT])
-            ->andFilterWhere(['like', 'NM_UNIT', $this->NM_UNIT])
-            ->andFilterWhere(['like', 'COLOR', $this->COLOR])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE])
-            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
-            ->andFilterWhere(['like', 'CREATED_AT', $this->CREATED_AT])
-            ->andFilterWhere(['like', 'UPDATED_AT', $this->UPDATED_AT]);
+        $query->andFilterWhere(['like', 'kdUnit', $this->kdUnit])
+            ->andFilterWhere(['like', 'nmUnit', $this->nmUnit])
+            ->andFilterWhere(['like', 'color', $this->color])
+            ->andFilterWhere(['like', 'note', $this->note])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'created_at', $this->created_at])
+            ->andFilterWhere(['like', 'updated_at', $this->updated_at]);
 
         return $dataProvider;
     }

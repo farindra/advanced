@@ -10,25 +10,6 @@ use yii\grid\GridView;
 $this->title = 'Unit';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<aside class="main-sidebar">
-    <?php
-		/*variable Dropdown*/
-		use lukisongroup\models\system\side_menu\M1000;
-		use kartik\sidenav\SideNav;
-		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('esm')->one()->jval);		
-		if (!Yii::$app->user->isGuest) {
-			echo SideNav::widget([
-				'items' => $side_menu,
-				'encodeLabels' => false,
-				//'heading' => $heading,
-				'type' => SideNav::TYPE_DEFAULT,
-				'options' => ['class' => 'sidebar-nav'],
-			]);
-		};
-    ?>
-</aside>
-
 <div class="unitbarang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -44,18 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-//            'ID',
-            'KD_UNIT',
-            'NM_UNIT',
-            'QTY',
-            'SIZE',
+//            'id',
+            'kdUnit',
+            'nmUnit',
+            'qty',
+            'size',
             // 'weight',
             // 'color',
-            // 'NOTE:ntext',
-            // 'STATUS',
-            // 'CREATED_BY',
-            // 'CREATED_AT',
-            // 'UPDATED_AT',
+            // 'note:ntext',
+            // 'status',
+            // 'created_by',
+            // 'created_at',
+            // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

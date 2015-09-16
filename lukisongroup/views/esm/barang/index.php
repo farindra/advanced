@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\esm\Barang;
+use app\models\esm\Distributor;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\esm\BarangSearch */
@@ -11,25 +12,6 @@ use app\models\esm\Barang;
 $this->title = 'Barang';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<aside class="main-sidebar">
-    <?php
-		/*variable Dropdown*/
-		use lukisongroup\models\system\side_menu\M1000;
-		use kartik\sidenav\SideNav;
-		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('esm')->one()->jval);		
-		if (!Yii::$app->user->isGuest) {
-			echo SideNav::widget([
-				'items' => $side_menu,
-				'encodeLabels' => false,
-				//'heading' => $heading,
-				'type' => SideNav::TYPE_DEFAULT,
-				'options' => ['class' => 'sidebar-nav'],
-			]);
-		};
-    ?>
-</aside>
-
 <div class="barang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -39,44 +21,36 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Barang', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-	
-	<?php  
-		print_r($querys); 
-		echo $querys[0]['HARGA'];
-		
-	?>
-	
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'ID',
-            'KD_BARANG',
+            //'id',
+            'kdBrg',
 			[
 				'attribute' => 'Nama Prodak',
-				'value' => 'brg.NM_BARANG',
+				'value' => 'brg.namaBarang',
 			],
-//            'NM_BARANG',
+//            'nmBrg',
 			[
 				'attribute' => 'Nama DIstributor',
-				'value' => 'dbtr.NM_DISTRIBUTOR',
+				'value' => 'dbtr.nmDbtr',
 			],
 			[
-				'attribute' => 'STATUS Barang',
-				'value' => 'unitb.NM_UNIT',
+				'attribute' => 'Status Barang',
+				'value' => 'unitb.nmUnit',
 			],
 		
-            // 'HPP',
-            // 'HARGA',
-            // 'NOTE',
-            // 'STATUS',
+            // 'hpp',
+            // 'harga',
+            // 'note',
+            // 'status',
             // 'createdBy',
             // 'createdAt',
             // 'updateAt',
-            // 'DATA_ALL',
+            // 'data_all',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

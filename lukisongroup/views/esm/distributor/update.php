@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Distributor */
 
-$this->title = 'Update Distributor: ' . ' ' . $model->ID_DISTRIBUTOR;
-$this->params['breadcrumbs'][] = ['label' => 'Distributor', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->ID_DISTRIBUTOR, 'url' => ['view', 'id' => $model->ID_DISTRIBUTOR]];
+$this->title = 'Update Distributor: ' . ' ' . $model->idDbtr;
+$this->params['breadcrumbs'][] = ['label' => 'Distributors', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->idDbtr, 'url' => ['view', 'id' => $model->idDbtr]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="distributor-update">

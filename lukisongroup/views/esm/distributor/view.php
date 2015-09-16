@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Distributor */
 
-$this->title = $model->KD_DISTRIBUTOR;
-$this->params['breadcrumbs'][] = ['label' => 'Distributor', 'url' => ['index']];
+$this->title = $model->kdDbtr;
+$this->params['breadcrumbs'][] = ['label' => 'Distributors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="distributor-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->ID_DISTRIBUTOR], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->ID_DISTRIBUTOR], [
+        <?= Html::a('Update', ['update', 'id' => $model->idDbtr], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->idDbtr], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -29,21 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
  //           'idDbtr',
-            'KD_DISTRIBUTOR',
-            'NM_DISTRIBUTOR',
-            'ALAMAT:ntext',
-            'PIC',
-            'TLP1',
-            'TLP2',
-            'FAX',
-            'EMAIL:email',
-            'WEBSITE',
-            'NOTE:ntext',
-//            'STATUS',
+            'kdDbtr',
+            'nmDbtr',
+            'alamat:ntext',
+            'pic',
+            'tlp1',
+            'tlp2',
+            'fax',
+            'email:email',
+            'website',
+            'note:ntext',
+//            'status',
 //            'createBy',
 //            'createAt',
 //            'updateAt',
-//            'DATA_ALL',
+//            'data_all',
         ],
     ]) ?>
 

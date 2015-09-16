@@ -18,8 +18,8 @@ class BarangSearch extends Barang
     public function rules()
     {
         return [
-            [['ID', 'HPP', 'HARGA', 'BARCODE', 'NOTE', 'STATUS', 'CREATED_BY', 'CREATED_AT', 'UPDATED_AT'], 'integer'],
-            [['KD_BARANG', 'NM_BARANG', 'KD_SUPPLIER', 'KD_DISTRIBUTOR', 'DATA_ALL'], 'safe'],
+            [['id', 'hpp', 'harga', 'barcode', 'note', 'status', 'createdBy', 'createdAt', 'updateAt'], 'integer'],
+            [['kdBrg', 'nmBrg', 'kdSuplier', 'kdDbtr', 'data_all'], 'safe'],
         ];
     }
 
@@ -56,22 +56,22 @@ class BarangSearch extends Barang
         }
 
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'HPP' => $this->HPP,
-            'HARGA' => $this->HARGA,
-            'BARCODE' => $this->BARCODE,
-            'NOTE' => $this->NOTE,
-            'STATUS' => $this->STATUS,
-            'CREATED_BY' => $this->CREATED_BY,
-            'CREATED_AT' => $this->CREATED_AT,
-            'UPDATED_AT' => $this->UPDATED_AT,
+            'id' => $this->id,
+            'hpp' => $this->hpp,
+            'harga' => $this->harga,
+            'barcode' => $this->barcode,
+            'note' => $this->note,
+            'status' => $this->status,
+            'createdBy' => $this->createdBy,
+            'createdAt' => $this->createdAt,
+            'updateAt' => $this->updateAt,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_BARANG', $this->KD_BARANG])
-            ->andFilterWhere(['like', 'NM_BARANG', $this->NM_BARANG])
-            ->andFilterWhere(['like', 'KD_SUPPLIER', $this->KD_SUPPLIER])
-            ->andFilterWhere(['like', 'KD_DISTRIBUTOR', $this->KD_DISTRIBUTOR])
-            ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
+        $query->andFilterWhere(['like', 'kdBrg', $this->kdBrg])
+            ->andFilterWhere(['like', 'nmBrg', $this->nmBrg])
+            ->andFilterWhere(['like', 'kdSuplier', $this->kdSuplier])
+            ->andFilterWhere(['like', 'kdDbtr', $this->kdDbtr])
+            ->andFilterWhere(['like', 'data_all', $this->data_all]);
 
         return $dataProvider;
     }

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\esm\Suplier */
 
-$this->title = $model->NM_SUPPLIER;
+$this->title = $model->nm_supplier;
 $this->params['breadcrumbs'][] = ['label' => 'Suplier', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER], [
+        <?= Html::a('Update', ['update', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier], [
 			'class' => 'btn btn-danger',
 			'data' => [
 			    'confirm' => 'Are you sure you want to delete this item?',
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 <?php 
-	$stt = $model->STATUS;
+	$stt = $model->status;
 	if($stt = 1){
 		$stat = 'Aktif';
 	} else {
@@ -35,32 +35,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-//			'ID',
-			'KD_SUPPLIER',
-			'NM_SUPPLIER',
-			'ALAMAT:ntext',
-			'KOTA',
-			'TLP',
-			'MOBILE',
-			'FAX',
-			'EMAIL:email',
-			'WEBSITE',
-//			'IMAGE',
+//			'id',			
+			'kd_supplier',
+			'nm_supplier',
+			'alamat:ntext',
+			'kota',
+			'tlp',
+			'mobile',
+			'fax',
+			'email:email',
+			'website',
+//			'image',
 			[
 				'attribute' => 'Group Perusahaan',
-				'value'=>  $model->perusahaan->NM_CORP
+				'value'=>  $model->perusahaan->nm_corp
 			],
 			[
-				'attribute' => 'STATUS',
+				'attribute' => 'Status',
 				'value'=>$stat
 			],
-//			'NOTE:ntext',
-//			'KD_CAB',
-//			'KD_DEP',
-//			'CREATED_BY',
-//			'CREATED_AT',
-//			'UPDATED_BY',
-//			'UPDATED_AT',
+//			'note:ntext',
+//			'kd_cab',
+//			'kd_dep',
+//			'created_by',
+//			'created_at',
+//			'updated_by',
+//			'updated_at',
 //			'data_all:ntext',
         ],
     ]) ?>

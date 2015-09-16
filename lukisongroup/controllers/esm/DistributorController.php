@@ -65,7 +65,7 @@ class DistributorController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
  //       if (! $dst) {
             if (! Yii::$app->user->isGuest) {
-            return $this->redirect(['view', 'ID' => $model->ID_DISTRIBUTOR]);
+            return $this->redirect(['view', 'id' => $model->idDbtr]);
             } 
         } else {
             return $this->render('create', [
@@ -87,7 +87,7 @@ class DistributorController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (! Yii::$app->user->isGuest) {
-            return $this->redirect(['view', 'id' => $model->ID_DISTRIBUTOR]);
+            return $this->redirect(['view', 'id' => $model->idDbtr]);
             } 
         } else {
             return $this->render('update', [

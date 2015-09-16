@@ -22,8 +22,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        /* Author: -ptr.nov- : Permission Allow No Login |index|error|login */
-                        'actions' => ['index', 'error','login'],
+                        'actions' => ['login', 'error'],
                         'allow' => true,
                     ],
                     [
@@ -56,15 +55,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        /* Author: -ptr.nov- : Split Index Before/After Login */
-        if (\Yii::$app->user->isGuest) {
-            $model = new LoginForm();
-            return $this->render('index_nologin', [
-                'model' => $model,
-            ]);
-        } else {
-            return $this->render('index');
-        }
+        return $this->render('index');
     }
 
     public function actionLogin()

@@ -18,8 +18,8 @@ class KategoriSearch extends Kategori
     public function rules()
     {
         return [
-            [['ID', 'STATUS'], 'integer'],
-            [['KD_KATEGORI', 'NM_KATEGORI', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_BY', 'UPDATED_AT'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['kd_kategori', 'nm_kategori', 'note', 'created_by', 'created_at', 'updated_by', 'updated_at'], 'safe'],
         ];
     }
 
@@ -57,16 +57,16 @@ class KategoriSearch extends Kategori
 
         $query->andFilterWhere([
  //           'id' => $this->id,
-            'CREATED_AT' => $this->CREATED_AT,
-            'UPDATED_AT' => $this->UPDATED_AT,
-            'STATUS' => $this->STATUS,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_KATEGORI', $this->KD_KATEGORI])
-            ->andFilterWhere(['like', 'NM_KATEGORI', $this->NM_KATEGORI])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE]);
-//            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
-//            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
+        $query->andFilterWhere(['like', 'kd_kategori', $this->kd_kategori])
+            ->andFilterWhere(['like', 'nm_kategori', $this->nm_kategori])
+            ->andFilterWhere(['like', 'note', $this->note]);
+//            ->andFilterWhere(['like', 'created_by', $this->created_by])
+//            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }

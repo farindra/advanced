@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'ID') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'KD_SUPPLIER') ?>
+    <?= $form->field($model, 'kd_supplier') ?>
 
-    <?= $form->field($model, 'NM_SUPPLIER') ?>
+    <?= $form->field($model, 'nm_supplier') ?>
 
-    <?= $form->field($model, 'ALAMAT') ?>
+    <?= $form->field($model, 'alamat') ?>
 
-    <?= $form->field($model, 'KOTA') ?>
+    <?= $form->field($model, 'kota') ?>
 
     <?php // echo $form->field($model, 'tlp') ?>
 
@@ -35,27 +35,27 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'website') ?>
 
-    <?php // echo $form->field($model, 'IMAGE') ?>
+    <?php // echo $form->field($model, 'image') ?>
 
-    <?php // echo $form->field($model, 'NOTE') ?>
+    <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'KD_CORP') ?>
+    <?php // echo $form->field($model, 'kd_corp') ?>
 
-    <?php // echo $form->field($model, 'KD_CAB') ?>
+    <?php // echo $form->field($model, 'kd_cab') ?>
 
-    <?php // echo $form->field($model, 'KD_DEP') ?>
+    <?php // echo $form->field($model, 'kd_dep') ?>
 
-    <?php // echo $form->field($model, 'STATUS') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'CREATED_BY') ?>
+    <?php // echo $form->field($model, 'created_by') ?>
 
-    <?php // echo $form->field($model, 'CREATED_AT') ?>
+    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_BY') ?>
+    <?php // echo $form->field($model, 'updated_by') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_AT') ?>
+    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'DATA_ALL') ?>
+    <?php // echo $form->field($model, 'data_all') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

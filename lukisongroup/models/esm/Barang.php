@@ -7,12 +7,12 @@ use Yii;
 /**
  * This is the model class for table "b0001".
  *
- * @property string $ID
- * @property string $KD_BARANG
- * @property string $NM_BARANG
- * @property string $KD_SUPPLIER
- * @property string $KD_DISTRIBUTOR
- * @property string $HPP
+ * @property string $id
+ * @property string $kdBrg
+ * @property string $nmBrg
+ * @property string $kdSuplier
+ * @property string $kdDbtr
+ * @property string $hpp
  * @property integer $harga
  * @property integer $barcode
  * @property integer $note
@@ -42,22 +42,17 @@ class Barang extends \yii\db\ActiveRecord
 	
 	public function getUnitb()
     {
-        return $this->hasOne(Unitbarang::className(), ['ID' => 'KD_UNIT']);
+        return $this->hasOne(Unitbarang::className(), ['id' => 'kdUnit']);
     }
 	
 	public function getDbtr()
     {
-        return $this->hasOne(Distributor::className(), ['KD_DISTRIBUTOR' => 'KD_DISTRIBUTOR']);
+        return $this->hasOne(Distributor::className(), ['kdDbtr' => 'kdDbtr']);
     }
 	
 	public function getBrg()
     {
-        return $this->hasOne(Barangmaxi::className(), ['KD_BARANG' => 'NM_BARANG']);
-    }
-	
-	public function getTbesm()
-    {
-        return $this->hasMany(Barang::className(), ['KD_BARANG' => 'KD_TYPE']);
+        return $this->hasOne(Barangmaxi::className(), ['kodeBarang' => 'nmBrg']);
     }
 	
     /**
@@ -66,9 +61,9 @@ class Barang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['KD_BARANG', 'NM_BARANG', 'HPP', 'HARGA', 'BARCODE', 'NOTE', 'STATUS','KD_UNIT','KD_DISTRIBUTOR'], 'required'],
-            [['HPP', 'HARGA', 'BARCODE'], 'integer'],
-            [['CREATED_BY', 'UPDATED_AT', 'KD_SUPPLIER', 'KD_DISTRIBUTOR'], 'string'],
+            [['kdBrg', 'nmBrg', 'hpp', 'harga', 'barcode', 'note', 'status','kdUnit','kdDbtr'], 'required'],
+            [['hpp', 'harga', 'barcode'], 'integer'],
+            [['createdBy', 'updateAt', 'kdSuplier', 'kdDbtr'], 'string'],
         ];
     }
 
@@ -78,21 +73,21 @@ class Barang extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'KD_BARANG' => 'Kode Barang',
-            'NM_BARANG' => 'Nama Barang',
-            'KD_UNIT' => 'Kode Unit',
-            'KD_SUPPLIER' => 'Kode Supplier',
-            'KD_DISTRIBUTOR' => 'Kode Distributor',
-            'HPP' => 'HPP',
-            'HARGA' => 'Harga Jual',
-            'BARCODE' => 'Barcode',
-            'NOTE' => 'Note',
-            'STATUS' => 'Status',
-            'CREATED_BY' => 'Created By',
-            'CREATED_AT' => 'Created At',
-            'UPDATED_AT' => 'Update At',
-            'DATAA_ALL' => 'Data All',
+            'id' => 'Id',
+            'kdBrg' => 'Kode Barang',
+            'nmBrg' => 'Nama Barang',
+            'kdUnit' => 'Kode Unit',
+            'kdSuplier' => 'Kode Supplier',
+            'kdDbtr' => 'Kode Distributor',
+            'hpp' => 'HPP',
+            'harga' => 'Harga Jual',
+            'barcode' => 'Barcode',
+            'note' => 'Note',
+            'status' => 'Status',
+            'createdBy' => 'Created By',
+            'createdAt' => 'Created At',
+            'updateAt' => 'Update At',
+            'data_all' => 'Data All',
         ];
     }
 }

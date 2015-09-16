@@ -16,46 +16,46 @@ use app\models\esm\Barangmaxi;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'KD_BARANG')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kdBrg')->textInput(['maxlength' => true]) ?>
 
 	<?php
-		$drop = ArrayHelper::map(Barangmaxi::find()->all(), 'KD_BARANG', 'NM_BARANG');
+		$drop = ArrayHelper::map(Barangmaxi::find()->all(), 'kodeBarang', 'namaBarang');
 	?>
-    <?= $form->field($model, 'NM_BARANG')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --']) ?>
-    <?php //= $form->field($model, 'NM_BARANG')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nmBrg')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --']) ?>
+    <?php //= $form->field($model, 'nmBrg')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'KDUNIT')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'kdUnit')->textInput(['maxlength' => true]) ?>
 	<?php
-		$drop = ArrayHelper::map(Unitbarang::find()->all(), 'ID', 'NM_UNIT');
+		$drop = ArrayHelper::map(Unitbarang::find()->all(), 'id', 'nmUnit');
 	?>
-    <?= $form->field($model, 'KD_UNIT')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --']) ?>
+    <?= $form->field($model, 'kdUnit')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --']) ?>
 	
-    <?= $form->field($model, 'KD_SUPPLIER')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kdSuplier')->textInput(['maxlength' => true]) ?>
 
 	<?php
-		$drop = ArrayHelper::map(Distributor::find()->all(), 'KD_DISTRIBUTOR', 'NM_DISTRIBUTOR');
+		$drop = ArrayHelper::map(Distributor::find()->all(), 'kdDbtr', 'nmDbtr');
 	?>
-    <?= $form->field($model, 'KD_DISTRIBUTOR')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --']) ?>
+    <?= $form->field($model, 'kdDbtr')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --']) ?>
     <?php //= $form->field($model, 'kdDbtr')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'HPP')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'hpp')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'HARGA')->textInput() ?>
+    <?= $form->field($model, 'harga')->textInput() ?>
 
-    <?= $form->field($model, 'BARCODE')->textInput() ?>
+    <?= $form->field($model, 'barcode')->textInput() ?>
 
-    <?= $form->field($model, 'NOTE')->textInput() ?>
+    <?= $form->field($model, 'note')->textInput() ?>
 
-    <?= $form->field($model, 'STATUS')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
+    <?= $form->field($model, 'status')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
 
     <?php // $form->field($model, 'createdBy')->textInput(['value'=>Yii::$app->user->identity->username]) ?>
     <!--?= $form->field($model, 'createdBy')->textInput() ?-->
 
     <?php //= $form->field($model, 'createdAt')->textInput() ?>
 
-    <?=  $form->field($model, 'UPDATED_AT')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false)  //= $form->field($model, 'updateAt')->textInput() ?>
+    <?=  $form->field($model, 'updateAt')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false)  //= $form->field($model, 'updateAt')->textInput() ?>
 
-    <?php //= $form->field($model, 'DATA_ALL')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'data_all')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

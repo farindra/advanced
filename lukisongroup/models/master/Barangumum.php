@@ -26,7 +26,7 @@ use app\models\master\Tipebarang;
  * @property double $harga
  * @property string $barcode
  * @property string $image
- * @property string $NOTE
+ * @property string $note
  * @property string $kd_corp
  * @property string $kd_cab
  * @property string $kd_dep
@@ -57,27 +57,27 @@ class Barangumum extends \yii\db\ActiveRecord
 
 	public function getType()
     {
-        return $this->hasOne(Tipebarang::className(), ['KD_TYPE' => 'KD_TYPE']);
+        return $this->hasOne(Tipebarang::className(), ['kd_type' => 'kd_type']);
     }
 
 	public function getKategori()
     {
-        return $this->hasOne(Kategori::className(), ['KD_KATEGORI' => 'KD_KATEGORI']);
+        return $this->hasOne(Kategori::className(), ['kd_kategori' => 'kd_kategori']);
     }
 
 	public function getUnit()
     {
-        return $this->hasOne(Unitbarang::className(), ['KD_UNIT' => 'KD_UNIT']);
+        return $this->hasOne(Unitbarang::className(), ['kd_unit' => 'kd_unit']);
     }
 
 	public function getSuplier()
     {
-        return $this->hasOne(Suplier::className(), ['KD_SUPPLIER' => 'KD_SUPPLIER']);
+        return $this->hasOne(Suplier::className(), ['kd_supplier' => 'kd_supplier']);
     }
 
 	public function getPerusahaan()
     {
-        return $this->hasOne(Perusahaan::className(), ['KD_CORP' => 'KD_CORP']);
+        return $this->hasOne(Perusahaan::className(), ['kd_corp' => 'kd_corp']);
     }
 
     /**
@@ -86,17 +86,17 @@ class Barangumum extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['KD_BARANG', 'NM_BARANG','STATUS','KD_TYPE','KD_KATEGORI','KD_UNIT', 'KD_SUPPLIER','KD_CORP'], 'required'],
-            [['HPP', 'HARGA'], 'number'],
-            [['HPP', 'HARGA'], 'required'],
-            [['NOTE', 'DATA_ALL'], 'string'],
-            [['STATUS'], 'integer'],
-            [['CREATED_AT', 'UPDATED_AT'], 'safe'],
-            [['KD_BARANG', 'PARENT'], 'string', 'max' => 20],
-            [['NM_BARANG', 'IMAGE'], 'string', 'max' => 200],
-            [['KD_TYPE', 'KD_KATEGORI', 'KD_UNIT', 'KD_SUPPLIER', 'KD_DISTRIBUTOR', 'KD_CORP', 'KD_CAB', 'KD_DEP'], 'string', 'max' => 5],
-            [['BARCODE'], 'string', 'max' => 15],
-            [['CREATED_BY', 'UPDATED_BY'], 'string', 'max' => 100]
+            [['kd_barang', 'nm_barang','status','kd_type','kd_kategori','kd_unit', 'kd_supplier','kd_corp'], 'required'],
+            [['hpp', 'harga'], 'number'],
+            [['hpp', 'harga'], 'required'],
+            [['note', 'data_all'], 'string'],
+            [['status'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['kd_barang', 'parent'], 'string', 'max' => 20],
+            [['nm_barang', 'image'], 'string', 'max' => 200],
+            [['kd_type', 'kd_kategori', 'kd_unit', 'kd_supplier', 'kd_distributor', 'kd_corp', 'kd_cab', 'kd_dep'], 'string', 'max' => 5],
+            [['barcode'], 'string', 'max' => 15],
+            [['created_by', 'updated_by'], 'string', 'max' => 100]
         ];
     }
 
@@ -106,29 +106,29 @@ class Barangumum extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'KD_BARANG' => 'Kode Barang',
-            'NM_BARANG' => 'Nama Barang',
-            'KD_TYPE' => 'Kode Type',
-            'KD_KATEGORI' => 'Kode Kategori',
-            'KD_UNIT' => 'Kode Unit',
-            'KD_SUPPLIER' => 'Kode Supplier',
-            'KD_DISTRIBUTOR' => 'Kode Distributor',
-            'PARENT' => 'PARENT',
-            'HPP' => 'HPP',
-            'HARGA' => 'HARGA',
-            'BARODE' => 'BARCODE',
-            'IMAGE' => 'IMAGE',
-            'NOTE' => 'NOTE',
-            'KD_CORP' => 'Kd Corp',
-            'KD_CAB' => 'Kd Cab',
-            'KD_DEP' => 'Kd Dep',
-            'STATUS' => 'STATUS',
-            'CREATED_BY' => 'Created By',
-            'CREATED_AT' => 'Created At',
-            'UPDATED_BY' => 'Updated By',
-            'UPDATED_AT' => 'Updated At',
-            'DATA_ALL' => 'Data All',
+            'id' => 'ID',
+            'kd_barang' => 'Kode Barang',
+            'nm_barang' => 'Nama Barang',
+            'kd_type' => 'Kode Type',
+            'kd_kategori' => 'Kode Kategori',
+            'kd_unit' => 'Kode Unit',
+            'kd_supplier' => 'Kode Supplier',
+            'kd_distributor' => 'Kode Distributor',
+            'parent' => 'Parent',
+            'hpp' => 'Hpp',
+            'harga' => 'Harga',
+            'barcode' => 'Barcode',
+            'image' => 'Image',
+            'note' => 'Note',
+            'kd_corp' => 'Kd Corp',
+            'kd_cab' => 'Kd Cab',
+            'kd_dep' => 'Kd Dep',
+            'status' => 'Status',
+            'created_by' => 'Created By',
+            'created_at' => 'Created At',
+            'updated_by' => 'Updated By',
+            'updated_at' => 'Updated At',
+            'data_all' => 'Data All',
         ];
     }
 }

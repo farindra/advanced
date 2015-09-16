@@ -12,28 +12,28 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'KD_UNIT')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kdUnit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NM_UNIT')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nmUnit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'QTY')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'qty')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'SIZE')->textInput() ?>
+    <?= $form->field($model, 'size')->textInput() ?>
 
-    <?= $form->field($model, 'WEIGHT')->textInput() ?>
+    <?= $form->field($model, 'weight')->textInput() ?>
 
-    <?= $form->field($model, 'COLOR')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'color')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NOTE')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 
-    <?php //= $form->field($model, 'STATUS')->textInput() ?>
+    <?php //= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'CREATED_BY')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
-    <?php //= $form->field($model, 'CREATED_BY')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'created_by')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
+    <?php //= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'CREATED_AT')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'created_at')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'UPDATED_AT')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'updated_at')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

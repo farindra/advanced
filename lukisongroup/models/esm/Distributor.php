@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "d0001".
  *
  * @property string $idDbtr
- * @property string $KD_DISTRIBUTOR
+ * @property string $kdDbtr
  * @property string $nmDbtr
  * @property string $alamat
  * @property string $pic
@@ -17,14 +17,14 @@ use Yii;
  * @property string $fax
  * @property string $email
  * @property string $website
- * @property string $NOTE
+ * @property string $note
  * @property integer $status
  * @property string $createBy
  * @property string $createAt
  * @property string $updateAt
  * @property string $data_all
  */
-class Distributor extends \yii\db\ActiveRecord
+class distributor extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -48,14 +48,14 @@ class Distributor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['KD_DISTRIBUTOR', 'NM_DISTRIBUTOR', 'ALAMAT', 'PIC', 'TLP1', 'TLP2', 'FAX', 'EMAIL', 'WEBSITE', 'NOTE', 'STATUS', 'CREATED_BY', 'CREATED_AT', 'UPDATED_AT', 'DATA_ALL'], 'string'],
-            [['KD_DISTRIBUTOR', 'NM_DISTRIBUTOR', 'ALAMAT', 'PIC', 'TLP1', 'TLP2', 'STATUS'], 'required'],
- //           [['alamat', 'NOTE'], 'string'],
-            [['TLP1', 'TLP2', 'FAX', 'STATUS'], 'integer'],
-            [['KD_DISTRIBUTOR'], 'string', 'max' => 50],
- //           [['nmDbtr', 'pic', 'email', 'website', 'createBy', 'createAt', 'updateAt', 'DATA_ALL'], 'string', 'max' => 255]
+            [['kdDbtr', 'nmDbtr', 'alamat', 'pic', 'tlp1', 'tlp2', 'fax', 'email', 'website', 'note', 'status', 'createBy', 'createAt', 'updateAt', 'data_all'], 'string'],
+            [['kdDbtr', 'nmDbtr', 'alamat', 'pic', 'tlp1', 'tlp2', 'status'], 'required'],
+ //           [['alamat', 'note'], 'string'],
+            [['tlp1', 'tlp2', 'fax', 'status'], 'integer'],
+            [['kdDbtr'], 'string', 'max' => 50],
+ //           [['nmDbtr', 'pic', 'email', 'website', 'createBy', 'createAt', 'updateAt', 'data_all'], 'string', 'max' => 255]
 			
-			[['CREATED_BY'], 'string', 'max' => 255]
+			[['createBy'], 'string', 'max' => 255]
         ];
     }
 
@@ -65,22 +65,22 @@ class Distributor extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_DISTRIBUTOR' => 'Id Dbtr',
-            'KD_DISTRIBUTOR' => 'Kode Distributor',
-            'NM_DISTRIBUTOR' => 'Nama Distributor',
-            'ALAMAT' => 'Alamat Distributor',
-            'PIC' => 'Penanggung Jawab',
-            'TLP1' => 'Telephone 1',
-            'TLP2' => 'Telephone 2',
-            'FAX' => 'Fax',
-            'EMAIL' => 'Email',
-            'WEBSITE' => 'Website',
-            'NOTE' => 'NOTE',
-            'STATUS' => 'Status Distributor',
-            'CREATED_BY' => 'Create By',
-            'CREATED_AT' => 'Create At',
-            'UPDATED_AT' => 'Update At',
-            'DATA_ALL' => 'Data All',
+            'idDbtr' => 'Id Dbtr',
+            'kdDbtr' => 'Kode Distributor',
+            'nmDbtr' => 'Nama Distributor',
+            'alamat' => 'Alamat Distributor',
+            'pic' => 'Penanggung Jawab',
+            'tlp1' => 'Telephone 1',
+            'tlp2' => 'Telephone 2',
+            'fax' => 'Fax',
+            'email' => 'Email',
+            'website' => 'Website',
+            'note' => 'Note',
+            'status' => 'Status Distributor',
+            'createBy' => 'Create By',
+            'createAt' => 'Create At',
+            'updateAt' => 'Update At',
+            'data_all' => 'Data All',
         ];
     }
 }

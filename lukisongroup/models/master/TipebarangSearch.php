@@ -18,8 +18,8 @@ class TipebarangSearch extends Tipebarang
     public function rules()
     {
         return [
-            [['ID', 'STATUS'], 'integer'],
-            [['KD_TYPE', 'NM_TYPE', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_BY', 'UPDATED_AT'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['kd_type', 'nm_type', 'note', 'created_by', 'created_at', 'updated_by', 'updated_at'], 'safe'],
         ];
     }
 
@@ -57,16 +57,16 @@ class TipebarangSearch extends Tipebarang
 
         $query->andFilterWhere([
 //            'id' => $this->id,
-            'CREATED_AT' => $this->CREATED_AT,
-            'UPDATED_AT' => $this->UPDATED_AT,
-//            'STATUS' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+//            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_TYPE', $this->KD_TYPE])
-            ->andFilterWhere(['like', 'NM_TYPE', $this->NM_TYPE])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE]);
- //           ->andFilterWhere(['like', 'CREATED_BY', $this->created_by])
- //           ->andFilterWhere(['like', 'UPDATED_BY', $this->updated_by]);
+        $query->andFilterWhere(['like', 'kd_type', $this->kd_type])
+            ->andFilterWhere(['like', 'nm_type', $this->nm_type])
+            ->andFilterWhere(['like', 'note', $this->note]);
+ //           ->andFilterWhere(['like', 'created_by', $this->created_by])
+ //           ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }

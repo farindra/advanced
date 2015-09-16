@@ -12,22 +12,22 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'KD_KATEGORI')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kd_kategori')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NM_KATEGORI')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nm_kategori')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NOTE')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'UPDATED_BY')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
-    <?php //= $form->field($model, 'CREATED_BY')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'updated_by')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
+    <?php //= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'CREATED_AT')->textInput() ?>
+    <?php //= $form->field($model, 'created_at')->textInput() ?>
 
-    <?php //= $form->field($model, 'UPDATED_BY')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'updated_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'UPDATED_AT')->textInput() ?>
+    <?php //= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'STATUS')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
+    <?= $form->field($model, 'status')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

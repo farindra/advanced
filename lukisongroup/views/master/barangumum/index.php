@@ -11,25 +11,6 @@ use app\models\master\Barangumum;
 $this->title = 'Barang Umum';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<aside class="main-sidebar">
-    <?php
-		/*variable Dropdown*/
-		use lukisongroup\models\system\side_menu\M1000;
-		use kartik\sidenav\SideNav;
-		$side_menu=\yii\helpers\Json::decode(M1000::find()->findMenu('esm')->one()->jval);		
-		if (!Yii::$app->user->isGuest) {
-			echo SideNav::widget([
-				'items' => $side_menu,
-				'encodeLabels' => false,
-				//'heading' => $heading,
-				'type' => SideNav::TYPE_DEFAULT,
-				'options' => ['class' => 'sidebar-nav'],
-			]);
-		};
-    ?>
-</aside>
-
 <div class="barangumum-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -45,36 +26,36 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-//            'ID',
-            'KD_BARANG',
-            'NM_BARANG',
- //           'KD_TYPE',
+//            'id',
+            'kd_barang',
+            'nm_barang',
+ //           'kd_type',
 			[
 				'attribute' => 'Type',
-				'value' => 'type.NM_TYPE',
+				'value' => 'type.nm_type',
 			],
 			[
 				'attribute' => 'Kategori',
-				'value' => 'kategori.NM_KATEGORI',
+				'value' => 'kategori.nm_kategori',
 			],
- //           'KD_KATEGORI',
-            // 'KD_UNIT',
-            // 'KD_SUPPLIER',
-            // 'KD_DISTRIBUTOR',
-            // 'PARENT',
-            // 'HPP',
-            // 'HARGA',
-            // 'BARCODE',
-            // 'IMAGE',
-            // 'NOTE:ntext',
-            // 'KD_CORP',
-            // 'KD_CAB',
-            // 'KD_DEP',
-            // 'STATUS',
-            // 'CREATED_BY',
-            // 'CREATED_AT',
-            // 'UPDATED_BY',
-            // 'UPDATED_AT',
+ //           'kd_kategori',
+            // 'kd_unit',
+            // 'kd_supplier',
+            // 'kd_distributor',
+            // 'parent',
+            // 'hpp',
+            // 'harga',
+            // 'barcode',
+            // 'image',
+            // 'note:ntext',
+            // 'kd_corp',
+            // 'kd_cab',
+            // 'kd_dep',
+            // 'status',
+            // 'created_by',
+            // 'created_at',
+            // 'updated_by',
+            // 'updated_at',
             // 'data_all:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],

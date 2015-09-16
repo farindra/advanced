@@ -7,7 +7,7 @@ use app\models\master\Barangumum;
 /* @var $this yii\web\View */
 /* @var $model app\models\master\Barangumum */
 
-$this->title = $model->NM_BARANG;
+$this->title = $model->nm_barang;
 $this->params['breadcrumbs'][] = ['label' => 'Barang Umum', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG], [
+        <?= Html::a('Update', ['update', 'id' => $model->id, 'kd_barang' => $model->kd_barang], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'kd_barang' => $model->kd_barang], [
 			'class' => 'btn btn-danger',
 			'data' => [
 			    'confirm' => 'Are you sure you want to delete this item?',
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
 <?php
-	$sts = $model->STATUS;
+	$sts = $model->status;
 	if($sts == 1){
 		$stat = 'Aktif';
 	} else {
@@ -38,62 +38,62 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-//	           'ID',
-			'KD_BARANG',
-			'NM_BARANG',
-//			'KD_TYPE',
+//	           'id',
+			'kd_barang',
+			'nm_barang',
+//			'kd_type',
 			[
 				'label' => 'Type Barang',
-				'value' => $model->type->NM_TYPE,
+				'value' => $model->type->nm_type,
 			],
 			
-//			'KD_KATEGORI',
+//			'kd_kategori',
 			[
 				'label' => 'Kategori',
-				'value' => $model->kategori->NM_KATEGORI,
+				'value' => $model->kategori->nm_kategori,
 			],
 			
-//			'KD_UNIT',
+//			'kd_unit',
 			[
 				'label' => 'Unit',
-				'value' => $model->unit->NM_UNIT,
+				'value' => $model->unit->nm_unit,
 			],
 			
-//			'KD_SUPPLIER',
+//			'kd_supplier',
 			[
 				'label' => 'Suplier',
-				'value' => $model->suplier->NM_SUPPLIER,
+				'value' => $model->suplier->nm_supplier,
 			],
 			
-			'KD_DISTRIBUTOR',
-			'PARENT',
-			'HPP',
-			'HARGA',
-			'BARCODE',
-			'IMAGE',
-			'NOTE:ntext',
+			'kd_distributor',
+			'parent',
+			'hpp',
+			'harga',
+			'barcode',
+			'image',
+			'note:ntext',
 			
-//			'KD_CORP',
+//			'kd_corp',
 			[
 				'label' => 'Group Perusahaan',
-				'value' => $model->perusahaan->NM_CORP,
+				'value' => $model->perusahaan->nm_corp,
 			],
 			
-//			'STATUS',
+//			'status',
 			[
-				'label' => 'STATUS',
+				'label' => 'Status',
 				'value' => $stat,
 			],
 			
-//			'KD_CAB',
-//			'KD_DEP',
+//			'kd_cab',
+//			'kd_dep',
 			
 			/*
-			'STATUS',
-			'CREATED_BY',
-			'CREATED_AT',
-			'UPDATED_BY',
-			'UPDATED_AT',
+			'status',
+			'created_by',
+			'created_at',
+			'updated_by',
+			'updated_at',
 			'data_all:ntext', */
         ],
     ]) ?>

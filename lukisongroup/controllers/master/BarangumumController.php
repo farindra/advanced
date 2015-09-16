@@ -47,10 +47,10 @@ class BarangumumController extends Controller
      * @param string $kd_barang
      * @return mixed
      */
-    public function actionView($ID, $KD_BARANG)
+    public function actionView($id, $kd_barang)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID, $KD_BARANG),
+            'model' => $this->findModel($id, $kd_barang),
         ]);
     }
 
@@ -64,7 +64,7 @@ class BarangumumController extends Controller
         $model = new Barangumum();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_barang' => $model->kd_barang]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -79,12 +79,12 @@ class BarangumumController extends Controller
      * @param string $kd_barang
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_BARANG)
+    public function actionUpdate($id, $kd_barang)
     {
-        $model = $this->findModel($ID, $KD_BARANG);
+        $model = $this->findModel($id, $kd_barang);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_barang' => $model->kd_barang]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -99,9 +99,9 @@ class BarangumumController extends Controller
      * @param string $kd_barang
      * @return mixed
      */
-    public function actionDelete($ID, $KD_BARANG)
+    public function actionDelete($id, $kd_barang)
     {
-        $this->findModel($ID, $KD_BARANG)->delete();
+        $this->findModel($id, $kd_barang)->delete();
 
         return $this->redirect(['index']);
     }
@@ -114,9 +114,9 @@ class BarangumumController extends Controller
      * @return Barangumum the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_BARANG)
+    protected function findModel($id, $kd_barang)
     {
-        if (($model = Barangumum::findOne(['ID' => $ID, 'KD_BARANG' => $KD_BARANG])) !== null) {
+        if (($model = Barangumum::findOne(['id' => $id, 'kd_barang' => $kd_barang])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
