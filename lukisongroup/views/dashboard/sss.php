@@ -8,9 +8,6 @@ use kartik\tabs\TabsX;
 /* @var $this yii\web\View */
 /* @var $model app\models\system\Dashboard */
 
-
-
-
 ?>
 <div class="panel panel-default" style="margin-top: 10px">
     <div class="panel-heading">

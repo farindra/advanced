@@ -1,43 +1,42 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\form\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\esm\Unitbarang */
+/* @var $model app\models\esm\Unitbarang */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="unitbarang-form">
 
-    <?php $form = ActiveForm::begin([
-			'type' => ActiveForm::TYPE_HORIZONTAL,
-			'method' => 'post',
-			'action' => ['esm/unitbarang/simpan'],
-		]);
-	?>
+    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'NM_UNIT')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kdUnit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'QTY')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nmUnit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'SIZE')->textInput() ?>
+    <?= $form->field($model, 'qty')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'WEIGHT')->textInput() ?>
+    <?= $form->field($model, 'size')->textInput() ?>
 
-    <?= $form->field($model, 'COLOR')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'weight')->textInput() ?>
 
-    <?= $form->field($model, 'NOTE')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'color')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'STATUS')->textInput() ?>
+    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'CREATED_BY')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
-    <?= $form->field($model, 'CREATED_AT')->hiddenInput(['value'=>date('Y-m-d H:i:s')])->label(false) ?>
-	
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-		</div>
+    <?php //= $form->field($model, 'status')->textInput() ?>
+
+    <?= $form->field($model, 'created_by')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
+    <?php //= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
+
+    <?php //= $form->field($model, 'created_at')->textInput(['maxlength' => true]) ?>
+
+    <?php //= $form->field($model, 'updated_at')->textInput(['maxlength' => true]) ?>
+
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

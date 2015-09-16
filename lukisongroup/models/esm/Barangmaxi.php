@@ -1,6 +1,6 @@
 <?php
 
-namespace lukisongroup\models\esm;
+namespace app\models\esm;
 
 use Yii;
 
@@ -35,8 +35,8 @@ class Barangmaxi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['KD_BARANG', 'NM_BARANG'], 'required'],
-            [['KD_BARANG', 'NM_BARANG'], 'string', 'max' => 255]
+            [['kodeBarang', 'namaBarang'], 'required'],
+            [['kodeBarang', 'namaBarang'], 'string', 'max' => 255]
         ];
     }
 
@@ -46,9 +46,9 @@ class Barangmaxi extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_BARANG' => 'Id Barang',
-            'KD_BARANG' => 'Kode Barang',
-            'NM_BARANG' => 'Nama Barang',
+            'idBarang' => 'Id Barang',
+            'kodeBarang' => 'Kode Barang',
+            'namaBarang' => 'Nama Barang',
         ];
     }
 }

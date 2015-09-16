@@ -1,6 +1,6 @@
 <?php
 
-namespace lukisongroup\models\master;
+namespace app\models\master;
 
 use Yii;
 
@@ -9,8 +9,8 @@ use Yii;
  *
  * @property string $id
  * @property string $kd_kategori
- * @property string $NM_KATEGORI
- * @property string $NOTE
+ * @property string $nm_kategori
+ * @property string $note
  * @property string $created_by
  * @property string $created_at
  * @property string $updated_by
@@ -41,14 +41,14 @@ class Kategori extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['KD_KATEGORI', 'NM_KATEGORI'], 'required'],
-            [['NOTE'], 'string'],
-            [['CREATED_AT', 'UPDATED_AT'], 'safe'],
-            [['STATUS'], 'integer'],
-            [['STATUS'], 'required'],
-            [['KD_KATEGORI'], 'string', 'max' => 5],
-            [['NM_KATEGORI'], 'string', 'max' => 200],
-            [['CREATED_BY', 'UPDATED_BY'], 'string', 'max' => 100]
+            [['kd_kategori', 'nm_kategori'], 'required'],
+            [['note'], 'string'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['status'], 'integer'],
+            [['status'], 'required'],
+            [['kd_kategori'], 'string', 'max' => 5],
+            [['nm_kategori'], 'string', 'max' => 200],
+            [['created_by', 'updated_by'], 'string', 'max' => 100]
         ];
     }
 
@@ -58,15 +58,15 @@ class Kategori extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'KD_KATEGORI' => 'Kode Kategori',
-            'NM_KATEGORI' => 'Nama Kategori',
-            'NOTE' => 'Catatan',
-            'CREATED_BY' => 'Created By',
-            'CREATED_AT' => 'Created At',
-            'UPDATED_BY' => 'Updated By',
-            'UPDATED_AT' => 'Updated At',
-            'STATUS' => 'status',
+            'id' => 'ID',
+            'kd_kategori' => 'Kode Kategori',
+            'nm_kategori' => 'Nama Kategori',
+            'note' => 'Note',
+            'created_by' => 'Created By',
+            'created_at' => 'Created At',
+            'updated_by' => 'Updated By',
+            'updated_at' => 'Updated At',
+            'status' => 'Status',
         ];
     }
 }

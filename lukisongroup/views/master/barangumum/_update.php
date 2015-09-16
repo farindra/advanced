@@ -1,99 +1,91 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\form\ActiveForm;
+use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
 
-use lukisongroup\models\master\Kategori;
-use lukisongroup\models\master\Unitbarang;
-use lukisongroup\models\master\Suplier;
-use lukisongroup\models\master\Perusahaan;
-use lukisongroup\models\master\Tipebarang;
+use app\models\master\Kategori;
+use app\models\master\Unitbarang;
+use app\models\master\Suplier;
+use app\models\master\Perusahaan;
+use app\models\master\Tipebarang;
 
-use kartik\widgets\FileInput;
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\master\Barangumum */
+/* @var $model app\models\master\Barangumum */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="barangumum-form">
 
-    <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL,'options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'KD_BARANG')->textInput(['maxlength' => true, 'readonly'=>true]) ?>
+    <?= $form->field($model, 'kd_barang')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NM_BARANG')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nm_barang')->textInput(['maxlength' => true]) ?>
 
 	<?php
-		$drop = ArrayHelper::map(Tipebarang::find()->where(['STATUS' => 1])->all(), 'KD_TYPE', 'NM_TYPE');
+		$drop = ArrayHelper::map(Tipebarang::find()->where(['status' => 1])->all(), 'kd_type', 'nm_type');
 	?>
-    <?= $form->field($model, 'KD_TYPE')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Type Barang') ?>
+    <?= $form->field($model, 'kd_type')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Type Barang') ?>
 	
 
 	<?php
-		$drop = ArrayHelper::map(Kategori::find()->where(['STATUS' => 1])->all(), 'KD_KATEGORI', 'NM_KATEGORI');
+		$drop = ArrayHelper::map(Kategori::find()->where(['status' => 1])->all(), 'kd_kategori', 'nm_kategori');
 	?>
-    <?= $form->field($model, 'KD_KATEGORI')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Kategori') ?>
+    <?= $form->field($model, 'kd_kategori')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Kategori') ?>
 
 	<?php
-		$drop = ArrayHelper::map(Unitbarang::find()->where(['STATUS' => 1])->all(), 'KD_UNIT', 'NM_UNIT');
+		$drop = ArrayHelper::map(Unitbarang::find()->where(['status' => 1])->all(), 'kd_unit', 'nm_unit');
 	?>
-    <?= $form->field($model, 'KD_UNIT')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Unit') ?>
+    <?= $form->field($model, 'kd_unit')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Unit') ?>
 
 	<?php
-		$drop = ArrayHelper::map(Suplier::find()->where(['STATUS' => 1])->all(), 'KD_SUPPLIER', 'NM_SUPPLIER');
+		$drop = ArrayHelper::map(Suplier::find()->where(['status' => 1])->all(), 'kd_supplier', 'nm_supplier');
 	?>
-    <?= $form->field($model, 'KD_SUPPLIER')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Supplier') ?>
+    <?= $form->field($model, 'kd_supplier')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Supplier') ?>
 
-    <?= $form->field($model, 'KD_DISTRIBUTOR')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kd_distributor')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'PARENT')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'parent')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'HPP')->textInput() ?>
+    <?= $form->field($model, 'hpp')->textInput() ?>
 
-    <?= $form->field($model, 'HARGA')->textInput() ?>
+    <?= $form->field($model, 'harga')->textInput() ?>
 
-    <?= $form->field($model, 'BARCODE')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'barcode')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'image')->widget(FileInput::classname(), [
-    'options'=>['accept'=>'image/*'],
-    'pluginOptions'=>['allowedFileExtensions'=>['jpg','gif','png']]
-	]);
-	?>
+    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'NOTE')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 
 	<?php
-		$drop = ArrayHelper::map(Perusahaan::find()->all(), 'KD_CORP', 'NM_CORP');
+		$drop = ArrayHelper::map(Perusahaan::find()->all(), 'kd_corp', 'nm_corp');
 	?>
-    <?= $form->field($model, 'KD_CORP')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --','disabled'=>true])->label('Group Perusahaan') ?>
+    <?= $form->field($model, 'kd_corp')->dropDownList($drop,['prompt'=>' -- Pilih Salah Satu --'])->label('Group Perusahaan') ?>
 	
 	
-    <?= $form->field($model, 'KD_CAB')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kd_cab')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'KD_DEP')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kd_dep')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'STATUS')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
-    <?php //= $form->field($model, 'STATUS')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(['' => ' -- Silahkan Pilih --', '0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
+    <?php //= $form->field($model, 'status')->textInput() ?>
 
-    <?php //= $form->field($model, 'CREATED_BY')->textInput(['maxlength' => true]) ?>
+    <?php //= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'CREATED_AT')->textInput() ?>
+    <?php //= $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'UPDATED_BY')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
-    <?php //= $form->field($model, 'UPDATED_BY')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'updated_by')->hiddenInput(['value'=>Yii::$app->user->identity->username])->label(false) ?>
+    <?php //= $form->field($model, 'updated_by')->textInput(['maxlength' => true]) ?>
 
-    <?php //= $form->field($model, 'UPDATED_AT')->textInput() ?>
+    <?php //= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?php //= $form->field($model, 'DATA_ALL')->textarea(['rows' => 6]) ?>
+    <?php //= $form->field($model, 'data_all')->textarea(['rows' => 6]) ?>
 
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-		</div>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
 
     <?php ActiveForm::end(); ?>
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace lukisongroup\models\master;
+namespace app\models\master;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use lukisongroup\models\master\Unitbarang;
+use app\models\master\Unitbarang;
 
 /**
  * UnitbarangSearch represents the model behind the search form about `app\models\master\Unitbarang`.
@@ -18,9 +18,9 @@ class UnitbarangSearch extends Unitbarang
     public function rules()
     {
         return [
-            [['ID', 'STATUS'], 'integer'],
-            [['KD_UNIT', 'NM_UNIT', 'SIZE', 'COLOR', 'NOTE', 'CREATED_BY', 'CREATED_AT', 'UPDATED_BY', 'UPDATED_AT'], 'safe'],
-            [['WIGHT'], 'number'],
+            [['id', 'status'], 'integer'],
+            [['kd_unit', 'nm_unit', 'size', 'color', 'note', 'created_by', 'created_at', 'updated_by', 'updated_at'], 'safe'],
+            [['wight'], 'number'],
         ];
     }
 
@@ -42,7 +42,7 @@ class UnitbarangSearch extends Unitbarang
      */
     public function search($params)
     {
-        $query = Unitbarang::find()->where('STATUS <> 3');
+        $query = Unitbarang::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,20 +57,20 @@ class UnitbarangSearch extends Unitbarang
         }
 
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'WIGHT' => $this->WIGHT,
-            'CREATED_AT' => $this->CREATED_AT,
-            'UPDATED_AT' => $this->UPDATED_AT,
-            'STATUS' => $this->STATUS,
+            'id' => $this->id,
+            'wight' => $this->wight,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'KD_UNIT', $this->KD_UNIT])
-            ->andFilterWhere(['like', 'NM_UNIT', $this->NM_UNIT])
-            ->andFilterWhere(['like', 'SIZE', $this->SIZE])
-            ->andFilterWhere(['like', 'COLOR', $this->COLOR])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE])
-            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
-            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
+        $query->andFilterWhere(['like', 'kd_unit', $this->kd_unit])
+            ->andFilterWhere(['like', 'nm_unit', $this->nm_unit])
+            ->andFilterWhere(['like', 'size', $this->size])
+            ->andFilterWhere(['like', 'color', $this->color])
+            ->andFilterWhere(['like', 'note', $this->note])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }

@@ -2,6 +2,13 @@
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
+//<sss - config By Maseka>
+require('assets_sss/config/config.php');
+//<sss - config By Maseka>
+
+
+
+
 require(__DIR__ . '/../../vendor/autoload.php');
 require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');
 require(__DIR__ . '/../../common/config/bootstrap.php');

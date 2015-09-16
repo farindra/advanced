@@ -3,8 +3,8 @@
 namespace lukisongroup\controllers\master;
 
 use Yii;
-use lukisongroup\models\master\Kategori;
-use lukisongroup\models\master\KategoriSearch;
+use app\models\master\Kategori;
+use app\models\master\KategoriSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -47,19 +47,11 @@ class KategoriController extends Controller
      * @param string $kd_kategori
      * @return mixed
      */
-    public function actionView($ID, $KD_KATEGORI)
+    public function actionView($id, $kd_kategori)
     {
-		$ck = Kategori::find()->where(['ID'=>$ID, 'KD_KATEGORI'=>$KD_KATEGORI])->one();
-		if(count($ck) == 0){
-			return $this->redirect(['index']);
-		}
-		if($ck->STATUS != 3){
-			return $this->render('view', [
-				'model' => $this->findModel($ID, $KD_KATEGORI),
-			]);
-		} else {
-			return $this->redirect(['index']);
-		}
+        return $this->render('view', [
+            'model' => $this->findModel($id, $kd_kategori),
+        ]);
     }
 
     /**
@@ -70,28 +62,14 @@ class KategoriController extends Controller
     public function actionCreate()
     {
         $model = new Kategori();
-/*
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_KATEGORI' => $model->KD_KATEGORI]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_kategori' => $model->kd_kategori]);
         } else {
-			*/
             return $this->render('create', [
                 'model' => $model,
             ]);
-  //      }
-    }
-
-    public function actionSimpan()
-    {
-        $model = new Kategori();
-
-		$model->load(Yii::$app->request->post());
-		$ck = Kategori::find()->where('STATUS <> 3')->max('KD_KATEGORI');
-		$nw = $ck+1;
-		$nw = str_pad( $nw, "2", "0", STR_PAD_LEFT );
-		$model->KD_KATEGORI = $nw;
-		$model->save();
-		return $this->redirect(['view', 'ID' => $model->ID, 'KD_KATEGORI' => $model->KD_KATEGORI]);
+        }
     }
 
     /**
@@ -101,20 +79,12 @@ class KategoriController extends Controller
      * @param string $kd_kategori
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_KATEGORI)
+    public function actionUpdate($id, $kd_kategori)
     {
-      //  $model = $this->findModel($ID, $KD_KATEGORI);
+        $model = $this->findModel($id, $kd_kategori);
 
-		$model = Kategori::find()->where(['ID'=>$ID, 'KD_KATEGORI'=>$KD_KATEGORI])->one();
-		if(count($model) == 0){
-			return $this->redirect(['index']);
-		}
-		if($model->STATUS == 3){
-			return $this->redirect(['index']);
-		}
-		
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_KATEGORI' => $model->KD_KATEGORI]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_kategori' => $model->kd_kategori]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -129,14 +99,10 @@ class KategoriController extends Controller
      * @param string $kd_kategori
      * @return mixed
      */
-    public function actionDelete($ID, $KD_KATEGORI)
+    public function actionDelete($id, $kd_kategori)
     {
-		$model = Kategori::find()->where(['ID'=>$ID, 'KD_KATEGORI'=>$KD_KATEGORI])->one();
-		$model->STATUS = 3;
-		$model->UPDATED_BY = Yii::$app->user->identity->username;
-		$model->save();  // equivalent to $model->update();
-		
-        //$this->findModel($ID, $KD_KATEGORI)->delete();
+        $this->findModel($id, $kd_kategori)->delete();
+
         return $this->redirect(['index']);
     }
 
@@ -148,9 +114,9 @@ class KategoriController extends Controller
      * @return Kategori the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_KATEGORI)
+    protected function findModel($id, $kd_kategori)
     {
-        if (($model = Kategori::findOne(['ID' => $ID, 'KD_KATEGORI' => $KD_KATEGORI])) !== null) {
+        if (($model = Kategori::findOne(['id' => $id, 'kd_kategori' => $kd_kategori])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

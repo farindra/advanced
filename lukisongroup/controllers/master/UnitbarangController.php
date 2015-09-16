@@ -3,8 +3,8 @@
 namespace lukisongroup\controllers\master;
 
 use Yii;
-use lukisongroup\models\master\Unitbarang;
-use lukisongroup\models\master\UnitbarangSearch;
+use app\models\master\Unitbarang;
+use app\models\master\UnitbarangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -47,10 +47,10 @@ class UnitbarangController extends Controller
      * @param string $kd_unit
      * @return mixed
      */
-    public function actionView($ID, $KD_UNIT)
+    public function actionView($id, $kd_unit)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID, $KD_UNIT),
+            'model' => $this->findModel($id, $kd_unit),
         ]);
     }
 
@@ -64,25 +64,12 @@ class UnitbarangController extends Controller
         $model = new Unitbarang();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_UNIT' => $model->KD_UNIT]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_unit' => $model->kd_unit]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
-    }
-
-    public function actionSimpan()
-    {
-        $model = new Unitbarang();
-
-		$model->load(Yii::$app->request->post());
-		$ck = Unitbarang::find()->where('STATUS <> 3')->max('KD_UNIT');
-		$nw = $ck+1;
-		$nw = str_pad( $nw, "2", "0", STR_PAD_LEFT );
-		$model->KD_UNIT = $nw;
-		$model->save();
-		return $this->redirect(['view', 'ID' => $model->ID, 'KD_UNIT' => $model->KD_UNIT]);
     }
 
     /**
@@ -92,19 +79,19 @@ class UnitbarangController extends Controller
      * @param string $kd_unit
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_UNIT)
+    public function actionUpdate($id, $kd_unit)
     {
-        $model = $this->findModel($ID, $KD_UNIT);
+        $model = $this->findModel($id, $kd_unit);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_UNIT' => $model->KD_UNIT]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_unit' => $model->kd_unit]);
         } else {
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
     }
-	
+
     /**
      * Deletes an existing Unitbarang model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -112,15 +99,9 @@ class UnitbarangController extends Controller
      * @param string $kd_unit
      * @return mixed
      */
-    public function actionDelete($ID, $KD_UNIT)
+    public function actionDelete($id, $kd_unit)
     {
-		
-		
-		$model = Unitbarang::find()->where(['ID'=>$ID, 'KD_UNIT'=>$KD_UNIT])->one();
-		$model->STATUS = 3;
-		$model->UPDATED_BY = Yii::$app->user->identity->username;
-		$model->save();  // equivalent to $model->update();
-//        $this->findModel($ID, $KD_UNIT)->delete();
+        $this->findModel($id, $kd_unit)->delete();
 
         return $this->redirect(['index']);
     }
@@ -133,9 +114,9 @@ class UnitbarangController extends Controller
      * @return Unitbarang the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_UNIT)
+    protected function findModel($id, $kd_unit)
     {
-        if (($model = Unitbarang::findOne(['ID' => $ID, 'KD_UNIT' => $KD_UNIT])) !== null) {
+        if (($model = Unitbarang::findOne(['id' => $id, 'kd_unit' => $kd_unit])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

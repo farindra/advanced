@@ -1,42 +1,65 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
-use lukisongroup\models\master\Barangumum;
+use yii\grid\GridView;
+use app\models\master\Barangumum;
 
-//use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
-/* @var $searchModel lukisongroup\models\master\BarangumumSearch */
+/* @var $searchModel app\models\master\BarangumumSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-
-$this->sideCorp = 'Lukison Group';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
-$this->sideMenu = 'datamaster';                                 /* kd_menu untuk list menu pada sidemenu, get from table of database */
-$this->title = Yii::t('app', 'Data Master');         /* title pada header page */
-$this->params['breadcrumbs'][] = $this->title;                      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
 
 $this->title = 'Barang Umum';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="barangumum-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<?php 
-$gridColumns = [
-	['class' => 'yii\grid\SerialColumn'],
-		'KD_BARANG',
-		'NM_BARANG',
-		'nmtype',
-		'nmktegori',
-	['class' => 'yii\grid\ActionColumn'],
-];
+    <p>
+        <?= Html::a('Create Barang Umum', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
-	echo Yii::$app->gv->grview($gridColumns,$dataProvider,$searchModel, 'Barang Umum', 'BarangUmum',$this->title);
-	
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-?>
+//            'id',
+            'kd_barang',
+            'nm_barang',
+ //           'kd_type',
+			[
+				'attribute' => 'Type',
+				'value' => 'type.nm_type',
+			],
+			[
+				'attribute' => 'Kategori',
+				'value' => 'kategori.nm_kategori',
+			],
+ //           'kd_kategori',
+            // 'kd_unit',
+            // 'kd_supplier',
+            // 'kd_distributor',
+            // 'parent',
+            // 'hpp',
+            // 'harga',
+            // 'barcode',
+            // 'image',
+            // 'note:ntext',
+            // 'kd_corp',
+            // 'kd_cab',
+            // 'kd_dep',
+            // 'status',
+            // 'created_by',
+            // 'created_at',
+            // 'updated_by',
+            // 'updated_at',
+            // 'data_all:ntext',
 
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>

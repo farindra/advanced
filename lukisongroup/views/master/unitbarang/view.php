@@ -4,25 +4,28 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\master\Unitbarang */
+/* @var $model app\models\master\Unitbarang */
 
-$this->title = $model->NM_UNIT;
+$this->title = $model->nm_unit;
 $this->params['breadcrumbs'][] = ['label' => 'Unit Barang', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->sideCorp = 'Lukison Group';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
-$this->sideMenu = 'datamaster';                                 /* kd_menu untuk list menu pada sidemenu, get from table of database */
-$this->title = Yii::t('app', 'Data Master');         /* title pada header page */
-$this->params['breadcrumbs'][] = $this->title;                      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
-
 ?>
 <div class="unitbarang-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-	<div style="border-top:1px solid #c6c6c6; ">&nbsp;</div>
-	
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id, 'kd_unit' => $model->kd_unit], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'kd_unit' => $model->kd_unit], [
+			'class' => 'btn btn-danger',
+			'data' => [
+			    'confirm' => 'Are you sure you want to delete this item?',
+			    'method' => 'post',
+			],
+        ]) ?>
+    </p>
 <?php
-	if($model->STATUS == '1'){
+	if($model->status == '1'){
 		$stat = "Aktif";
 	} else {
 		$stat = "Tidak Aktif";
@@ -32,16 +35,17 @@ $this->params['breadcrumbs'][] = $this->title;                      /* belum di 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-		
-			'NM_UNIT',
-			'SIZE',
-			'WIGHT',
-			'COLOR',
-			'NOTE:ntext',
-//			'CREATED_BY',
-//			'CREATED_AT',
-//			'UPDATED_BY',
-//			'UPDATED_AT',
+//			'id',
+			'kd_unit',
+			'nm_unit',
+			'size',
+			'wight',
+			'color',
+			'note:ntext',
+//			'created_by',
+//			'created_at',
+//			'updated_by',
+//			'updated_at',
 			[
 				'label' => 'Status',
 				'value' => $stat,
@@ -49,16 +53,4 @@ $this->params['breadcrumbs'][] = $this->title;                      /* belum di 
         ],
     ]) ?>
 
-
-    <p>
-        <?= Html::a('<i class="fa fa-pencil"></i>&nbsp;&nbsp;Ubah', ['update', 'ID' => $model->ID, 'KD_UNIT' => $model->KD_UNIT], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('<i class="fa fa-trash-o"></i>&nbsp;&nbsp;Hapus', ['delete', 'ID' => $model->ID, 'KD_UNIT' => $model->KD_UNIT], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-		
-    </p>
 </div>

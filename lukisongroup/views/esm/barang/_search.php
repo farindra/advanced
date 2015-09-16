@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\esm\BarangSearch */
+/* @var $model app\models\esm\BarangSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,25 +15,25 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'ID') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'KD_BARANG') ?>
+    <?= $form->field($model, 'kdBrg') ?>
 
-    <?= $form->field($model, 'NM_BARANG') ?>
+    <?= $form->field($model, 'nmBrg') ?>
 
-    <?= $form->field($model, 'KD_SUPPLIER') ?>
+    <?= $form->field($model, 'kdSuplier') ?>
 
-    <?= $form->field($model, 'KD_DISTRIBUTOR') ?>
+    <?= $form->field($model, 'kdDbtr') ?>
 
-    <?php // echo $form->field($model, 'HPP') ?>
+    <?php // echo $form->field($model, 'hpp') ?>
 
-    <?php // echo $form->field($model, 'HARGA') ?>
+    <?php // echo $form->field($model, 'harga') ?>
 
-    <?php // echo $form->field($model, 'BARCODE') ?>
+    <?php // echo $form->field($model, 'barcode') ?>
 
-    <?php // echo $form->field($model, 'NOTE') ?>
+    <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'STATUS') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'createdBy') ?>
 
@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'updateAt') ?>
 
-    <?php // echo $form->field($model, 'DATA_ALL') ?>
+    <?php // echo $form->field($model, 'data_all') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

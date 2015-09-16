@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\master\TipebarangSearch */
+/* @var $model app\models\master\TipebarangSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,23 +15,23 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'ID') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'KD_TYPE') ?>
+    <?= $form->field($model, 'kd_type') ?>
 
-    <?= $form->field($model, 'NM_TYPE') ?>
+    <?= $form->field($model, 'nm_type') ?>
 
-    <?= $form->field($model, 'NOTE') ?>
+    <?= $form->field($model, 'note') ?>
 
-    <?= $form->field($model, 'CREATED_BY') ?>
+    <?= $form->field($model, 'created_by') ?>
 
-    <?php // echo $form->field($model, 'CREATED_AT') ?>
+    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_BY') ?>
+    <?php // echo $form->field($model, 'updated_by') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_AT') ?>
+    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'STATUS') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

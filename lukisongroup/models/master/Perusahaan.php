@@ -1,6 +1,6 @@
 <?php
 
-namespace lukisongroup\models\master;
+namespace app\models\master;
 
 use Yii;
 
@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $kd_corp
- * @property string $NM_CORP
+ * @property string $nm_corp
  */
 class Perusahaan extends \yii\db\ActiveRecord
 {
@@ -35,10 +35,10 @@ class Perusahaan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'KD_CORP', 'NM_CORP'], 'required'],
-            [['ID'], 'integer'],
-            [['KD_CORP'], 'string', 'max' => 50],
-            [['NM_CORP'], 'string', 'max' => 255]
+            [['id', 'kd_corp', 'nm_corp'], 'required'],
+            [['id'], 'integer'],
+            [['kd_corp'], 'string', 'max' => 50],
+            [['nm_corp'], 'string', 'max' => 255]
         ];
     }
 
@@ -48,9 +48,9 @@ class Perusahaan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'KD_CORP' => 'Kd Corp',
-            'NM_CORP' => 'Nm Corp',
+            'id' => 'ID',
+            'kd_corp' => 'Kd Corp',
+            'nm_corp' => 'Nm Corp',
         ];
     }
 }

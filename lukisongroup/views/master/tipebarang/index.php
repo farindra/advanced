@@ -1,45 +1,47 @@
 <?php
+
 use yii\helpers\Html;
-use kartik\grid\GridView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel lukisongroup\models\master\TipebarangSearch */
+/* @var $searchModel app\models\master\TipebarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Tipe Barang';
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->sideCorp = 'Lukison Group';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
-$this->sideMenu = 'datamaster';                                 /* kd_menu untuk list menu pada sidemenu, get from table of database */
-$this->title = Yii::t('app', 'Data Master');         /* title pada header page */
-$this->params['breadcrumbs'][] = $this->title;                      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
-
 ?>
-
-
 <div class="tipebarang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-	<?php 
-		$gridColumns = [
-			['class' => 'yii\grid\SerialColumn'],
+    <p>
+        <?= Html::a('Buat Tipe Barang', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
-			'NM_TYPE',
-			'NOTE:ntext',
-				[
-					'attribute' => 'STATUS',
-					'value' => function ($model) {
-						return $model->STATUS == 1 ? 'Aktif' : 'Tidak Aktif';
-					},
-				],
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-			['class' => 'yii\grid\ActionColumn'],
-		];
+            //'id',
+            'kd_type',
+            'nm_type',
+            'note:ntext',
+            //'created_by',
+            // 'created_at',
+            // 'updated_by',
+            // 'updated_at',
+			[
+				'attribute' => 'Status',
+				'value' => function ($model) {
+					return $model->status == 1 ? 'Aktif' : 'Tidak Aktif';
+				},
+			],
 
-	echo Yii::$app->gv->grview($gridColumns,$dataProvider,$searchModel, 'Tipe Barang', 'tipe-barang',$this->title);
-	
-	?>
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>

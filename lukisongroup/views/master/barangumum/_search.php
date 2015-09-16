@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\master\BarangumumSearch */
+/* @var $model app\models\master\BarangumumSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,51 +15,51 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'ID') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'KD_BARANG') ?>
+    <?= $form->field($model, 'kd_barang') ?>
 
-    <?= $form->field($model, 'NM_BARANG') ?>
+    <?= $form->field($model, 'nm_barang') ?>
 
-    <?= $form->field($model, 'KD_TYPE') ?>
+    <?= $form->field($model, 'kd_type') ?>
 
-    <?= $form->field($model, 'KD_KATEGORI') ?>
+    <?= $form->field($model, 'kd_kategori') ?>
 
-    <?php // echo $form->field($model, 'KD_UNIT') ?>
+    <?php // echo $form->field($model, 'kd_unit') ?>
 
-    <?php // echo $form->field($model, 'KD_SUPPLIER') ?>
+    <?php // echo $form->field($model, 'kd_supplier') ?>
 
-    <?php // echo $form->field($model, 'KD_DISTRIBUTOR') ?>
+    <?php // echo $form->field($model, 'kd_distributor') ?>
 
-    <?php // echo $form->field($model, 'PARENT') ?>
+    <?php // echo $form->field($model, 'parent') ?>
 
-    <?php // echo $form->field($model, 'HPP') ?>
+    <?php // echo $form->field($model, 'hpp') ?>
 
-    <?php // echo $form->field($model, 'HARGA') ?>
+    <?php // echo $form->field($model, 'harga') ?>
 
-    <?php // echo $form->field($model, 'BARCODE') ?>
+    <?php // echo $form->field($model, 'barcode') ?>
 
-    <?php // echo $form->field($model, 'IMAGE') ?>
+    <?php // echo $form->field($model, 'image') ?>
 
-    <?php // echo $form->field($model, 'NOTE') ?>
+    <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'KD_CORP') ?>
+    <?php // echo $form->field($model, 'kd_corp') ?>
 
-    <?php // echo $form->field($model, 'KD_CAB') ?>
+    <?php // echo $form->field($model, 'kd_cab') ?>
 
-    <?php // echo $form->field($model, 'KD_DEP') ?>
+    <?php // echo $form->field($model, 'kd_dep') ?>
 
-    <?php // echo $form->field($model, 'STATUS') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'CREATED_BY') ?>
+    <?php // echo $form->field($model, 'created_by') ?>
 
-    <?php // echo $form->field($model, 'CREATED_AT') ?>
+    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_BY') ?>
+    <?php // echo $form->field($model, 'updated_by') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_AT') ?>
+    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'DATA_ALL') ?>
+    <?php // echo $form->field($model, 'data_all') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

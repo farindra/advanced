@@ -1,28 +1,26 @@
 <?php
 
-namespace lukisongroup\models\master;
+namespace app\models\master;
 
 use Yii;
 use yii\base\Model;
-use yii\data\ActiveDataProvider;;
+use yii\data\ActiveDataProvider;
+use app\models\master\Barangumum;
 
 /**
  * BarangumumSearch represents the model behind the search form about `app\models\master\Barangumum`.
  */
 class BarangumumSearch extends Barangumum
 {
-	public $nmtype;
-	public $nmktegori;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['ID', 'STATUS'], 'integer'],
-            [['KD_BARANG', 'NM_BARANG', 'KD_TYPE', 'KD_KATEGORI', 'KD_UNIT', 'KD_SUPPLIER', 'KD_DISTRIBUTOR', 'PARENT', 'BARCODE', 'IMAGE', 'NOTE', 'KD_CORP', 'KD_CAB', 'KD_DEP', 'CREATED_BY', 'CREATED_AT', 'UPDATED_BY', 'UPDATED_AT', 'DATA_ALL'], 'safe'],
-            [['HPP', 'HARGA'], 'number'],
-            [['nmtype','nmktegori'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['kd_barang', 'nm_barang', 'kd_type', 'kd_kategori', 'kd_unit', 'kd_supplier', 'kd_distributor', 'parent', 'barcode', 'image', 'note', 'kd_corp', 'kd_cab', 'kd_dep', 'created_by', 'created_at', 'updated_by', 'updated_at', 'data_all'], 'safe'],
+            [['hpp', 'harga'], 'number'],
         ];
     }
 
@@ -44,71 +42,47 @@ class BarangumumSearch extends Barangumum
      */
     public function search($params)
     {
-        $query = Barangumum::find()->where('b1000.STATUS <> 3');
-		//$query->joinWith(['type' => function ($q) {
-		//	$q->where('b1001.NM_TYPE LIKE "%' . $this->nmtype . '%"');
-		//}]);
-		//$query->joinWith(['kategori' => function ($q) {
-		//	$q->where('b1002.NM_KATEGORI LIKE "%' . $this->nmktegori . '%"');
-		//}]);
+        $query = Barangumum::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-/*
-		 $dataProvider->setSort([
-			'attributes' => [
-            'KD_BARANG',
-            'NM_BARANG',
-				'nmtype' => [
-					'asc' => ['b1001.NM_TYPE' => SORT_ASC],
-					'desc' => ['b1001.NM_TYPE' => SORT_DESC],
-					'label' => 'Type',
-				],
-				'nmktegori' => [
-					'asc' => ['b1002.NM_KATEGORI' => SORT_ASC],
-					'desc' => ['b1002.NM_KATEGORI' => SORT_DESC],
-					'label' => 'Type'
-				]
-			]
-		]);
-		*/
-    if (!($this->load($params) && $this->validate())) {
-        /**
-         * The following line will allow eager loading with country data 
-         * to enable sorting by country on initial loading of the grid.
-         */ 
-       // $query->joinWith(['type']);
-     //   $query->joinWith(['kategori']);
-        return $dataProvider;
-    }
 
-/*
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'HPP' => $this->HPP,
-            'HARGA' => $this->HARGA,
-            'STATUS' => $this->STATUS,
-            'CREATED_AT' => $this->CREATED_AT,
-            'UPDATED_AT' => $this->UPDATED_AT,
+            'id' => $this->id,
+            'hpp' => $this->hpp,
+            'harga' => $this->harga,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
-        $query->andFilterWhere(['like', 'KD_BARANG', $this->KD_BARANG])
-            ->andFilterWhere(['like', 'NM_BARANG', $this->NM_BARANG])
-            ->andFilterWhere(['like', 'KD_TYPE', $this->KD_TYPE])
-            ->andFilterWhere(['like', 'KD_KATEGORI', $this->KD_TYPE])
-            ->andFilterWhere(['like', 'KD_UNIT', $this->KD_UNIT])
-            ->andFilterWhere(['like', 'KD_SUPPLIER', $this->KD_SUPPLIER])
-            ->andFilterWhere(['like', 'KD_DISTRIBUTOR', $this->KD_DISTRIBUTOR])
-            ->andFilterWhere(['like', 'BARCODE', $this->BARCODE])
-            ->andFilterWhere(['like', 'IMAGE', $this->IMAGE])
-            ->andFilterWhere(['like', 'NOTE', $this->NOTE])
-            ->andFilterWhere(['like', 'KD_CORP', $this->KD_CORP])
-            ->andFilterWhere(['like', 'KD_CAB', $this->KD_CAB])
-            ->andFilterWhere(['like', 'KD_DEP', $this->KD_DEP])
-            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
-            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY])
-            ->andFilterWhere(['like', 'DATA_ALL', $this->DATA_ALL]);
-*/
+
+        $query->andFilterWhere(['like', 'kd_barang', $this->kd_barang])
+            ->andFilterWhere(['like', 'nm_barang', $this->nm_barang])
+            ->andFilterWhere(['like', 'kd_type', $this->kd_type])
+            ->andFilterWhere(['like', 'kd_kategori', $this->kd_kategori])
+            ->andFilterWhere(['like', 'kd_unit', $this->kd_unit])
+            ->andFilterWhere(['like', 'kd_supplier', $this->kd_supplier])
+            ->andFilterWhere(['like', 'kd_distributor', $this->kd_distributor])
+            ->andFilterWhere(['like', 'parent', $this->parent])
+            ->andFilterWhere(['like', 'barcode', $this->barcode])
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'note', $this->note])
+            ->andFilterWhere(['like', 'kd_corp', $this->kd_corp])
+            ->andFilterWhere(['like', 'kd_cab', $this->kd_cab])
+            ->andFilterWhere(['like', 'kd_dep', $this->kd_dep])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by])
+            ->andFilterWhere(['like', 'data_all', $this->data_all]);
+
         return $dataProvider;
     }
 }

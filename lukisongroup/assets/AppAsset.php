@@ -8,7 +8,7 @@
 namespace lukisongroup\assets;
 
 use yii\web\AssetBundle;
-
+use yii\web\View;
 /**
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
@@ -22,8 +22,14 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
     ];
+    public $jsOptions = array(
+        'position' => View::POS_HEAD
+    );
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+    ];
+    public $favico =[
+      'assets/sss/images/favicon.ico'
     ];
 }

@@ -1,42 +1,59 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
+use yii\grid\GridView;
 
-use lukisongroup\models\esm\perusahaan;
-
-
+use app\models\esm\perusahaan;
 /* @var $this yii\web\View */
-/* @var $searchModel lukisongroup\models\esm\SuplierSearch */
+/* @var $searchModel app\models\esm\SuplierSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Suplier';
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->sideCorp = 'Lukison Group';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
-$this->sideMenu = 'datamaster';                                 /* kd_menu untuk list menu pada sidemenu, get from table of database */
-$this->title = Yii::t('app', 'Data Master');         /* title pada header page */
-$this->params['breadcrumbs'][] = $this->title;                      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
-
 ?>
-
 <div class="suplier-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<?php 
-	$gridColumns = [
-		['class' => 'yii\grid\SerialColumn'],
-            'KD_SUPPLIER',
-            'NM_SUPPLIER',
-            'ALAMAT:ntext',
-            'KOTA',
-			'nmgroup',
-		['class' => 'yii\grid\ActionColumn'],
-	];
+    <p>
+        <?= Html::a('Buat Suplier', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
-	echo Yii::$app->gv->grview($gridColumns,$dataProvider,$searchModel, 'Suplier', 'suplier',$this->title);
-	
-?>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            // 'id',
+            'kd_supplier',
+            'nm_supplier',
+            'alamat:ntext',
+            'kota',
+			[
+				'attribute' => 'nama distributor',
+				'value' => 'perusahaan.nm_corp',
+			],
+            // 'tlp',
+            // 'mobile',
+            // 'fax',
+            // 'email:email',
+            // 'website',
+            // 'image',
+            // 'note:ntext',
+            // 'kd_corp',
+            // 'kd_cab',
+            // 'kd_dep',
+            // 'status',
+            // 'created_by',
+            // 'created_at',
+            // 'updated_by',
+            // 'updated_at',
+            // 'data_all:ntext',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>

@@ -1,53 +1,59 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
-use lukisongroup\models\esm\Barang;
+use yii\grid\GridView;
+use app\models\esm\Barang;
+use app\models\esm\Distributor;
 
 /* @var $this yii\web\View */
-/* @var $searchModel lukisongroup\models\esm\BarangSearch */
+/* @var $searchModel app\models\esm\BarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Barang';
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->sideCorp = 'ESM Request Order';                       /* Title Select Company pada header pasa sidemenu/menu samping kiri */
-$this->sideMenu = 'esm_esm';                                 /* kd_menu untuk list menu pada sidemenu, get from table of database */
-$this->title = Yii::t('app', 'Data Master');         /* title pada header page */
-$this->params['breadcrumbs'][] = $this->title;                      /* belum di gunakan karena sudah ada list sidemenu, on plan next*/
-
 ?>
-
-
 <div class="barang-index">
-    <?php
-	$gridColumns = [
+
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Create Barang', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'KD_BARANG',
-			'nmdbtr',
-			'unitbrg',
-			
+            //'id',
+            'kdBrg',
 			[
-				'format' => 'raw',
-				'value' => function ($model) {
-					if ($model->STATUS == 1) {
-						return '<i class="fa fa-check fa-lg ya" style="color:blue;" title="Aktif"></i>';
-					} else if ($model->STATUS == 0) {
-						return '<i class="fa fa-times fa-lg no" style="color:red;" title="Tidak Aktif" ></i>';
-					} 
-				},
-			], 
-            ['class' => 'yii\grid\ActionColumn'],
-        ]; 
-	
-	
-	echo Yii::$app->gv->grview($gridColumns,$dataProvider,$searchModel, 'Barang ESM', 'barang-esm',$this->title);
-	
-	?>
-</div>
+				'attribute' => 'Nama Prodak',
+				'value' => 'brg.namaBarang',
+			],
+//            'nmBrg',
+			[
+				'attribute' => 'Nama DIstributor',
+				'value' => 'dbtr.nmDbtr',
+			],
+			[
+				'attribute' => 'Status Barang',
+				'value' => 'unitb.nmUnit',
+			],
+		
+            // 'hpp',
+            // 'harga',
+            // 'note',
+            // 'status',
+            // 'createdBy',
+            // 'createdAt',
+            // 'updateAt',
+            // 'data_all',
 
-<p>
-<i class="fa fa-check fa-sm" style="color:blue;" title="Aktif"></i> Aktif  &nbsp;&nbsp;&nbsp;&nbsp;
-<i class="fa fa-times fa-sm" style="color:red;" title="Tidak Aktif" ></i> Tidak Aktif
-</p>
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+</div>

@@ -1,18 +1,14 @@
 <?php
+
 namespace lukisongroup\controllers\master;
 
 use Yii;
-use lukisongroup\models\master\Barangumum;
-use lukisongroup\models\master\BarangumumSearch;
-use lukisongroup\models\master\Barangumumupload;
+use app\models\master\Barangumum;
+use app\models\master\BarangumumSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-//use app\models\UploadForm;
-	use yii\web\UploadedFile;
-	
-	use yii\helpers\Json;
 /**
  * BarangumumController implements the CRUD actions for Barangumum model.
  */
@@ -51,10 +47,10 @@ class BarangumumController extends Controller
      * @param string $kd_barang
      * @return mixed
      */
-    public function actionView($ID, $KD_BARANG)
+    public function actionView($id, $kd_barang)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID, $KD_BARANG),
+            'model' => $this->findModel($id, $kd_barang),
         ]);
     }
 
@@ -65,51 +61,15 @@ class BarangumumController extends Controller
      */
     public function actionCreate()
     {
-		
         $model = new Barangumum();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_barang' => $model->kd_barang]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
-    }
-
-    public function actionSimpan()
-    {
-        $model = new Barangumum();
-	//	$bupload = new Barangumumupload();
-		
-		$model->load(Yii::$app->request->post());
-		
-		//$kdBrg = $model->KD_BARANG;	
-	//	$kdCorp = $model->KD_CORP;	
-	//	$kdType = $model->KD_TYPE;	
-	//	$kdKategori = $model->KD_KATEGORI;	
-	///	$kdUnit = $model->KD_UNIT;	
-		
-		//$ck = Barangumum::find()->select('KD_BARANG')->where(['KD_CORP' => $kdCorp])->andWhere('STATUS <> 3')->orderBy(['ID'=>SORT_DESC])->one();
-		//if(count($ck) == 0){ $nkd = 1; } else { $kd = explode('.',$ck->KD_BARANG); $nkd = $kd[5]+1; }
-		
-	//	$kd = "BRG.".$kdCorp.".".$kdType.".".$kdKategori.".".$kdUnit.".".str_pad( $nkd, "4", "0", STR_PAD_LEFT );
-
-		
-		//$model->KD_BARANG = $kd;
-		
-		$image = $model->uploadImage();
-		if ($model->save()) {
-			// upload only if valid uploaded file instance found
-			if ($image !== false) {
-				$path = $model->getImageFile();
-				$image->saveAs($path);
-			}
-		}
-	
-		
-		return $this->redirect(['view', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG]);
-//		echo  $hsl['barangumum']['KD_BARANG'];
     }
 
     /**
@@ -119,21 +79,12 @@ class BarangumumController extends Controller
      * @param string $kd_barang
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_BARANG)
+    public function actionUpdate($id, $kd_barang)
     {
-        $model = $this->findModel($ID, $KD_BARANG);
+        $model = $this->findModel($id, $kd_barang);
 
-        if ($model->load(Yii::$app->request->post())){
-			
-			$image = $model->uploadImage();
-			if ($model->save()) {
-				// upload only if valid uploaded file instance found
-				if ($image !== false) {
-					$path = $model->getImageFile();
-					$image->saveAs($path);
-				}
-			}
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_BARANG' => $model->KD_BARANG]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id, 'kd_barang' => $model->kd_barang]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -148,13 +99,9 @@ class BarangumumController extends Controller
      * @param string $kd_barang
      * @return mixed
      */
-    public function actionDelete($ID, $KD_BARANG)
+    public function actionDelete($id, $kd_barang)
     {
-		$model = Barangumum::find()->where(['ID'=>$ID, 'KD_BARANG'=>$KD_BARANG])->one();
-		$model->STATUS = 3;
-		$model->UPDATED_BY = Yii::$app->user->identity->username;
-		$model->save();
-//   $this->findModel($ID, $KD_BARANG)->delete();
+        $this->findModel($id, $kd_barang)->delete();
 
         return $this->redirect(['index']);
     }
@@ -167,43 +114,12 @@ class BarangumumController extends Controller
      * @return Barangumum the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_BARANG)
+    protected function findModel($id, $kd_barang)
     {
-        if (($model = Barangumum::findOne(['ID' => $ID, 'KD_BARANG' => $KD_BARANG])) !== null) {
+        if (($model = Barangumum::findOne(['id' => $id, 'kd_barang' => $kd_barang])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-	
-	  public function actionGenerate() {
-            $out = [];
-            if (isset($_POST['depdrop_parents'])) {
-                $parents = $_POST['depdrop_parents'];
-                //print_r($parents);
-                if ($parents != null) {
-                    $corp_id = $parents[0];
-                    $generate_KdBrg= Yii::$app->ambilkonci->getKey_KdBrg($corp_id);
-                    //$out = self::getSubCatList($cat_id);
-                    // the getSubCatList function will query the database based on the
-                    // cat_id and return an array like below:
-                   // $out = self::getSubCatList1($cat_id);
-                    $data=[
-                            'out'=>[
-                                //['id'=>$generate_key_emp1, 'name'=> $generate_key_emp1],
-                                ['id'=> $generate_KdBrg, 'name'=>$generate_KdBrg, 'options'=> ['style'=>['color'=>'red'],'disabled'=>false]],
-                                //['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
-                                ],
-                            'selected'=>$generate_KdBrg,
-                        ];
-                   // $selected = self::getSubcat($cat_id);
-
-                    echo Json::encode(['output'=>$data['out'], 'selected'=>$data['selected']]);
-                    return;
-                }
-            }
-            echo Json::encode(['output'=>'', 'selected'=>'']);
-        }
-	
-	
 }

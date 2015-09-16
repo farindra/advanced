@@ -1,9 +1,10 @@
 <?php
+
 namespace lukisongroup\controllers\master;
 
 use Yii;
-use lukisongroup\models\master\Suplier;
-use lukisongroup\models\master\SuplierSearch;
+use app\models\master\Suplier;
+use app\models\master\SuplierSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -46,42 +47,13 @@ class SuplierController extends Controller
      * @param string $kd_supplier
      * @return mixed
      */
-    public function actionView($ID, $KD_SUPPLIER)
+    public function actionView($id, $kd_supplier)
     {
-		$ck = Suplier::find()->where(['ID'=>$ID, 'KD_SUPPLIER'=>$KD_SUPPLIER])->one();
-		if(count($ck) == 0){
-			return $this->redirect(['index']);
-		}
-		if($ck->STATUS != 3){
-			return $this->render('view', [
-				'model' => $this->findModel($ID, $KD_SUPPLIER),
-			]);
-		} else {
-			return $this->redirect(['index']);
-		}
+        return $this->render('view', [
+            'model' => $this->findModel($id, $kd_supplier),
+        ]);
     }
 
-    public function actionSimpan()
-    {
-        $model = new Suplier();
-		$model->load(Yii::$app->request->post());
-		$crp = $model->KD_CORP;
-		
-		$ck = Suplier::find()->where('STATUS <> 3')->where(['KD_CORP'=>$crp])->max('KD_SUPPLIER');
-		if(count($ck) != 0){
-			$nw = explode('.',$ck);
-			$nm = $nw[2]+1;
-		}else{
-			$nm =1;
-		}
-		
-		$nn = str_pad($nm, "5", "0", STR_PAD_LEFT );
-		
-		$kd = 'SPL.'.$crp."." .$nn;
-		$model->KD_SUPPLIER = $kd;
-		$model->save();
-		return $this->redirect(['view', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER]);
-    }
     /**
      * Creates a new Suplier model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -92,7 +64,7 @@ class SuplierController extends Controller
         $model = new Suplier();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -107,12 +79,12 @@ class SuplierController extends Controller
      * @param string $kd_supplier
      * @return mixed
      */
-    public function actionUpdate($ID, $KD_SUPPLIER)
+    public function actionUpdate($id, $kd_supplier)
     {
-        $model = $this->findModel($ID, $KD_SUPPLIER);
+        $model = $this->findModel($id, $kd_supplier);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID, 'KD_SUPPLIER' => $model->KD_SUPPLIER]);
+            return $this->redirect(['view', 'id' => $model->id, 'kd_supplier' => $model->kd_supplier]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -127,15 +99,9 @@ class SuplierController extends Controller
      * @param string $kd_supplier
      * @return mixed
      */
-    public function actionDelete($ID, $KD_SUPPLIER)
+    public function actionDelete($id, $kd_supplier)
     {
-		
-		$model = Suplier::find()->where(['ID'=>$ID, 'KD_SUPPLIER'=>$KD_SUPPLIER])->one();
-		$model->STATUS = 3;
-		$model->UPDATED_BY = Yii::$app->user->identity->username;
-		$model->save();  // equivalent to $model->update();
-		
-//        $this->findModel($ID, $KD_SUPPLIER)->delete();
+        $this->findModel($id, $kd_supplier)->delete();
 
         return $this->redirect(['index']);
     }
@@ -148,9 +114,9 @@ class SuplierController extends Controller
      * @return Suplier the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID, $KD_SUPPLIER)
+    protected function findModel($id, $kd_supplier)
     {
-        if (($model = Suplier::findOne(['ID' => $ID, 'KD_SUPPLIER' => $KD_SUPPLIER])) !== null) {
+        if (($model = Suplier::findOne(['id' => $id, 'kd_supplier' => $kd_supplier])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

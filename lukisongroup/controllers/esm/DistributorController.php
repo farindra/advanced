@@ -3,8 +3,8 @@
 namespace lukisongroup\controllers\esm;
 
 use Yii;
-use lukisongroup\models\esm\Distributor;
-use lukisongroup\models\esm\DistributorSearch;
+use app\models\esm\Distributor;
+use app\models\esm\DistributorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -63,9 +63,10 @@ class DistributorController extends Controller
         $model = new Distributor();	
 		
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+ //       if (! $dst) {
             if (! Yii::$app->user->isGuest) {
-            return $this->redirect(['view', 'id' => $model->ID]);
-            }
+            return $this->redirect(['view', 'id' => $model->idDbtr]);
+            } 
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -74,21 +75,6 @@ class DistributorController extends Controller
 		
     }
 
-    public function actionSimpan()
-    {
-        $model = new Distributor();
-		$model->load(Yii::$app->request->post());
-		
-		$ck = Distributor::find()->select('KD_DISTRIBUTOR')->where('STATUS <> 3')->orderBy(['ID'=>SORT_DESC])->one();
-		
-		if(count($ck) == 0){ $nkd = 1; } else { $kd = explode('.',$ck->KD_DISTRIBUTOR); $nkd = $kd[1]+1; }
-		
-		$kd = "DIS.".str_pad( $nkd, "3", "0", STR_PAD_LEFT );
-		$model->KD_DISTRIBUTOR = $kd;
-		$model->save();
-		return $this->redirect(['view', 'id' => $model->ID]);
-    }
-	
     /**
      * Updates an existing Distributor model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -101,7 +87,7 @@ class DistributorController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (! Yii::$app->user->isGuest) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+            return $this->redirect(['view', 'id' => $model->idDbtr]);
             } 
         } else {
             return $this->render('update', [
@@ -118,10 +104,7 @@ class DistributorController extends Controller
      */
     public function actionDelete($id)
     {
-		$model = Distributor::find()->where(['ID'=>$id])->one();
-		$model->STATUS = '3';
-		$model->UPDATED_BY = Yii::$app->user->identity->username;
-		$model->save();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

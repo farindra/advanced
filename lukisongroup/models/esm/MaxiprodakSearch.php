@@ -1,11 +1,11 @@
 <?php
 
-namespace lukisongroup\models\esm;
+namespace app\models\esm;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use lukisongroup\models\esm\Maxiprodak;
+use app\models\esm\Maxiprodak;
 
 /**
  * MaxiprodakSearch represents the model behind the search form about `app\models\maxi\Maxiprodak`.

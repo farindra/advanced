@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model lukisongroup\models\master\UnitbarangSearch */
+/* @var $model app\models\master\UnitbarangSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,29 +15,29 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'ID') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'KD_UNIT') ?>
+    <?= $form->field($model, 'kd_unit') ?>
 
-    <?= $form->field($model, 'NM_UNIT') ?>
+    <?= $form->field($model, 'nm_unit') ?>
 
-    <?= $form->field($model, 'SIZE') ?>
+    <?= $form->field($model, 'size') ?>
 
-    <?= $form->field($model, 'WIGHT') ?>
+    <?= $form->field($model, 'wight') ?>
 
     <?php // echo $form->field($model, 'color') ?>
 
-    <?php // echo $form->field($model, 'NOTE') ?>
+    <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'CREATED_BY') ?>
+    <?php // echo $form->field($model, 'created_by') ?>
 
-    <?php // echo $form->field($model, 'CREATED_AT') ?>
+    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_BY') ?>
+    <?php // echo $form->field($model, 'updated_by') ?>
 
-    <?php // echo $form->field($model, 'UPDATED_AT') ?>
+    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'STATUS') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

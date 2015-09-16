@@ -1,6 +1,6 @@
 <?php
 
-namespace lukisongroup\models\esm;
+namespace app\models\esm;
 
 use Yii;
 
@@ -34,8 +34,8 @@ class Jenispt extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'jenisCorp'], 'required'],
-            [['ID'], 'integer'],
+            [['id', 'jenisCorp'], 'required'],
+            [['id'], 'integer'],
             [['jenisCorp'], 'string', 'max' => 255]
         ];
     }
